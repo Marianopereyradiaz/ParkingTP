@@ -38,18 +38,18 @@ namespace TP_Parking
                     writer.WriteElementString("IsEntry", movement.IsEntry.ToString());
 
                     writer.WriteStartElement("User");
-                    writer.WriteElementString("UserNameUser", movement.user.UserName);
-                    writer.WriteElementString("PasswordUser", movement.user.Password);
-                    writer.WriteElementString("LastAdmissionUser", movement.user.LastAdmission.ToString());
+                    writer.WriteElementString("UserNameUser", movement.User.UserName);
+                    writer.WriteElementString("PasswordUser", movement.User.Password);
+                    writer.WriteElementString("LastAdmissionUser", movement.User.LastAdmission.ToString());
                     writer.WriteEndElement();
 
                     writer.WriteStartElement("Closing");
-                    writer.WriteElementString("DateClosing", movement.closing.Date.ToString());
+                    writer.WriteElementString("DateClosing", movement.Closing.Date.ToString());
                     
                     writer.WriteStartElement("UserClosing");
-                    writer.WriteElementString("UserNameClosing", movement.closing.User.UserName);
-                    writer.WriteElementString("PasswordClosing", movement.closing.User.Password);
-                    writer.WriteElementString("LastAdmissionClosing", movement.closing.User.LastAdmission.ToString());
+                    writer.WriteElementString("UserNameClosing", movement.Closing.User.UserName);
+                    writer.WriteElementString("PasswordClosing", movement.Closing.User.Password);
+                    writer.WriteElementString("LastAdmissionClosing", movement.Closing.User.LastAdmission.ToString());
                     writer.WriteEndElement();
 
                     writer.WriteEndElement();
@@ -118,50 +118,50 @@ namespace TP_Parking
                                 break;
 
                             case "User":
-                                    movement.user = new User();
+                                    movement.User = new User();
                                 break;
 
                             case "UserNameUser":
                                 if (reader.Read())
-                                    movement.user.UserName= reader.Value;
+                                    movement.User.UserName= reader.Value;
                                 break;
 
                             case "PasswordUser":
                                 if (reader.Read())
-                                    movement.user.Password = reader.Value;
+                                    movement.User.Password = reader.Value;
                                 break;
 
                             case "LastAdmissionUser":
                                 if (reader.Read())
-                                    movement.user.LastAdmission = Convert.ToDateTime(reader.Value);
+                                    movement.User.LastAdmission = Convert.ToDateTime(reader.Value);
                                 break;
 
                             case "Closing":
-                                    movement.closing = new Closing();
+                                    movement.Closing = new Closing();
                                 break;
 
                             case "DateClosing":
                                 if (reader.Read())
-                                    movement.closing.Date = Convert.ToDateTime(reader.Value);
+                                    movement.Closing.Date = Convert.ToDateTime(reader.Value);
                                 break;
 
                             case "UserClosing":
-                                    movement.closing.User = new User();
+                                    movement.Closing.User = new User();
                                 break;
 
                             case "UserNameClosing":
                                 if (reader.Read())
-                                    movement.closing.User.UserName = reader.Value;
+                                    movement.Closing.User.UserName = reader.Value;
                                 break;
 
                             case "PasswordClosing":
                                 if (reader.Read())
-                                    movement.closing.User.Password = reader.Value;
+                                    movement.Closing.User.Password = reader.Value;
                                 break;
                 
                             default:                 
                                 if (reader.Read())
-                                        movement.closing.User.LastAdmission = Convert.ToDateTime(reader.Value);
+                                        movement.Closing.User.LastAdmission = Convert.ToDateTime(reader.Value);
                                 break;
 
                         }

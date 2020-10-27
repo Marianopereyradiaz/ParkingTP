@@ -28,12 +28,12 @@ namespace TP_Parking
             {
                 Movement newMovement = new Movement();
                 newMovement.Concept = textBoxConcept.Text;
-                newMovement.user = user;
-                newMovement.user.UserName = user.UserName;
-                newMovement.user.LastAdmission = user.LastAdmission;
-                newMovement.user.Password = user.Password;
+                newMovement.User = user;
+                newMovement.User.UserName = user.UserName;
+                newMovement.User.LastAdmission = user.LastAdmission;
+                newMovement.User.Password = user.Password;
                 newMovement.Date = DateTime.Now;
-                newMovement.closing = null;
+                newMovement.Closing = null;
                 if (comboBoxType.SelectedIndex == 0)
                 {
                     {

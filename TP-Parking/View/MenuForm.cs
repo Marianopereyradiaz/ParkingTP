@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Reflection;
 using System.Windows.Forms;
 using TP_Parking.Controllers;
 using TP_Parking.Model;
@@ -13,7 +12,7 @@ namespace TP_Parking
         private HourRentals hourRentals = new HourRentals();
         private MonthRentals monthRentals = new MonthRentals();
         private Movements movements = new Movements();
-        private Closings closings = new Closings();
+        private Closings closings;
         private Parking parking = new Parking();
         private Parking busyGarages = new Parking();
         private Controller controller = new Controller();
@@ -21,58 +20,56 @@ namespace TP_Parking
         private XMLMovements movementsManager = new XMLMovements();
         private XMLGarages garagesManager = new XMLGarages();
         private XMLHourRentals hourRentalsManager = new XMLHourRentals();
-        public MenuForm(User user,Closings closings)
+        private XMLClosings closingsManager = new XMLClosings();
+        public MenuForm(User user, Closings closings)
         {
             InitializeComponent();
             this.user = user;
             this.closings = closings;
             labelTitle.Text = ($"Estacionamiento {parking.ParkingName}");
             controller.SetGarages(parking);
-            /*monthRentals.AddAllRentals(monthRentalsManager.ReturnRentals());
-            hourRentals.AddAllRentals(hourRentalsManager.ReturnRentals());
-            busyGarages.ClearGarages();
-            busyGarages.AddAllGarages(garagesManager.ReturnGarages());
-            foreach (Garage garage in busyGarages.ReturnAllGarages())
-            {
-                for (int i = 0; i < parking.returnQuantity(); i++)
-                    if (garage.Number == parking.garages[i].Number)
-                    {
-                        parking.garages[i] = garage;
-                    }
-            }
-            foreach (Button b in groupBoxParkingView.Controls)
-            {
-                var spaceIndex = b.Text.IndexOf(" ");
-                int i = (Convert.ToInt32(b.Text.Substring(0, spaceIndex)) - 1);
-                if (parking.garages[i].State == true)
-                {
-                    b.BackColor = Color.Red;
-                }
-                else
-                {
-                    b.BackColor = Color.LawnGreen;
-                }
-            }*/
         }
-        
+
 
         private void buttonExit_Click(object sender, EventArgs e)
-        {           
-            monthRentalsManager.GenerateXML(monthRentals.ReturnAllRentals());
-            hourRentalsManager.GenerateXML(hourRentals.ReturnAllRentals());
-            movementsManager.GenerateXML(movements.ReturnAllMovements());
-            busyGarages.ClearGarages();
-            foreach (Garage garage in parking.garages)
+        {
+            bool isClosed = true;
+            foreach (Movement movement in movements.ReturnAllMovements())
             {
-                if (garage.State == true)
+                if (movement.Closing == null)
                 {
-                    busyGarages.garages.Add(garage);
+                    isClosed = false;
                 }
             }
-            garagesManager.GenerateXML(busyGarages.ReturnAllGarages());
-            MessageBox.Show("Se guardaron movimientos", "aviso", MessageBoxButtons.OK);
-            this.Owner.Show();
-            this.Close();
+            if (isClosed == false)
+            {
+                ExceptionMessage.ShowMessage("Debe realizar el cierre de caja");
+            }
+            else
+            {
+                try
+                {
+                    monthRentalsManager.GenerateXML(monthRentals.ReturnAllRentals());
+                    hourRentalsManager.GenerateXML(hourRentals.ReturnAllRentals());
+                    movementsManager.GenerateXML(movements.ReturnAllMovements());
+                    closingsManager.GenerateXML(closings.ReturnAllClosings());
+                    busyGarages.ClearGarages();
+                    foreach (Garage garage in parking.garages)
+                    {
+                        if (garage.State == true)
+                        {
+                            busyGarages.garages.Add(garage);
+                        }
+                    }
+                    garagesManager.GenerateXML(busyGarages.ReturnAllGarages());
+                    MessageBox.Show("Se guardaron movimientos", "aviso", MessageBoxButtons.OK);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionMessage.ShowMessage(ex.Message);
+                }
+            }
         }
 
 
@@ -84,43 +81,85 @@ namespace TP_Parking
 
         private static void ClickOnButtonFunction(Button button, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, Parking parking, User user)
         {
+            FinishRentalForm finishForm = null;
             var spaceIndex = button.Text.IndexOf(" ");
-            int i = (Convert.ToInt32(button.Text.Substring(0, spaceIndex))-1);
+            int i = (Convert.ToInt32(button.Text.Substring(0, spaceIndex)) - 1);
             if (button.BackColor == Color.LawnGreen)
             {
-                NewRental(button, i, hourRentals,monthRentals, movements, parking,user);
+                NewRental(button, i, hourRentals, monthRentals, movements, parking, user);
             }
-            if (button.BackColor == Color.Red)
+            else
             {
-                foreach (MonthRental monthRental in monthRentals.ReturnAllRentals())
+                if (button.BackColor == Color.Red)
                 {
-                    if (monthRental.Garage.Number == (i+1))
+                    foreach (MonthRental monthRental in monthRentals.ReturnAllRentals())
                     {
-                        MonthRental monthRentalStop = StopMonthRental(i, monthRentals, parking);
-                        FinishRentalForm finishForm = new FinishRentalForm(i, monthRentalStop, movements, user,parking,monthRentals);
-                        finishForm.ShowDialog();
+                        if (monthRental.Garage.Number == (i + 1) && monthRental.Garage.State == true)
+                        {
+                            MonthRental monthRentalStop = StopMonthRental(i, monthRentals, parking);
+                            finishForm = new FinishRentalForm(i, monthRentalStop, movements, user, parking, monthRentals);
+                        }
                     }
-                }
 
-                foreach (HourRental hourRental in hourRentals.ReturnAllRentals())
-                {
-                    if (hourRental.Garage.Number == i+1)
+                    foreach (HourRental hourRental in hourRentals.ReturnAllRentals())
                     {
-                        HourRental hourRentalStop = StopHourRental(i, hourRentals, parking);
-                        FinishRentalForm finishForm = new FinishRentalForm(i, hourRentalStop, movements, user,parking);
-                        finishForm.ShowDialog();
+                        if (hourRental.Garage.Number == i + 1 && hourRental.Garage.State == true)
+                        {
+                            HourRental hourRentalStop = StopHourRental(i, hourRentals, parking);
+                            finishForm = new FinishRentalForm(i, hourRentalStop, movements, user, parking);
+                        }
                     }
+
                 }
-                ChangeGarageState(button, i,parking);
+                finishForm.ShowDialog();
+
             }
+            ChangeGarageState(button, i, parking, hourRentals, monthRentals);
         }
 
-        private static void ChangeGarageState(Button button, int i, Parking parking)
+        private static void ChangeGarageState(Button button, int i, Parking parking, HourRentals hourRentals, MonthRentals monthRentals)
         {
-            if (parking.garages[i].State == false)
+            if (parking.garages[i].State == true)
+            {
+                button.BackColor = Color.Red;
+                foreach (HourRental hourRental in hourRentals.ReturnAllRentals())
+                {
+                    if (hourRental.Garage.Number == parking.garages[i].Number && hourRental.Garage.State == true)
+                    {
+                        button.Text = ($"{i + 1} {Environment.NewLine}{parking.garages[i].Vehicle.Domain}{Environment.NewLine}Hora");
+                    }
+                }
+                foreach (MonthRental monthRental in monthRentals.ReturnAllRentals())
+                {
+                    if (monthRental.Garage.Number == parking.garages[i].Number && monthRental.Garage.State == true)
+                    {
+                        button.Text = ($"{i + 1} {Environment.NewLine}{parking.garages[i].Vehicle.Domain}{Environment.NewLine}Mes");
+                        TimeSpan DaysWarning = (monthRental.ExpirationDate - DateTime.Now);
+                        int days = Convert.ToInt32(DaysWarning.Days);
+                        switch (days)
+                        {
+                            case 3:
+                                button.BackColor = Color.Orange;
+                                break;
+                            case 2:
+                                button.BackColor = Color.Blue;
+                                break;
+                            case 1:
+                                button.BackColor = Color.Yellow;
+                                break;
+                            case 0:
+                                button.BackColor = Color.LawnGreen;
+                                button.Text = ($"{i + 1} ");
+                                monthRental.Garage.State = false;
+                                break;
+                        }
+                    }
+                }
+            }
+            else
             {
                 button.BackColor = Color.LawnGreen;
-                button.Text = ($"{i+1} ");
+                button.Text = ($"{i + 1} ");
             }
         }
 
@@ -133,7 +172,7 @@ namespace TP_Parking
                 {
                     if (monthrental.Garage.Number == parking.garages[i].Number)
                     {
-                        rental = monthrental;                     
+                        rental = monthrental;
                     }
                 }
             }
@@ -141,7 +180,7 @@ namespace TP_Parking
             {
 
             }
-          return rental;
+            return rental;
         }
 
         private static HourRental StopHourRental(int i, HourRentals hourRentals, Parking parking)
@@ -159,13 +198,13 @@ namespace TP_Parking
             }
             catch (Exception ex)
             {
-                
+
             }
             return rental;
         }
-        private static void NewRental(Button button, int i, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, Parking parking,User user)
+        private static void NewRental(Button button, int i, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, Parking parking, User user)
         {
-            StartRentalForm startRental = new StartRentalForm(parking.garages[i], hourRentals, monthRentals, movements, parking,user);
+            StartRentalForm startRental = new StartRentalForm(parking.garages[i], hourRentals, monthRentals, movements, parking, user);
             startRental.ShowDialog();
             if (parking.garages[i].State == true)
             {
@@ -181,7 +220,7 @@ namespace TP_Parking
 
         private void buttonRegister_Click(object sender, EventArgs e)
         {
-            var register = new RegisterForm(movements,closings,user);
+            var register = new RegisterForm(movements, closings, user);
             register.ShowDialog();
         }
 
@@ -193,13 +232,31 @@ namespace TP_Parking
 
         private void buttonReports_Click(object sender, EventArgs e)
         {
-            ReportsForm reportsForm = new ReportsForm( monthRentals, hourRentals);
+            ReportsForm reportsForm = new ReportsForm(monthRentals, hourRentals,closings,movements);
             reportsForm.ShowDialog();
         }
 
         private void MenuForm_Load(object sender, EventArgs e)
-        {                    
-            
+        {
+            monthRentals.AddAllRentals(monthRentalsManager.ReturnRentals());
+            hourRentals.AddAllRentals(hourRentalsManager.ReturnRentals());
+            busyGarages.ClearGarages();
+            busyGarages.AddAllGarages(garagesManager.ReturnGarages());
+            movements.AddAllMovements(movementsManager.ReturnMovements());
+            foreach (Garage garage in busyGarages.ReturnAllGarages())
+            {
+                for (int i = 0; i < parking.returnQuantity(); i++)
+                    if (garage.Number == parking.garages[i].Number)
+                    {
+                        parking.garages[i] = garage;
+                    }
+            }
+            foreach (Button b in groupBoxParkingView.Controls)
+            {
+                var spaceIndex = b.Text.IndexOf(" ");
+                int i = (Convert.ToInt32(b.Text.Substring(0, spaceIndex)) - 1);
+                ChangeGarageState(b, i, parking, hourRentals, monthRentals);
+            }
         }
 
         private void groupBoxParkingView_Enter(object sender, EventArgs e)
@@ -212,7 +269,7 @@ namespace TP_Parking
 
         private void B_Click(object sender, EventArgs e)
         {
-            Clickonbutton((Button)sender, hourRentals,monthRentals, movements, parking, user);
+            Clickonbutton((Button)sender, hourRentals, monthRentals, movements, parking, user);
         }
     }
 }

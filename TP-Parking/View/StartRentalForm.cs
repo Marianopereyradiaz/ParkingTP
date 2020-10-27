@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace TP_Parking
@@ -10,6 +11,7 @@ namespace TP_Parking
         private Movements movements;
         private Parking parking;
         private User user;
+        private MonthRental monthRental;
         public StartRentalForm()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace TP_Parking
             textBoxGarage.Text = Convert.ToString(garage.Number);
             this.hourRentals = hourRentals;
             this.monthRentals = monthRentals;
+            this.monthRental = null;
             this.movements = movements;
             this.parking = parking;
             this.user = user;
@@ -44,7 +47,8 @@ namespace TP_Parking
         public StartRentalForm(Garage garage,MonthRentals monthRentals, Movements movements, Parking parking, User user,MonthRental monthRental)
         {
             InitializeComponent();
-            var i = Convert.ToInt32(textBoxGarage.Text) - 1;
+            var i = monthRental.Garage.Number;
+            this.monthRental = monthRental;
             textBoxGarage.Text = Convert.ToString(garage.Number);
             this.monthRentals = monthRentals;
             this.movements = movements;
@@ -76,12 +80,21 @@ namespace TP_Parking
             textBoxDomain.Enabled = false;
             textBoxOwner.Enabled = false;
             int months = comboBoxMonths.SelectedIndex + 1;
-            StartMonthRental(DateTime.Now, i, monthRental.Owner, monthRentals, movements, parking, user, months);
         }
+
+
 
         private void buttonConfirmRental_Click(object sender, EventArgs e)
         {
-            StartRental(movements);
+            if (monthRental == null)
+            {
+                StartRental(movements);
+            }    
+            else
+            {
+                StartRenovation(DateTime.Now, user, movements, monthRentals, monthRental, comboBoxMonths.SelectedIndex + 1);
+                this.Close();
+            }
         }
 
         private void StartRental(Movements movements)
@@ -178,21 +191,38 @@ namespace TP_Parking
 
         private static void StartMonthRental(DateTime now, int i, string owner, MonthRentals monthRentals, Movements movements, Parking parking, User user, int months)
         {
-            
-            DateTime finishMonth = now.AddMonths(months);
-            MonthRental monthrental = new MonthRental(owner, finishMonth, now, parking.garages[i]);
-            monthRentals.AddRental(monthrental);
+                DateTime finishMonth = now.AddMonths(months);
+                MonthRental monthrental = new MonthRental(owner, finishMonth, now, parking.garages[i]);
+                monthRentals.AddRental(monthrental);
+                 Movement newMovement = new Movement();
+                newMovement.Amount = monthrental.CalculateAmount(monthrental.Garage.Vehicle.VehicleType);
+                newMovement.Concept = "Alquiler por mes - Patente:" + monthrental.Garage.Vehicle.Domain + " - Dueño:" + monthrental.Owner;
+                newMovement.Date = monthrental.Date;
+                newMovement.IsEntry = true;
+                newMovement.User = user;
+                newMovement.User.UserName = user.UserName;
+                newMovement.User.LastAdmission = user.LastAdmission;
+                newMovement.User.Password = user.Password;
+                newMovement.Closing = null;
+                movements.AddMovements(newMovement);          
+        }
+
+        private static void StartRenovation(DateTime now,User user, Movements movements, MonthRentals monthRentals, MonthRental monthRental, int months)
+        {
+            monthRental.Date = monthRental.ExpirationDate;
+            monthRental.ExpirationDate = monthRental.ExpirationDate.AddMonths(months);
             Movement newMovement = new Movement();
-            newMovement.Amount = monthrental.CalculateAmount(monthrental.Garage.Vehicle.VehicleType);
-            newMovement.Concept = "Alquiler por mes - Patente:"+monthrental.Garage.Vehicle.Domain+" - Dueño:"+monthrental.Owner;
-            newMovement.Date = monthrental.Date;
+            newMovement.Amount = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);
+            newMovement.Concept = "Alquiler por mes - Patente:" + monthRental.Garage.Vehicle.Domain + " - Dueño:" + monthRental.Owner;
+            newMovement.Date = monthRental.Date;
             newMovement.IsEntry = true;
-            newMovement.user = user;
-            newMovement.user.UserName = user.UserName;
-            newMovement.user.LastAdmission = user.LastAdmission;
-            newMovement.user.Password = user.Password;
-            newMovement.closing = null;
+            newMovement.User = user;
+            newMovement.User.UserName = user.UserName;
+            newMovement.User.LastAdmission = user.LastAdmission;
+            newMovement.User.Password = user.Password;
+            newMovement.Closing = null;
             movements.AddMovements(newMovement);
+            MessageBox.Show("Alquiler Renovado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);     
         }
 
         private static void StartHourRental(DateTime now, int i, HourRentals hourRentals, Parking parking)
@@ -250,8 +280,9 @@ namespace TP_Parking
             {
                 labelOwner.Hide();
                 textBoxOwner.Hide();
-                
-                
+                labelMonths.Hide();
+                comboBoxMonths.Hide();
+                labelValue.Hide();
             }
         }
 

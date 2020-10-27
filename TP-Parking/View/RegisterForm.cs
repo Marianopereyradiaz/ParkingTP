@@ -8,7 +8,6 @@ namespace TP_Parking
         private Movements movements;
         private User user;
         private Closings closings;
-        private XMLClosings closingsManager = new XMLClosings();
 
         public RegisterForm(Movements movements, Closings closings,User user)
         {
@@ -23,41 +22,59 @@ namespace TP_Parking
             double total = 0;
             foreach (Movement m in movements.ReturnAllMovements())
             {
-
-                double realamount;
-                if (m.IsEntry)
+                if (m.Closing == null)
                 {
-                    realamount = m.Amount;
+                    double realamount;
+                    if (m.IsEntry)
+                    {
+                        realamount = m.Amount;
+                    }
+                    else
+                    {
+                        realamount = -m.Amount;
+                    }
+                    total = total + realamount;
+                    this.dataGridViewMovements.Rows.Add(m.Concept, m.Date, user.UserName, "$" + realamount);
                 }
-                else
-                {
-                    realamount = -m.Amount;
-                }
-                total = total + realamount;
-                this.dataGridViewMovements.Rows.Add(m.Concept, m.Date, user.UserName, "$"+realamount);
             }
-
             labelDay.Text = DateTime.Now.ToLongDateString();
             labelTotal.Text = "$"+Convert.ToString(total);
         }
 
         private void buttonClosing_Click(object sender, EventArgs e)
         {
-            Closing newClose = new Closing();
-            foreach (Movement m in movements.ReturnAllMovements())
+            if (movements.ReturnAllMovements().Count != 0)
             {
-                newClose.User = user;
-                newClose.User.UserName = user.UserName;
-                newClose.User.LastAdmission = user.LastAdmission;
-                newClose.User.Password = user.Password;
-                newClose.Date = DateTime.Now;
-                m.closing = newClose;
-            }
-            closings.AddClosing(newClose);
-            closingsManager.GenerateXML(closings.ReturnAllClosings());
-            MessageBox.Show("All values reseted", "alert", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            this.Close();
+                try
+                {
+                    Closing newClose = new Closing();
+                    foreach (Movement movement in movements.ReturnAllMovements())
+                    {
+                        if (movement.Closing == null)
+                        {
+                            newClose.User = movement.User;
+                            newClose.User.UserName = movement.User.UserName;
+                            newClose.User.LastAdmission = movement.User.LastAdmission;
+                            newClose.User.Password = movement.User.Password;
+                            newClose.Date = DateTime.Now;
+                            movement.Closing = newClose;
+                        }
+                    }
+                    closings.AddClosing(newClose);
+                    dataGridViewMovements.Rows.Clear();
+                    MessageBox.Show("Caja cerrada - Valores en cero", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                }
+                catch (Exception ex)
+                {
+                    ExceptionMessage.ShowMessage(ex.Message);
+                }
+            }
+            else
+            {
+                ExceptionMessage.ShowMessage("No se han realizado movimientos - No se puede realizar cierre de caja");
+            }
+            this.Close();
         }
 
         private void buttonExit_Click(object sender, EventArgs e)

@@ -8,9 +8,9 @@ namespace TP_Parking
         public double Amount { get; set; }
         public DateTime Date { get; set; }
         public bool IsEntry { get; set; }
-        public User user { get; set; }
+        public User User { get; set; }
 
-        public Closing closing { get; set; }
+        public Closing Closing { get; set; }
 
         public Movement() { }
 
@@ -19,8 +19,8 @@ namespace TP_Parking
             this.Concept = concept;
             this.Amount = amount;
             this.Date = date;
-            this.user = user;
-            this.closing = closing;
+            this.User = user;
+            this.Closing = closing;
         }
     }
 }

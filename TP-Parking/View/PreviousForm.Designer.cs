@@ -114,7 +114,7 @@
             this.Controls.Add(this.dataGridViewMovements);
             this.Controls.Add(this.dataGridViewPreviousClosing);
             this.Name = "PreviousForm";
-            this.Text = "PreviousForm";
+            this.Text = "Cierres y Movimientos";
             this.Load += new System.EventHandler(this.PreviousForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPreviousClosing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovements)).EndInit();

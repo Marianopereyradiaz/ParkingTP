@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridViewDaily = new System.Windows.Forms.DataGridView();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.GarageNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RentalType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VehicleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +37,7 @@
             this.Finish = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Owner = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDaily)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,17 +61,6 @@
             this.dataGridViewDaily.RowHeadersWidth = 50;
             this.dataGridViewDaily.Size = new System.Drawing.Size(935, 236);
             this.dataGridViewDaily.TabIndex = 1;
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.Location = new System.Drawing.Point(377, 301);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(129, 47);
-            this.buttonClose.TabIndex = 2;
-            this.buttonClose.Text = "Cerrar";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click_1);
             // 
             // GarageNumber
             // 
@@ -116,6 +105,17 @@
             this.Owner.HeaderText = "Dueño";
             this.Owner.Name = "Owner";
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.Location = new System.Drawing.Point(377, 301);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(129, 47);
+            this.buttonClose.TabIndex = 2;
+            this.buttonClose.Text = "Cerrar";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click_1);
+            // 
             // DailyRentalsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,7 +124,7 @@
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.dataGridViewDaily);
             this.Name = "DailyRentalsForm";
-            this.Text = "Daily Rentals";
+            this.Text = "Historial Alquileres";
             this.Load += new System.EventHandler(this.DailyRentalsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDaily)).EndInit();
             this.ResumeLayout(false);

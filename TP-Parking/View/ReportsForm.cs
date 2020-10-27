@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using TP_Parking.View;
 
 namespace TP_Parking
@@ -15,11 +16,15 @@ namespace TP_Parking
     {
         private MonthRentals monthRentals;
         private HourRentals hourRentals;
-        public ReportsForm(MonthRentals monthRentals, HourRentals hourRentals)
+        private Closings closings = new Closings();
+        private Movements movements = new Movements();
+        public ReportsForm(MonthRentals monthRentals, HourRentals hourRentals,Closings closings, Movements movements)
         {
             InitializeComponent();
             this.hourRentals = hourRentals;
             this.monthRentals = monthRentals;
+            this.movements = movements;
+            this.closings = closings;
         }
 
         private void buttonDailyRental_Click(object sender, EventArgs e)
@@ -33,9 +38,9 @@ namespace TP_Parking
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonPreviousClosings_Click(object sender, EventArgs e)
         {
-            PreviousForm previousForm = new PreviousForm();
+            PreviousForm previousForm = new PreviousForm(closings, movements);
             previousForm.ShowDialog();
         }
     }

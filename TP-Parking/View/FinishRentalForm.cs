@@ -40,23 +40,26 @@ namespace TP_Parking
             if (hourRental != null)
             {
                 activeVehicle = hourRental.Garage.Vehicle;
-                FillHourVehicleData(activeVehicle,hourRental);
-                FillHourRental(activeVehicle,hourRental);
+                FillHourVehicleData(activeVehicle, hourRental);
+                FillHourRental(activeVehicle, hourRental);
             }
-            if (monthRental != null)
+            else
             {
-                buttonRenovation.Show();
-                activeVehicle = monthRental.Garage.Vehicle;
-                FillMonthVehicleData(activeVehicle,monthRental);
-                FillMonthRental(monthRental);
-            }           
+                if (monthRental != null)
+                {
+                    buttonRenovation.Show();
+                    activeVehicle = monthRental.Garage.Vehicle;
+                    FillMonthVehicleData(activeVehicle, monthRental);
+                    FillMonthRental(monthRental);
+                }
+            }
         }
         private void FillMonthRental(MonthRental monthRental)
         {
             labelFinish.Text = "Fecha Finalización:";
             labelFinishDateShow.Text = ($"{monthRental.ExpirationDate}");
-            labelAmount.Text = ($"Valor");
-            labelValueShow.Text = ($"${monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType)}");
+            labelAmount.Text = ($"Valor Mensual:");
+            labelValueShow.Text = ($"${MonthRental.MonthValue}");
         }
 
         private void FillHourRental(Vehicle activevehicle,HourRental hourRental)
@@ -93,6 +96,8 @@ namespace TP_Parking
             labelVehicleTypeShow.Text = ($"{activevehicle.VehicleType.Description}");
             labelStart.Text = "Desde:";
             labelStartShow.Text = ($"{hourRental.Date}");
+            labelOwner.Hide();
+            labelOwnerShow.Hide();
         }
 
         private void FillMonthVehicleData(Vehicle activevehicle,MonthRental monthRental)
@@ -107,6 +112,7 @@ namespace TP_Parking
             labelVehicleTypeShow.Text = ($"{activevehicle.VehicleType.Description}");
             labelStart.Text = "Desde:";
             labelStartShow.Text = ($"{monthRental.Date}");
+            labelOwnerShow.Text = ($"{monthRental.Owner}");
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -117,20 +123,20 @@ namespace TP_Parking
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             Movement newMovement = new Movement();
-            if (hourRental != null)
+            if (hourRental != null && hourRental.Garage.State == true)
             {
                 hourRental.Garage.State = false;
-                hourRental.Value = CalculateHoursAndAmount(hourRental.Garage.Vehicle,hourRental);
+                hourRental.Value = CalculateHoursAndAmount(hourRental.Garage.Vehicle, hourRental);
                 hourRental.Finish = DateTime.Now;
                 newMovement.Amount = hourRental.Value;
-                newMovement.Concept = "Por Hora - Patente: "+ hourRental.Garage.Vehicle.Domain;
+                newMovement.Concept = "Por Hora - Patente: " + hourRental.Garage.Vehicle.Domain;
                 newMovement.Date = hourRental.Finish;
                 newMovement.IsEntry = true;
-                newMovement.user = user;
-                newMovement.user.UserName = user.UserName;
-                newMovement.user.Password = user.Password;
-                newMovement.user.LastAdmission = user.LastAdmission;
-                newMovement.closing = null;
+                newMovement.User = user;
+                newMovement.User.UserName = user.UserName;
+                newMovement.User.Password = user.Password;
+                newMovement.User.LastAdmission = user.LastAdmission;
+                newMovement.Closing = null;
                 movements.AddMovements(newMovement);
                 foreach (Garage garage in parking.ReturnAllGarages())
                 {
@@ -141,18 +147,21 @@ namespace TP_Parking
 
                 }
             }
-            if (monthRental!= null)
+            else
             {
-                monthRental.Garage.State = false;
-                foreach (Garage garage in parking.ReturnAllGarages())
+                if (monthRental != null && monthRental.Garage.State == true)
                 {
-                    if (garage.Number == monthRental.Garage.Number)
+                    monthRental.Garage.State = false;
+                    foreach (Garage garage in parking.ReturnAllGarages())
                     {
-                        garage.State = false;
-                        
+                        if (garage.Number == monthRental.Garage.Number)
+                        {
+                            garage.State = false;
+
+                        }
                     }
+                    monthRental.Value = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);
                 }
-                monthRental.Value = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);               
             }
             
             this.Close();
@@ -162,6 +171,7 @@ namespace TP_Parking
         {
             StartRentalForm renovationForm = new StartRentalForm(monthRental.Garage, monthRentals, movements, parking, user, monthRental);
             renovationForm.ShowDialog();
+            this.Close();
         }
     }
 }

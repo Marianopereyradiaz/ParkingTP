@@ -30,7 +30,7 @@
         {
             this.buttonDailyRentals = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonPreviousClosings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonDailyRentals
@@ -55,22 +55,22 @@
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // button1
+            // buttonPreviousClosings
             // 
-            this.button1.Location = new System.Drawing.Point(38, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Cierres Anteriores";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonPreviousClosings.Location = new System.Drawing.Point(38, 59);
+            this.buttonPreviousClosings.Name = "buttonPreviousClosings";
+            this.buttonPreviousClosings.Size = new System.Drawing.Size(131, 41);
+            this.buttonPreviousClosings.TabIndex = 2;
+            this.buttonPreviousClosings.Text = "Cierres Anteriores";
+            this.buttonPreviousClosings.UseVisualStyleBackColor = true;
+            this.buttonPreviousClosings.Click += new System.EventHandler(this.buttonPreviousClosings_Click);
             // 
             // ReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(220, 195);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonPreviousClosings);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonDailyRentals);
             this.Name = "ReportsForm";
@@ -83,6 +83,6 @@
 
         private System.Windows.Forms.Button buttonDailyRentals;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonPreviousClosings;
     }
 }

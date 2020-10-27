@@ -18,12 +18,6 @@ namespace TP_Parking
         public LoginForm()
         {
             InitializeComponent();
-            closings.AddAllClosings(closingsManager.ReturnClosings());
-            user = new User("admin", "admin");
-            string userdate = Convert.ToString(user.LastAdmission);
-            user.LastAdmission = closings.ReturnAllClosings()[0].User.LastAdmission;
-            labelLastLogin.Text = ("Último Ingreso: " + user.LastAdmission);
-
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -42,13 +36,29 @@ namespace TP_Parking
                 this.Hide();
                 menu.ShowDialog(this);
                 this.Close();
-            }
-            
+            }         
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            closings.AddAllClosings(closingsManager.ReturnClosings());
+            user = new User("admin", "admin");
+            string userdate = Convert.ToString(user.LastAdmission);
+            try
+            {   
+                user.LastAdmission = closings.ReturnAllClosings()[0].User.LastAdmission;               
+            }
+            catch (Exception ex)
+            {
+                ExceptionMessage.ShowMessage("No existe último ingreso");
+                user.LastAdmission = DateTime.MinValue;
+            }
+            labelLastLogin.Text = ("Último Ingreso: " + user.LastAdmission);
         }
     }
 }

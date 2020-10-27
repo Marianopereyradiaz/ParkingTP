@@ -46,6 +46,8 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.buttonRenovation = new System.Windows.Forms.Button();
+            this.labelOwner = new System.Windows.Forms.Label();
+            this.labelOwnerShow = new System.Windows.Forms.Label();
             this.groupBoxVehicleData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +118,8 @@
             // groupBoxVehicleData
             // 
             this.groupBoxVehicleData.BackColor = System.Drawing.Color.White;
+            this.groupBoxVehicleData.Controls.Add(this.labelOwnerShow);
+            this.groupBoxVehicleData.Controls.Add(this.labelOwner);
             this.groupBoxVehicleData.Controls.Add(this.labelValueShow);
             this.groupBoxVehicleData.Controls.Add(this.labelFinishDateShow);
             this.groupBoxVehicleData.Controls.Add(this.labelStartShow);
@@ -241,6 +245,24 @@
             this.buttonRenovation.UseVisualStyleBackColor = true;
             this.buttonRenovation.Click += new System.EventHandler(this.buttonRenovation_Click);
             // 
+            // labelOwner
+            // 
+            this.labelOwner.AutoSize = true;
+            this.labelOwner.Location = new System.Drawing.Point(165, 259);
+            this.labelOwner.Name = "labelOwner";
+            this.labelOwner.Size = new System.Drawing.Size(49, 16);
+            this.labelOwner.TabIndex = 15;
+            this.labelOwner.Text = "Owner:";
+            // 
+            // labelOwnerShow
+            // 
+            this.labelOwnerShow.AutoSize = true;
+            this.labelOwnerShow.Location = new System.Drawing.Point(276, 259);
+            this.labelOwnerShow.Name = "labelOwnerShow";
+            this.labelOwnerShow.Size = new System.Drawing.Size(49, 16);
+            this.labelOwnerShow.TabIndex = 16;
+            this.labelOwnerShow.Text = "Label9";
+            // 
             // FinishRentalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,5 +301,7 @@
         private System.Windows.Forms.Label labelBrandShow;
         private System.Windows.Forms.Label labelDomainShow;
         private System.Windows.Forms.Button buttonRenovation;
+        private System.Windows.Forms.Label labelOwnerShow;
+        private System.Windows.Forms.Label labelOwner;
     }
 }
