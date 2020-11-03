@@ -7,42 +7,54 @@ namespace TP_Parking
 {
     public class XMLClosings
     {
+        private string RouteFile = @"C:\ParkingFiles\";
         private string fileRoute = @"C:\ParkingFiles\closings.xml";
 
         public void GenerateXML(List<Closing> closings)
         {
             try
             {
-
-                XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
-
-
-                writer.Formatting = Formatting.Indented;
-
-
-                writer.WriteStartDocument();
-
-
-                writer.WriteStartElement("Closings");
-
-
-                foreach (Closing closing in closings)
+                if (!Directory.Exists(RouteFile))
                 {
-                    writer.WriteStartElement("Closing");
-                    writer.WriteElementString("Date", closing.Date.ToString());
-
-                    writer.WriteStartElement("User");
-                    writer.WriteElementString("UserName", closing.User.UserName);
-                    writer.WriteElementString("Password", closing.User.Password);
-                    writer.WriteElementString("LastAdmission", closing.User.LastAdmission.ToString());
-                    writer.WriteEndElement();
-
-                    writer.WriteEndElement();
+                    Directory.CreateDirectory(RouteFile);
                 }
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
+                if (File.Exists(fileRoute))
+                {
+                    File.Delete(fileRoute);
+                }
+                if (!File.Exists(fileRoute))
+                {
+
+                    XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
+
+
+                    writer.Formatting = Formatting.Indented;
+
+
+                    writer.WriteStartDocument();
+
+
+                    writer.WriteStartElement("Closings");
+
+
+                    foreach (Closing closing in closings)
+                    {
+                        writer.WriteStartElement("Closing");
+                        writer.WriteElementString("Date", closing.Date.ToString());
+
+                        writer.WriteStartElement("User");
+                        writer.WriteElementString("UserName", closing.User.UserName);
+                        writer.WriteElementString("Password", closing.User.Password);
+                        writer.WriteElementString("LastAdmission", closing.User.LastAdmission.ToString());
+                        writer.WriteEndElement();
+
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                    writer.Flush();
+                    writer.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -50,19 +62,28 @@ namespace TP_Parking
             }
         }
 
-        public List<Closing> ReturnClosings()
+        public List<Closing> Return()
         {
             List<Closing> closings = new List<Closing>();
 
             try
             {
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+
+                if (!File.Exists(fileRoute))
+                {
+                    GenerateXML(closings);
+                }
                 FileStream archive = new FileStream(fileRoute, FileMode.Open, FileAccess.Read);
 
                 XmlTextReader reader = new XmlTextReader(archive);
 
                 Closing closing = null;
                 User user = null;
-                
+
 
                 while (reader.Read())
                 {

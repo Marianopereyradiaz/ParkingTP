@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms.VisualStyles;
 
 namespace TP_Parking
 {
     public class User
     {
-        public  string UserName { get; set; }
-        public  string Password { get; set; }
-        public DateTime LastAdmission { get; set; } 
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public DateTime LastAdmission { get; set; }
 
         public User() { }
 

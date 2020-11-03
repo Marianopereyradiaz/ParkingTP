@@ -7,52 +7,64 @@ namespace TP_Parking
 {
     public class XMLGarages
     {
+        private string RouteFile = @"C:\ParkingFiles\";
         private string fileRoute = @"C:\ParkingFiles\garages.xml";
 
         public void GenerateXML(List<Garage> garages)
         {
             try
             {
-
-                XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
-
-
-                writer.Formatting = Formatting.Indented;
-
-
-                writer.WriteStartDocument();
-
-
-                writer.WriteStartElement("Garages");
-
-
-                foreach (Garage garage in garages)
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+                if (File.Exists(fileRoute))
+                {
+                    File.Delete(fileRoute);
+                }
+                if (!File.Exists(fileRoute))
                 {
 
-                    writer.WriteStartElement("Garage");
+                    XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
 
-                    writer.WriteElementString("Number", garage.Number.ToString());
-                    writer.WriteElementString("State", garage.State.ToString());
 
-                    writer.WriteStartElement("Vehicle");
-                    writer.WriteElementString("Domain", garage.Vehicle.Domain);
-                    writer.WriteElementString("Brand", garage.Vehicle.Brand);
-                    writer.WriteElementString("Model", garage.Vehicle.Model);
-                    
-                    writer.WriteStartElement("VehicleType");
-                    writer.WriteElementString("Code", garage.Vehicle.VehicleType.Code.ToString());
-                    writer.WriteElementString("Description", garage.Vehicle.VehicleType.Description);
+                    writer.Formatting = Formatting.Indented;
+
+
+                    writer.WriteStartDocument();
+
+
+                    writer.WriteStartElement("Garages");
+
+
+                    foreach (Garage garage in garages)
+                    {
+
+                        writer.WriteStartElement("Garage");
+
+                        writer.WriteElementString("Number", garage.Number.ToString());
+                        writer.WriteElementString("State", garage.State.ToString());
+
+                        writer.WriteStartElement("Vehicle");
+                        writer.WriteElementString("Domain", garage.Vehicle.Domain);
+                        writer.WriteElementString("Brand", garage.Vehicle.Brand);
+                        writer.WriteElementString("Model", garage.Vehicle.Model);
+
+                        writer.WriteStartElement("VehicleType");
+                        writer.WriteElementString("Code", garage.Vehicle.VehicleType.Code.ToString());
+                        writer.WriteElementString("Description", garage.Vehicle.VehicleType.Description);
+                        writer.WriteEndElement();
+
+                        writer.WriteEndElement();
+
+                        writer.WriteEndElement();
+                    }
+
                     writer.WriteEndElement();
-
-                    writer.WriteEndElement();
-
-                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                    writer.Flush();
+                    writer.Close();
                 }
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
             }
             catch (Exception ex)
             {
@@ -60,12 +72,22 @@ namespace TP_Parking
             }
         }
 
-        public List<Garage> ReturnGarages()
+        public List<Garage> Return()
         {
             List<Garage> garages = new List<Garage>();
 
             try
             {
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+
+                if (!File.Exists(fileRoute))
+                {
+                    GenerateXML(garages);
+                }
+
                 FileStream archive = new FileStream(fileRoute, FileMode.Open, FileAccess.Read);
 
                 XmlTextReader reader = new XmlTextReader(archive);
@@ -85,11 +107,11 @@ namespace TP_Parking
                                 break;
 
                             case "Garage":
-                                    garage = new Garage();
+                                garage = new Garage();
                                 break;
 
                             case "Number":
-                                if (reader.Read()) 
+                                if (reader.Read())
                                     garage.Number = Convert.ToInt32(reader.Value);
                                 break;
 

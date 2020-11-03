@@ -9,6 +9,7 @@ namespace TP_Parking.View
         private Closings closings = new Closings();
         private Movements movements = new Movements();
         private DateTime date;
+        private ExceptionController exceptionController = new ExceptionController();
         public PreviousForm(Closings closings, Movements movements)
         {
             InitializeComponent();
@@ -18,25 +19,36 @@ namespace TP_Parking.View
 
         private void PreviousForm_Load(object sender, EventArgs e)
         {
-            foreach (Closing closing in closings.ReturnAllClosings())
+            foreach (Closing closing in closings.ReturnAll())
             {
                 dataGridViewPreviousClosing.Rows.Add(closing.Date, closing.User.UserName);
             }
         }
         private void dataGridViewPreviousClosing_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            date = Convert.ToDateTime(dataGridViewPreviousClosing.CurrentCell.Value);
-            dataGridViewMovements.Rows.Clear();
-            foreach (Movement movement in movements.ReturnAllMovements())
+            try
             {
-                if (movement.Closing.Date == date)
+                double totalValue = 0;
+                date = Convert.ToDateTime(dataGridViewPreviousClosing.CurrentCell.Value);
+                dataGridViewMovements.Rows.Clear();
+                labelTotalFromClosing.Text = " ";
+                foreach (Movement movement in movements.ReturnAll())
                 {
-                    if (movement.IsEntry == false)
+                    if (movement.Closing.Date == date)
                     {
-                        movement.Amount = -movement.Amount;
+                        if (movement.IsEntry == false)
+                        {
+                            movement.Amount = -movement.Amount;
+                        }
+                        totalValue += movement.Amount;
+                        dataGridViewMovements.Rows.Add(movement.Concept, movement.Amount, movement.Date, movement.User.UserName);
                     }
-                    dataGridViewMovements.Rows.Add(movement.Concept, movement.Amount, movement.Date, movement.User.UserName);
                 }
+                labelTotalFromClosing.Text = ($"Total Cierre: ${totalValue}");
+            }
+            catch (Exception)
+            {
+                exceptionController.ShowMessage("Debe elegir el cierre por fecha");
             }
         }
 

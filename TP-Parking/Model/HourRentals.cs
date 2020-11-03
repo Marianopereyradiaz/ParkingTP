@@ -6,21 +6,21 @@ namespace TP_Parking
     {
         private List<HourRental> hourRentals = new List<HourRental>();
 
-        public void AddRental(HourRental hourRentals)
+        public void Add(HourRental hourRentals)
         {
             this.hourRentals.Add(hourRentals);
         }
 
-        public List<HourRental> ReturnAllRentals()
+        public List<HourRental> ReturnAll()
         {
             return hourRentals;
         }
 
-        public void ClearRentals()
+        public void DeleteAll()
         {
             hourRentals.Clear();
         }
-        public void AddAllRentals(List<HourRental> hourRentals)
+        public void AddAll(List<HourRental> hourRentals)
         {
             this.hourRentals = hourRentals;
         }

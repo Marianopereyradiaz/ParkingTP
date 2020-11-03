@@ -58,6 +58,7 @@
             this.dataGridViewDaily.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewDaily.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewDaily.Name = "dataGridViewDaily";
+            this.dataGridViewDaily.ReadOnly = true;
             this.dataGridViewDaily.RowHeadersWidth = 50;
             this.dataGridViewDaily.Size = new System.Drawing.Size(935, 236);
             this.dataGridViewDaily.TabIndex = 1;
@@ -66,44 +67,52 @@
             // 
             this.GarageNumber.HeaderText = "Garage Nº";
             this.GarageNumber.Name = "GarageNumber";
+            this.GarageNumber.ReadOnly = true;
             this.GarageNumber.Width = 80;
             // 
             // RentalType
             // 
             this.RentalType.HeaderText = "Tipo Alquiler";
             this.RentalType.Name = "RentalType";
+            this.RentalType.ReadOnly = true;
             // 
             // VehicleType
             // 
             this.VehicleType.HeaderText = "Tipo Vehiculo";
             this.VehicleType.Name = "VehicleType";
+            this.VehicleType.ReadOnly = true;
             // 
             // VehicleDomain
             // 
             this.VehicleDomain.HeaderText = "Patente";
             this.VehicleDomain.Name = "VehicleDomain";
+            this.VehicleDomain.ReadOnly = true;
             // 
             // Start
             // 
             this.Start.HeaderText = "Comienzo";
             this.Start.Name = "Start";
+            this.Start.ReadOnly = true;
             this.Start.Width = 150;
             // 
             // Finish
             // 
             this.Finish.HeaderText = "Final";
             this.Finish.Name = "Finish";
+            this.Finish.ReadOnly = true;
             this.Finish.Width = 150;
             // 
             // Value
             // 
             this.Value.HeaderText = "Valor";
             this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
             // 
             // Owner
             // 
             this.Owner.HeaderText = "Dueño";
             this.Owner.Name = "Owner";
+            this.Owner.ReadOnly = true;
             // 
             // buttonClose
             // 

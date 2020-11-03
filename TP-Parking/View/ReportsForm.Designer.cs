@@ -40,7 +40,7 @@
             this.buttonDailyRentals.Name = "buttonDailyRentals";
             this.buttonDailyRentals.Size = new System.Drawing.Size(131, 41);
             this.buttonDailyRentals.TabIndex = 0;
-            this.buttonDailyRentals.Text = "Alquileres del Día";
+            this.buttonDailyRentals.Text = "Historial de Alquileres";
             this.buttonDailyRentals.UseVisualStyleBackColor = true;
             this.buttonDailyRentals.Click += new System.EventHandler(this.buttonDailyRental_Click);
             // 
@@ -57,6 +57,7 @@
             // 
             // buttonPreviousClosings
             // 
+            this.buttonPreviousClosings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPreviousClosings.Location = new System.Drawing.Point(38, 59);
             this.buttonPreviousClosings.Name = "buttonPreviousClosings";
             this.buttonPreviousClosings.Size = new System.Drawing.Size(131, 41);

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TP_Parking
 {
@@ -10,21 +6,21 @@ namespace TP_Parking
     {
         private List<Closing> closings = new List<Closing>();
 
-        public void AddClosing(Closing closing)
+        public void Add(Closing closing)
         {
             this.closings.Add(closing);
         }
 
-        public List<Closing> ReturnAllClosings()
+        public List<Closing> ReturnAll()
         {
             return closings;
         }
 
-        public void ClearClosings()
+        public void DeleteAll()
         {
             closings.Clear();
         }
-        public void AddAllClosings(List<Closing> closings)
+        public void AddAll(List<Closing> closings)
         {
             this.closings = closings;
         }

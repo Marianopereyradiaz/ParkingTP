@@ -7,79 +7,100 @@ namespace TP_Parking
 {
     public class XMLMonthRentals
     {
+        private string RouteFile = @"C:\ParkingFiles\";
         private string fileRoute = @"C:\ParkingFiles\monthRentals.xml";
 
         public void GenerateXML(List<MonthRental> monthRentals)
         {
             try
             {
-
-                XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
-
-
-                writer.Formatting = Formatting.Indented;
-
-
-                writer.WriteStartDocument();
-
-
-                writer.WriteStartElement("MonthRentals");
-
-
-                foreach (MonthRental monthRental in monthRentals)
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+                if (File.Exists(fileRoute))
+                {
+                    File.Delete(fileRoute);
+                }
+                if (!File.Exists(fileRoute))
                 {
 
-                    writer.WriteStartElement("MonthRental");
+                    XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
 
 
-                    writer.WriteElementString("DateTime", monthRental.Date.ToString());
-                    writer.WriteElementString("Owner", monthRental.Owner);
-                    writer.WriteElementString("ExpirationDate", monthRental.ExpirationDate.ToString());
-                    writer.WriteElementString("Value", monthRental.Value.ToString());
-
-                    writer.WriteStartElement("Garage");
-                    writer.WriteElementString("Number", monthRental.Garage.Number.ToString());
-                    writer.WriteElementString("State", monthRental.Garage.State.ToString());
+                    writer.Formatting = Formatting.Indented;
 
 
-                    writer.WriteStartElement("Vehicle");
-                    writer.WriteElementString("Brand", monthRental.Garage.Vehicle.Brand);
-                    writer.WriteElementString("Domain", monthRental.Garage.Vehicle.Domain);
-                    writer.WriteElementString("Model", monthRental.Garage.Vehicle.Model);
+                    writer.WriteStartDocument();
 
-                    writer.WriteStartElement("VehicleType");
-                    writer.WriteElementString("Code", monthRental.Garage.Vehicle.VehicleType.Code.ToString());
-                    writer.WriteElementString("Description", monthRental.Garage.Vehicle.VehicleType.Description.ToString());
 
+                    writer.WriteStartElement("MonthRentals");
+
+
+                    foreach (MonthRental monthRental in monthRentals)
+                    {
+
+                        writer.WriteStartElement("MonthRental");
+
+
+                        writer.WriteElementString("DateTime", monthRental.Date.ToString());
+                        writer.WriteElementString("Owner", monthRental.Owner);
+                        writer.WriteElementString("ExpirationDate", monthRental.ExpirationDate.ToString());
+                        writer.WriteElementString("Value", monthRental.Value.ToString());
+
+                        writer.WriteStartElement("Garage");
+                        writer.WriteElementString("Number", monthRental.Garage.Number.ToString());
+                        writer.WriteElementString("State", monthRental.Garage.State.ToString());
+
+
+                        writer.WriteStartElement("Vehicle");
+                        writer.WriteElementString("Brand", monthRental.Garage.Vehicle.Brand);
+                        writer.WriteElementString("Domain", monthRental.Garage.Vehicle.Domain);
+                        writer.WriteElementString("Model", monthRental.Garage.Vehicle.Model);
+
+                        writer.WriteStartElement("VehicleType");
+                        writer.WriteElementString("Code", monthRental.Garage.Vehicle.VehicleType.Code.ToString());
+                        writer.WriteElementString("Description", monthRental.Garage.Vehicle.VehicleType.Description.ToString());
+
+                        writer.WriteEndElement();
+                        writer.WriteEndElement();
+                        writer.WriteEndElement();
+                        writer.WriteEndElement();
+                    }
                     writer.WriteEndElement();
-                    writer.WriteEndElement();
-                    writer.WriteEndElement();
-                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                    writer.Flush();
+                    writer.Close();
                 }
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
-            }      
+            }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
 
-        public List<MonthRental> ReturnRentals()
+        public List<MonthRental> Return()
         {
             List<MonthRental> MonthRentals = new List<MonthRental>();
 
             try
             {
-                
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+
+                if (!File.Exists(fileRoute))
+                {
+                    GenerateXML(MonthRentals);
+                }
+
                 FileStream archivo = new FileStream(fileRoute, FileMode.Open, FileAccess.Read);
 
-                
+
                 XmlTextReader reader = new XmlTextReader(archivo);
 
-                
+
                 MonthRental monthRental = null;
                 Garage garage = null;
                 Vehicle vehicle = null;
@@ -92,15 +113,15 @@ namespace TP_Parking
                     {
                         switch (reader.Name)
                         {
-                            case "MonthRentals": 
+                            case "MonthRentals":
                                 break;
 
-                            case "MonthRental": 
+                            case "MonthRental":
                                 monthRental = new MonthRental();
                                 break;
 
                             case "Garage":
-                                monthRental.Garage = new Garage(); 
+                                monthRental.Garage = new Garage();
                                 break;
 
                             case "Vehicle":
@@ -113,7 +134,7 @@ namespace TP_Parking
 
                             case "DateTime":
                                 if (reader.Read())
-                                    monthRental.Date = Convert.ToDateTime(reader.Value); 
+                                    monthRental.Date = Convert.ToDateTime(reader.Value);
                                 break;
 
                             case "Owner":
@@ -136,32 +157,32 @@ namespace TP_Parking
                                     monthRental.Garage.Number = Convert.ToInt32(reader.Value);
                                 break;
 
-                            case "State": 
+                            case "State":
                                 if (reader.Read())
                                     monthRental.Garage.State = Convert.ToBoolean(reader.Value);
                                 break;
 
-                            case "Brand": 
+                            case "Brand":
                                 if (reader.Read())
                                     monthRental.Garage.Vehicle.Brand = reader.Value;
                                 break;
 
-                            case "Domain": 
+                            case "Domain":
                                 if (reader.Read())
                                     monthRental.Garage.Vehicle.Domain = reader.Value;
                                 break;
 
-                            case "Model": 
+                            case "Model":
                                 if (reader.Read())
                                     monthRental.Garage.Vehicle.Model = reader.Value;
                                 break;
 
-                            case "Code": 
+                            case "Code":
                                 if (reader.Read())
                                     monthRental.Garage.Vehicle.VehicleType.Code = Convert.ToInt32(reader.Value);
                                 break;
 
-                            default: 
+                            default:
                                 if (reader.Read())
                                     monthRental.Garage.Vehicle.VehicleType.Description = Convert.ToString(reader.Value);
                                 break;
@@ -176,7 +197,7 @@ namespace TP_Parking
                     }
                 }
 
-                reader.Close(); 
+                reader.Close();
                 archivo.Close();
             }
             catch (Exception ex)

@@ -1,29 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using TP_Parking.Controllers;
 
 namespace TP_Parking
 {
     public partial class DailyRentalsForm : Form
     {
-        private MonthRentals monthRentals;
-        private HourRentals hourRentals;
-
-        public DailyRentalsForm(MonthRentals monthRentals, HourRentals hourRentals)
+        private MonthRentalsController monthRentalsController;
+        private HourRentalsController hourRentalsController;
+        public DailyRentalsForm(MonthRentalsController monthRentalsController, HourRentalsController hourRentalsController)
         {
             InitializeComponent();
-            this.hourRentals = hourRentals;
-            this.monthRentals = monthRentals;
-
+            this.hourRentalsController = hourRentalsController;
+            this.monthRentalsController = monthRentalsController;
         }
-
         private void DailyRentalsForm_Load(object sender, EventArgs e)
         {
             string rentalType = "";
             string finish = "";
             double value;
             DateTime now = DateTime.Now;
-            foreach (HourRental hourRental in hourRentals.ReturnAllRentals())
+            foreach (HourRental hourRental in hourRentalsController.Get().ReturnAll())
             {
                 if (now.Year == hourRental.Date.Year && now.Month == hourRental.Date.Month && now.Day == hourRental.Date.Day)
                 {
@@ -32,7 +29,6 @@ namespace TP_Parking
                     if (Convert.ToString(hourRental.Finish) != "1/1/0001 00:00:00")
                     {
                         finish = Convert.ToString(hourRental.Finish);
-
                     }
                     else
                     {
@@ -41,7 +37,7 @@ namespace TP_Parking
                     this.dataGridViewDaily.Rows.Add(hourRental.Garage.Number, rentalType, hourRental.Garage.Vehicle.VehicleType.Description, hourRental.Garage.Vehicle.Domain, hourRental.Date, finish, "$" + value, "");
                 }
             }
-            foreach (MonthRental monthRental in monthRentals.ReturnAllRentals())
+            foreach (MonthRental monthRental in monthRentalsController.Get().ReturnAll())
             {
                 if (now.Year == monthRental.Date.Year && now.Month == monthRental.Date.Month && now.Day == monthRental.Date.Day)
                 {
@@ -50,13 +46,11 @@ namespace TP_Parking
                     value = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);
                     this.dataGridViewDaily.Rows.Add(monthRental.Garage.Number, rentalType, monthRental.Garage.Vehicle.VehicleType.Description, monthRental.Garage.Vehicle.Domain, monthRental.Date, finish, value, monthRental.Owner);
                 }
-            } 
+            }
         }
         private void buttonClose_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
-       
     }
 }

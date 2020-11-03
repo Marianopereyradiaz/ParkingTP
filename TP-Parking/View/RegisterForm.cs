@@ -8,8 +8,9 @@ namespace TP_Parking
         private Movements movements;
         private User user;
         private Closings closings;
+        private ExceptionController exceptionController = new ExceptionController();
 
-        public RegisterForm(Movements movements, Closings closings,User user)
+        public RegisterForm(Movements movements, Closings closings, User user)
         {
             InitializeComponent();
             this.movements = movements;
@@ -20,7 +21,7 @@ namespace TP_Parking
         private void RegisterForm_Load(object sender, EventArgs e)
         {
             double total = 0;
-            foreach (Movement m in movements.ReturnAllMovements())
+            foreach (Movement m in movements.ReturnAll())
             {
                 if (m.Closing == null)
                 {
@@ -38,17 +39,17 @@ namespace TP_Parking
                 }
             }
             labelDay.Text = DateTime.Now.ToLongDateString();
-            labelTotal.Text = "$"+Convert.ToString(total);
+            labelTotal.Text = "$" + Convert.ToString(total);
         }
 
         private void buttonClosing_Click(object sender, EventArgs e)
         {
-            if (movements.ReturnAllMovements().Count != 0)
+            if (movements.ReturnAll().Count != 0)
             {
                 try
                 {
                     Closing newClose = new Closing();
-                    foreach (Movement movement in movements.ReturnAllMovements())
+                    foreach (Movement movement in movements.ReturnAll())
                     {
                         if (movement.Closing == null)
                         {
@@ -60,19 +61,19 @@ namespace TP_Parking
                             movement.Closing = newClose;
                         }
                     }
-                    closings.AddClosing(newClose);
+                    closings.Add(newClose);
                     dataGridViewMovements.Rows.Clear();
                     MessageBox.Show("Caja cerrada - Valores en cero", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 }
                 catch (Exception ex)
                 {
-                    ExceptionMessage.ShowMessage(ex.Message);
+                    exceptionController.ShowMessage(ex.Message);
                 }
             }
             else
             {
-                ExceptionMessage.ShowMessage("No se han realizado movimientos - No se puede realizar cierre de caja");
+                exceptionController.ShowMessage("No se han realizado movimientos - No se puede realizar cierre de caja");
             }
             this.Close();
         }

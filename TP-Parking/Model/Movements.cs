@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TP_Parking
 {
@@ -10,22 +6,22 @@ namespace TP_Parking
     {
         private List<Movement> movements = new List<Movement>();
 
-        public void AddMovements(Movement movement)
+        public void Add(Movement movement)
         {
             movements.Add(movement);
         }
 
-        public List<Movement> ReturnAllMovements()
+        public List<Movement> ReturnAll()
         {
             return movements;
         }
 
-        public void DeleteAllMovements()
+        public void DeleteAll()
         {
             movements.Clear();
         }
 
-        public void AddAllMovements(List<Movement> movements)
+        public void AddAll(List<Movement> movements)
         {
             this.movements = movements;
         }

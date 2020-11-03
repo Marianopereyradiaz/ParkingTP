@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace TP_Parking
@@ -12,6 +11,7 @@ namespace TP_Parking
         private Parking parking;
         private User user;
         private MonthRental monthRental;
+        private ExceptionController exceptionController = new ExceptionController();
         public StartRentalForm()
         {
             InitializeComponent();
@@ -44,7 +44,7 @@ namespace TP_Parking
             labelMonths.Hide();
         }
 
-        public StartRentalForm(Garage garage,MonthRentals monthRentals, Movements movements, Parking parking, User user,MonthRental monthRental)
+        public StartRentalForm(Garage garage, MonthRentals monthRentals, Movements movements, Parking parking, User user, MonthRental monthRental)
         {
             InitializeComponent();
             var i = monthRental.Garage.Number;
@@ -89,7 +89,7 @@ namespace TP_Parking
             if (monthRental == null)
             {
                 StartRental(movements);
-            }    
+            }
             else
             {
                 StartRenovation(DateTime.Now, user, movements, monthRentals, monthRental, comboBoxMonths.SelectedIndex + 1);
@@ -101,7 +101,7 @@ namespace TP_Parking
         {
             var newVehicle = new Vehicle();
             var newVehicleType = new VehicleType();
-            int months = comboBoxMonths.SelectedIndex+1;
+            int months = comboBoxMonths.SelectedIndex + 1;
             DateTime now = DateTime.Now;
             var i = Convert.ToInt32(textBoxGarage.Text) - 1;
             string owner = textBoxOwner.Text;
@@ -127,7 +127,7 @@ namespace TP_Parking
                             }
                             catch (Exception ex)
                             {
-                                ExceptionMessage.ShowMessage(ex, "Must Select a Vehicle Type");
+                                exceptionController.ShowMessage(ex, "Must Select a Vehicle Type");
                             }
 
                             try
@@ -136,15 +136,15 @@ namespace TP_Parking
                             }
                             catch (Exception ex)
                             {
-                                ExceptionMessage.ShowMessage(ex, "Must Input a Domain");
+                                exceptionController.ShowMessage(ex, "Must Input a Domain");
                             }
                             try
                             {
-                                StartMonthRental(now, i, owner, monthRentals, this.movements, parking,user,months);
+                                StartMonthRental(now, i, owner, monthRentals, this.movements, parking, user, months);
                             }
                             catch (Exception ex)
                             {
-                                ExceptionMessage.ShowMessage(ex, "Must Input a vehicle");
+                                exceptionController.ShowMessage(ex, "Must Input a vehicle");
                             }
                             this.Close();
                             break;
@@ -152,7 +152,7 @@ namespace TP_Parking
                     default:
                         {
                             NullReferenceException ex = new NullReferenceException();
-                            ExceptionMessage.ShowMessage(ex, "Must Select a Rental Type");
+                            exceptionController.ShowMessage(ex, "Must Select a Rental Type");
                             break;
                         }
                 }
@@ -160,7 +160,7 @@ namespace TP_Parking
             else
             {
                 NullReferenceException ex = new NullReferenceException();
-                ExceptionMessage.ShowMessage(ex, "Debe completar el formulario");
+                exceptionController.ShowMessage(ex, "Debe completar el formulario");
             }
         }
         private void SetVehicleType(VehicleType newVehicleType)
@@ -185,29 +185,29 @@ namespace TP_Parking
             }
             catch (NullReferenceException ex)
             {
-                ExceptionMessage.ShowMessage(ex, "Debe elegir un tipo de Vehiculo");
+                exceptionController.ShowMessage(ex, "Debe elegir un tipo de Vehiculo");
             }
         }
 
         private static void StartMonthRental(DateTime now, int i, string owner, MonthRentals monthRentals, Movements movements, Parking parking, User user, int months)
         {
-                DateTime finishMonth = now.AddMonths(months);
-                MonthRental monthrental = new MonthRental(owner, finishMonth, now, parking.garages[i]);
-                monthRentals.AddRental(monthrental);
-                 Movement newMovement = new Movement();
-                newMovement.Amount = monthrental.CalculateAmount(monthrental.Garage.Vehicle.VehicleType);
-                newMovement.Concept = "Alquiler por mes - Patente:" + monthrental.Garage.Vehicle.Domain + " - Dueño:" + monthrental.Owner;
-                newMovement.Date = monthrental.Date;
-                newMovement.IsEntry = true;
-                newMovement.User = user;
-                newMovement.User.UserName = user.UserName;
-                newMovement.User.LastAdmission = user.LastAdmission;
-                newMovement.User.Password = user.Password;
-                newMovement.Closing = null;
-                movements.AddMovements(newMovement);          
+            DateTime finishMonth = now.AddMonths(months);
+            MonthRental monthrental = new MonthRental(owner, finishMonth, now, parking.garages[i]);
+            monthRentals.Add(monthrental);
+            Movement newMovement = new Movement();
+            newMovement.Amount = monthrental.CalculateAmount(monthrental.Garage.Vehicle.VehicleType);
+            newMovement.Concept = "Alquiler por mes - Patente:" + monthrental.Garage.Vehicle.Domain + " - Dueño:" + monthrental.Owner;
+            newMovement.Date = monthrental.Date;
+            newMovement.IsEntry = true;
+            newMovement.User = user;
+            newMovement.User.UserName = user.UserName;
+            newMovement.User.LastAdmission = user.LastAdmission;
+            newMovement.User.Password = user.Password;
+            newMovement.Closing = null;
+            movements.Add(newMovement);
         }
 
-        private static void StartRenovation(DateTime now,User user, Movements movements, MonthRentals monthRentals, MonthRental monthRental, int months)
+        private static void StartRenovation(DateTime now, User user, Movements movements, MonthRentals monthRentals, MonthRental monthRental, int months)
         {
             monthRental.Date = monthRental.ExpirationDate;
             monthRental.ExpirationDate = monthRental.ExpirationDate.AddMonths(months);
@@ -221,14 +221,14 @@ namespace TP_Parking
             newMovement.User.LastAdmission = user.LastAdmission;
             newMovement.User.Password = user.Password;
             newMovement.Closing = null;
-            movements.AddMovements(newMovement);
-            MessageBox.Show("Alquiler Renovado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);     
+            movements.Add(newMovement);
+            MessageBox.Show("Alquiler Renovado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private static void StartHourRental(DateTime now, int i, HourRentals hourRentals, Parking parking)
         {
             HourRental hourrental = new HourRental(now, parking.garages[i]);
-            hourRentals.AddRental(hourrental);
+            hourRentals.Add(hourrental);
         }
 
         private void FillNewVehicle(Vehicle newvehicle, VehicleType newvehicletype, DateTime now, Parking parking)

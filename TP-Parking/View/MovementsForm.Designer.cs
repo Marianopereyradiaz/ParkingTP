@@ -62,9 +62,9 @@
             this.labelAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAmount.Location = new System.Drawing.Point(50, 137);
             this.labelAmount.Name = "labelAmount";
-            this.labelAmount.Size = new System.Drawing.Size(43, 16);
+            this.labelAmount.Size = new System.Drawing.Size(56, 16);
             this.labelAmount.TabIndex = 2;
-            this.labelAmount.Text = "Valor:";
+            this.labelAmount.Text = "Valor:  $";
             // 
             // textBoxAmount
             // 

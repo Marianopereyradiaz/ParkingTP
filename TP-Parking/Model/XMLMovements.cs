@@ -7,60 +7,72 @@ namespace TP_Parking
 {
     public class XMLMovements
     {
+        private string RouteFile = @"C:\ParkingFiles\";
         private string fileRoute = @"C:\ParkingFiles\movements.xml";
 
         public void GenerateXML(List<Movement> movements)
         {
             try
             {
-
-                XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
-
-
-                writer.Formatting = Formatting.Indented;
-
-
-                writer.WriteStartDocument();
-
-
-                writer.WriteStartElement("Movements");
-
-
-                foreach (Movement movement in movements)
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+                if (File.Exists(fileRoute))
+                {
+                    File.Delete(fileRoute);
+                }
+                if (!File.Exists(fileRoute))
                 {
 
-                    writer.WriteStartElement("Movement");
+                    XmlTextWriter writer = new XmlTextWriter(fileRoute, null);
 
 
-                    writer.WriteElementString("Concept", movement.Concept);
-                    writer.WriteElementString("Amount", movement.Amount.ToString());
-                    writer.WriteElementString("DateMovement", movement.Date.ToString());
-                    writer.WriteElementString("IsEntry", movement.IsEntry.ToString());
+                    writer.Formatting = Formatting.Indented;
 
-                    writer.WriteStartElement("User");
-                    writer.WriteElementString("UserNameUser", movement.User.UserName);
-                    writer.WriteElementString("PasswordUser", movement.User.Password);
-                    writer.WriteElementString("LastAdmissionUser", movement.User.LastAdmission.ToString());
+
+                    writer.WriteStartDocument();
+
+
+                    writer.WriteStartElement("Movements");
+
+
+                    foreach (Movement movement in movements)
+                    {
+
+                        writer.WriteStartElement("Movement");
+
+
+                        writer.WriteElementString("Concept", movement.Concept);
+                        writer.WriteElementString("Amount", movement.Amount.ToString());
+                        writer.WriteElementString("DateMovement", movement.Date.ToString());
+                        writer.WriteElementString("IsEntry", movement.IsEntry.ToString());
+
+                        writer.WriteStartElement("User");
+                        writer.WriteElementString("UserNameUser", movement.User.UserName);
+                        writer.WriteElementString("PasswordUser", movement.User.Password);
+                        writer.WriteElementString("LastAdmissionUser", movement.User.LastAdmission.ToString());
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement("Closing");
+                        writer.WriteElementString("DateClosing", movement.Closing.Date.ToString());
+
+                        writer.WriteStartElement("UserClosing");
+                        writer.WriteElementString("UserNameClosing", movement.Closing.User.UserName);
+                        writer.WriteElementString("PasswordClosing", movement.Closing.User.Password);
+                        writer.WriteElementString("LastAdmissionClosing", movement.Closing.User.LastAdmission.ToString());
+                        writer.WriteEndElement();
+
+                        writer.WriteEndElement();
+
+                        writer.WriteEndElement();
+                    }
+
                     writer.WriteEndElement();
-
-                    writer.WriteStartElement("Closing");
-                    writer.WriteElementString("DateClosing", movement.Closing.Date.ToString());
-                    
-                    writer.WriteStartElement("UserClosing");
-                    writer.WriteElementString("UserNameClosing", movement.Closing.User.UserName);
-                    writer.WriteElementString("PasswordClosing", movement.Closing.User.Password);
-                    writer.WriteElementString("LastAdmissionClosing", movement.Closing.User.LastAdmission.ToString());
-                    writer.WriteEndElement();
-
-                    writer.WriteEndElement();
-
-                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                    writer.Flush();
+                    writer.Close();
                 }
-
-                writer.WriteEndElement();
-                writer.WriteEndDocument();
-                writer.Flush();
-                writer.Close();
             }
             catch (Exception ex)
             {
@@ -68,12 +80,21 @@ namespace TP_Parking
             }
         }
 
-        public List<Movement> ReturnMovements()
+        public List<Movement> Return()
         {
             List<Movement> movements = new List<Movement>();
 
             try
             {
+                if (!Directory.Exists(RouteFile))
+                {
+                    Directory.CreateDirectory(RouteFile);
+                }
+
+                if (!File.Exists(fileRoute))
+                {
+                    GenerateXML(movements);
+                }
                 FileStream archive = new FileStream(fileRoute, FileMode.Open, FileAccess.Read);
 
                 XmlTextReader reader = new XmlTextReader(archive);
@@ -118,12 +139,12 @@ namespace TP_Parking
                                 break;
 
                             case "User":
-                                    movement.User = new User();
+                                movement.User = new User();
                                 break;
 
                             case "UserNameUser":
                                 if (reader.Read())
-                                    movement.User.UserName= reader.Value;
+                                    movement.User.UserName = reader.Value;
                                 break;
 
                             case "PasswordUser":
@@ -137,7 +158,7 @@ namespace TP_Parking
                                 break;
 
                             case "Closing":
-                                    movement.Closing = new Closing();
+                                movement.Closing = new Closing();
                                 break;
 
                             case "DateClosing":
@@ -146,7 +167,7 @@ namespace TP_Parking
                                 break;
 
                             case "UserClosing":
-                                    movement.Closing.User = new User();
+                                movement.Closing.User = new User();
                                 break;
 
                             case "UserNameClosing":
@@ -158,10 +179,10 @@ namespace TP_Parking
                                 if (reader.Read())
                                     movement.Closing.User.Password = reader.Value;
                                 break;
-                
-                            default:                 
+
+                            default:
                                 if (reader.Read())
-                                        movement.Closing.User.LastAdmission = Convert.ToDateTime(reader.Value);
+                                    movement.Closing.User.LastAdmission = Convert.ToDateTime(reader.Value);
                                 break;
 
                         }

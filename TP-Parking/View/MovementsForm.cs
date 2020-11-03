@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using TP_Parking;
 
 namespace TP_Parking
 {
@@ -8,6 +7,7 @@ namespace TP_Parking
     {
         private User user;
         private Movements movements;
+        private ExceptionController exceptionController = new ExceptionController();
         public MovementsForm(Movements movements, User user)
         {
             InitializeComponent();
@@ -47,22 +47,22 @@ namespace TP_Parking
                 try
                 {
                     newMovement.Amount = Convert.ToDouble(textBoxAmount.Text);
-                    movements.AddMovements(newMovement);
+                    movements.Add(newMovement);
                     added = true;
                 }
                 catch (FormatException ex)
                 {
-                    ExceptionMessage.ShowMessage(ex, "Must Input a Numeric Value");
-                }        
+                    exceptionController.ShowMessage(ex, "Debe Ingresar un Valor Númerico");
+                }
             }
             catch (NullReferenceException ex)
             {
-                ExceptionMessage.ShowMessage(ex, "Must complete the form");
+                exceptionController.ShowMessage(ex, "Debe completar el formulario");
             }
 
             if (added == true)
             {
-                ExceptionMessage.ShowMessage("Added to daily register");
+                exceptionController.ShowMessage("Agregado al registro diario");
                 this.Close();
             }
 

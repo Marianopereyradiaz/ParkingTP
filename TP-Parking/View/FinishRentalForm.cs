@@ -12,7 +12,7 @@ namespace TP_Parking
         private HourRental hourRental = null;
         private Parking parking;
         private MonthRentals monthRentals;
-       public FinishRentalForm(int garageIndex, MonthRental rental,Movements movements, User user,Parking parking, MonthRentals monthRentals)
+        public FinishRentalForm(int garageIndex, MonthRental rental, Movements movements, User user, Parking parking, MonthRentals monthRentals)
         {
             this.user = user;
             this.garageIndex = garageIndex;
@@ -23,7 +23,7 @@ namespace TP_Parking
             InitializeComponent();
         }
 
-        public FinishRentalForm(int garageIndex, HourRental rental, Movements movements, User user,Parking parking)
+        public FinishRentalForm(int garageIndex, HourRental rental, Movements movements, User user, Parking parking)
         {
             this.user = user;
             this.garageIndex = garageIndex;
@@ -62,7 +62,7 @@ namespace TP_Parking
             labelValueShow.Text = ($"${MonthRental.MonthValue}");
         }
 
-        private void FillHourRental(Vehicle activevehicle,HourRental hourRental)
+        private void FillHourRental(Vehicle activevehicle, HourRental hourRental)
         {
             var totalamount = CalculateHoursAndAmount(activevehicle, hourRental);
             labelAmount.Text = "Valor:";
@@ -88,7 +88,7 @@ namespace TP_Parking
         {
             labelDomain.Text = "Patente:";
             labelDomainShow.Text = ($"{activevehicle.Domain}");
-            labelBrand.Text ="Marca:";
+            labelBrand.Text = "Marca:";
             labelBrandShow.Text = ($"{activevehicle.Brand}");
             labelModel.Text = "Modelo:";
             labelModelShow.Text = ($"{activevehicle.Model}");
@@ -100,7 +100,7 @@ namespace TP_Parking
             labelOwnerShow.Hide();
         }
 
-        private void FillMonthVehicleData(Vehicle activevehicle,MonthRental monthRental)
+        private void FillMonthVehicleData(Vehicle activevehicle, MonthRental monthRental)
         {
             labelDomain.Text = "Patente:";
             labelDomainShow.Text = ($"{activevehicle.Domain}");
@@ -137,7 +137,7 @@ namespace TP_Parking
                 newMovement.User.Password = user.Password;
                 newMovement.User.LastAdmission = user.LastAdmission;
                 newMovement.Closing = null;
-                movements.AddMovements(newMovement);
+                movements.Add(newMovement);
                 foreach (Garage garage in parking.ReturnAllGarages())
                 {
                     if (garage.Number == hourRental.Garage.Number)
@@ -163,7 +163,7 @@ namespace TP_Parking
                     monthRental.Value = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);
                 }
             }
-            
+
             this.Close();
         }
 

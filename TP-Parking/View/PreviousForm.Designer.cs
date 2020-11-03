@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.dataGridViewPreviousClosing = new System.Windows.Forms.DataGridView();
-            this.ClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserClosing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewMovements = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxConcept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelTotalFromClosing = new System.Windows.Forms.Label();
+            this.ClosingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserClosing = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPreviousClosing)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovements)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +44,8 @@
             // dataGridViewPreviousClosing
             // 
             this.dataGridViewPreviousClosing.AllowUserToAddRows = false;
+            this.dataGridViewPreviousClosing.AllowUserToDeleteRows = false;
+            this.dataGridViewPreviousClosing.AllowUserToResizeColumns = false;
             this.dataGridViewPreviousClosing.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewPreviousClosing.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPreviousClosing.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -51,26 +54,19 @@
             this.dataGridViewPreviousClosing.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewPreviousClosing.Location = new System.Drawing.Point(128, 12);
             this.dataGridViewPreviousClosing.Name = "dataGridViewPreviousClosing";
+            this.dataGridViewPreviousClosing.ReadOnly = true;
             this.dataGridViewPreviousClosing.RowHeadersWidth = 50;
             this.dataGridViewPreviousClosing.Size = new System.Drawing.Size(302, 228);
             this.dataGridViewPreviousClosing.TabIndex = 5;
             this.dataGridViewPreviousClosing.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPreviousClosing_CellContentClick);
             this.dataGridViewPreviousClosing.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPreviousClosing_CellContentClick);
             // 
-            // ClosingDate
-            // 
-            this.ClosingDate.HeaderText = "Fecha";
-            this.ClosingDate.Name = "ClosingDate";
-            this.ClosingDate.Width = 150;
-            // 
-            // UserClosing
-            // 
-            this.UserClosing.HeaderText = "Usuario";
-            this.UserClosing.Name = "UserClosing";
-            // 
             // dataGridViewMovements
             // 
             this.dataGridViewMovements.AllowUserToAddRows = false;
+            this.dataGridViewMovements.AllowUserToDeleteRows = false;
+            this.dataGridViewMovements.AllowUserToResizeColumns = false;
+            this.dataGridViewMovements.AllowUserToResizeRows = false;
             this.dataGridViewMovements.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridViewMovements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMovements.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -81,6 +77,7 @@
             this.dataGridViewMovements.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridViewMovements.Location = new System.Drawing.Point(33, 246);
             this.dataGridViewMovements.Name = "dataGridViewMovements";
+            this.dataGridViewMovements.ReadOnly = true;
             this.dataGridViewMovements.RowHeadersWidth = 50;
             this.dataGridViewMovements.Size = new System.Drawing.Size(503, 228);
             this.dataGridViewMovements.TabIndex = 6;
@@ -89,28 +86,54 @@
             // 
             this.dataGridViewTextBoxConcept.HeaderText = "Concepto";
             this.dataGridViewTextBoxConcept.Name = "dataGridViewTextBoxConcept";
+            this.dataGridViewTextBoxConcept.ReadOnly = true;
             this.dataGridViewTextBoxConcept.Width = 150;
             // 
             // Value
             // 
             this.Value.HeaderText = "Valor";
             this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
             // 
             // dataGridViewTextBoxDate
             // 
             this.dataGridViewTextBoxDate.HeaderText = "Fecha";
             this.dataGridViewTextBoxDate.Name = "dataGridViewTextBoxDate";
+            this.dataGridViewTextBoxDate.ReadOnly = true;
             // 
             // User
             // 
             this.User.HeaderText = "Usuario";
             this.User.Name = "User";
+            this.User.ReadOnly = true;
+            // 
+            // labelTotalFromClosing
+            // 
+            this.labelTotalFromClosing.AutoSize = true;
+            this.labelTotalFromClosing.Location = new System.Drawing.Point(204, 488);
+            this.labelTotalFromClosing.Name = "labelTotalFromClosing";
+            this.labelTotalFromClosing.Size = new System.Drawing.Size(0, 13);
+            this.labelTotalFromClosing.TabIndex = 7;
+            // 
+            // ClosingDate
+            // 
+            this.ClosingDate.HeaderText = "Fecha";
+            this.ClosingDate.Name = "ClosingDate";
+            this.ClosingDate.ReadOnly = true;
+            this.ClosingDate.Width = 150;
+            // 
+            // UserClosing
+            // 
+            this.UserClosing.HeaderText = "Usuario";
+            this.UserClosing.Name = "UserClosing";
+            this.UserClosing.ReadOnly = true;
             // 
             // PreviousForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 511);
+            this.ClientSize = new System.Drawing.Size(568, 532);
+            this.Controls.Add(this.labelTotalFromClosing);
             this.Controls.Add(this.dataGridViewMovements);
             this.Controls.Add(this.dataGridViewPreviousClosing);
             this.Name = "PreviousForm";
@@ -119,17 +142,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPreviousClosing)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMovements)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.DataGridView dataGridViewPreviousClosing;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClosingDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserClosing;
         private System.Windows.Forms.DataGridView dataGridViewMovements;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxConcept;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn User;
+        private System.Windows.Forms.Label labelTotalFromClosing;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClosingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserClosing;
     }
 }

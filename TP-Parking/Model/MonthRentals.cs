@@ -6,25 +6,25 @@ namespace TP_Parking
     {
         private List<MonthRental> monthRentals = new List<MonthRental>();
 
-        public void AddRental(MonthRental monthRental)
+        public void Add(MonthRental monthRental)
         {
             this.monthRentals.Add(monthRental);
         }
 
-        public List<MonthRental> ReturnAllRentals()
+        public List<MonthRental> ReturnAll()
         {
             return monthRentals;
         }
 
-        public void ClearRentals()
+        public void DeleteAll()
         {
             monthRentals.Clear();
         }
-        public void AddAllRentals(List<MonthRental> monthRentals)
+        public void AddAll(List<MonthRental> monthRentals)
         {
             this.monthRentals = monthRentals;
         }
 
-        
+
     }
 }

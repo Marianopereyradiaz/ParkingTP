@@ -34,7 +34,7 @@ namespace TP_Parking
 
                 case 1:
                     {
-                        this.Value = PickUpValue ;
+                        this.Value = PickUpValue;
                         break;
                     }
                 case 2:

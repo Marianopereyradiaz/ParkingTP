@@ -15,6 +15,6 @@ namespace TP_Parking
             this.Garage = garage;
         }
         public abstract double CalculateAmount(VehicleType vehicle);
-        
+
     }
 }
