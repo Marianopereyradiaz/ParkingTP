@@ -33,7 +33,6 @@
             this.buttonRegister = new System.Windows.Forms.Button();
             this.buttonReports = new System.Windows.Forms.Button();
             this.buttonModify = new System.Windows.Forms.Button();
-            this.buttonMovements = new System.Windows.Forms.Button();
             this.groupBoxParkingView = new System.Windows.Forms.GroupBox();
             this.buttonG9 = new System.Windows.Forms.Button();
             this.buttonG15 = new System.Windows.Forms.Button();
@@ -65,71 +64,77 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(502, 591);
+            this.buttonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonExit.Location = new System.Drawing.Point(537, 543);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(122, 45);
+            this.buttonExit.Size = new System.Drawing.Size(122, 41);
             this.buttonExit.TabIndex = 4;
             this.buttonExit.Text = "Salir";
-            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTitle.Location = new System.Drawing.Point(116, 22);
+            this.labelTitle.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelTitle.Location = new System.Drawing.Point(173, 21);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(0, 25);
+            this.labelTitle.Size = new System.Drawing.Size(0, 30);
             this.labelTitle.TabIndex = 3;
             // 
             // buttonRegister
             // 
-            this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonRegister.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRegister.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.buttonRegister.Location = new System.Drawing.Point(88, 543);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(121, 41);
             this.buttonRegister.TabIndex = 1;
             this.buttonRegister.Text = "Caja";
-            this.buttonRegister.UseVisualStyleBackColor = true;
+            this.buttonRegister.UseVisualStyleBackColor = false;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // buttonReports
             // 
-            this.buttonReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReports.Location = new System.Drawing.Point(366, 543);
+            this.buttonReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonReports.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReports.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonReports.Location = new System.Drawing.Point(234, 543);
             this.buttonReports.Name = "buttonReports";
             this.buttonReports.Size = new System.Drawing.Size(121, 41);
             this.buttonReports.TabIndex = 2;
             this.buttonReports.Text = "Reportes";
-            this.buttonReports.UseVisualStyleBackColor = true;
+            this.buttonReports.UseVisualStyleBackColor = false;
             this.buttonReports.Click += new System.EventHandler(this.buttonReports_Click);
             // 
             // buttonModify
             // 
-            this.buttonModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModify.Location = new System.Drawing.Point(502, 543);
+            this.buttonModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonModify.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModify.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonModify.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonModify.Location = new System.Drawing.Point(386, 543);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(121, 41);
             this.buttonModify.TabIndex = 3;
             this.buttonModify.Text = "Cambiar Valores";
-            this.buttonModify.UseVisualStyleBackColor = true;
+            this.buttonModify.UseVisualStyleBackColor = false;
             this.buttonModify.Click += new System.EventHandler(this.buttonModify_Click);
-            // 
-            // buttonMovements
-            // 
-            this.buttonMovements.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMovements.Location = new System.Drawing.Point(226, 543);
-            this.buttonMovements.Name = "buttonMovements";
-            this.buttonMovements.Size = new System.Drawing.Size(120, 41);
-            this.buttonMovements.TabIndex = 6;
-            this.buttonMovements.Text = "Movimientos";
-            this.buttonMovements.UseVisualStyleBackColor = true;
-            this.buttonMovements.Click += new System.EventHandler(this.buttonMovements_Click);
             // 
             // groupBoxParkingView
             // 
-            this.groupBoxParkingView.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBoxParkingView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.groupBoxParkingView.Controls.Add(this.buttonG9);
             this.groupBoxParkingView.Controls.Add(this.buttonG15);
             this.groupBoxParkingView.Controls.Add(this.buttonG14);
@@ -156,7 +161,8 @@
             this.groupBoxParkingView.Controls.Add(this.buttonG2);
             this.groupBoxParkingView.Controls.Add(this.buttonG1);
             this.groupBoxParkingView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxParkingView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxParkingView.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxParkingView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxParkingView.Location = new System.Drawing.Point(40, 71);
             this.groupBoxParkingView.Name = "groupBoxParkingView";
             this.groupBoxParkingView.Size = new System.Drawing.Size(641, 466);
@@ -168,7 +174,9 @@
             // buttonG9
             // 
             this.buttonG9.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG9.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG9.Location = new System.Drawing.Point(93, 19);
             this.buttonG9.Name = "buttonG9";
             this.buttonG9.Size = new System.Drawing.Size(70, 65);
@@ -179,7 +187,9 @@
             // buttonG15
             // 
             this.buttonG15.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG15.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG15.Location = new System.Drawing.Point(549, 19);
             this.buttonG15.Name = "buttonG15";
             this.buttonG15.Size = new System.Drawing.Size(70, 65);
@@ -190,7 +200,9 @@
             // buttonG14
             // 
             this.buttonG14.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG14.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG14.Location = new System.Drawing.Point(473, 19);
             this.buttonG14.Name = "buttonG14";
             this.buttonG14.Size = new System.Drawing.Size(70, 65);
@@ -201,7 +213,9 @@
             // buttonG13
             // 
             this.buttonG13.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG13.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG13.Location = new System.Drawing.Point(397, 19);
             this.buttonG13.Name = "buttonG13";
             this.buttonG13.Size = new System.Drawing.Size(70, 65);
@@ -212,7 +226,9 @@
             // buttonG12
             // 
             this.buttonG12.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG12.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG12.Location = new System.Drawing.Point(321, 19);
             this.buttonG12.Name = "buttonG12";
             this.buttonG12.Size = new System.Drawing.Size(70, 65);
@@ -223,7 +239,9 @@
             // buttonG11
             // 
             this.buttonG11.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG11.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG11.Location = new System.Drawing.Point(245, 19);
             this.buttonG11.Name = "buttonG11";
             this.buttonG11.Size = new System.Drawing.Size(70, 65);
@@ -234,7 +252,9 @@
             // buttonG24
             // 
             this.buttonG24.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG24.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG24.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG24.Location = new System.Drawing.Point(460, 361);
             this.buttonG24.Name = "buttonG24";
             this.buttonG24.Size = new System.Drawing.Size(70, 65);
@@ -245,7 +265,9 @@
             // buttonG10
             // 
             this.buttonG10.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG10.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG10.Location = new System.Drawing.Point(169, 19);
             this.buttonG10.Name = "buttonG10";
             this.buttonG10.Size = new System.Drawing.Size(70, 65);
@@ -256,7 +278,9 @@
             // buttonG25
             // 
             this.buttonG25.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG25.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG25.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG25.Location = new System.Drawing.Point(549, 361);
             this.buttonG25.Name = "buttonG25";
             this.buttonG25.Size = new System.Drawing.Size(70, 65);
@@ -267,7 +291,9 @@
             // buttonG8
             // 
             this.buttonG8.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG8.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG8.Location = new System.Drawing.Point(117, 361);
             this.buttonG8.Name = "buttonG8";
             this.buttonG8.Size = new System.Drawing.Size(70, 65);
@@ -278,7 +304,9 @@
             // buttonG23
             // 
             this.buttonG23.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG23.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG23.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG23.Location = new System.Drawing.Point(321, 361);
             this.buttonG23.Name = "buttonG23";
             this.buttonG23.Size = new System.Drawing.Size(70, 65);
@@ -289,7 +317,9 @@
             // buttonG22
             // 
             this.buttonG22.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG22.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG22.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG22.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG22.Location = new System.Drawing.Point(245, 361);
             this.buttonG22.Name = "buttonG22";
             this.buttonG22.Size = new System.Drawing.Size(70, 65);
@@ -300,7 +330,9 @@
             // buttonG21
             // 
             this.buttonG21.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG21.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG21.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG21.Location = new System.Drawing.Point(321, 290);
             this.buttonG21.Name = "buttonG21";
             this.buttonG21.Size = new System.Drawing.Size(70, 65);
@@ -311,7 +343,9 @@
             // buttonG20
             // 
             this.buttonG20.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG20.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG20.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG20.Location = new System.Drawing.Point(245, 290);
             this.buttonG20.Name = "buttonG20";
             this.buttonG20.Size = new System.Drawing.Size(70, 65);
@@ -322,7 +356,9 @@
             // buttonG19
             // 
             this.buttonG19.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG19.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG19.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG19.Location = new System.Drawing.Point(321, 219);
             this.buttonG19.Name = "buttonG19";
             this.buttonG19.Size = new System.Drawing.Size(70, 65);
@@ -333,7 +369,9 @@
             // buttonG17
             // 
             this.buttonG17.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG17.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG17.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG17.Location = new System.Drawing.Point(321, 148);
             this.buttonG17.Name = "buttonG17";
             this.buttonG17.Size = new System.Drawing.Size(70, 65);
@@ -344,7 +382,9 @@
             // buttonG18
             // 
             this.buttonG18.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG18.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG18.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG18.Location = new System.Drawing.Point(245, 219);
             this.buttonG18.Name = "buttonG18";
             this.buttonG18.Size = new System.Drawing.Size(70, 65);
@@ -355,7 +395,9 @@
             // buttonG16
             // 
             this.buttonG16.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG16.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG16.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG16.Location = new System.Drawing.Point(245, 148);
             this.buttonG16.Name = "buttonG16";
             this.buttonG16.Size = new System.Drawing.Size(70, 65);
@@ -366,7 +408,9 @@
             // buttonG7
             // 
             this.buttonG7.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG7.Location = new System.Drawing.Point(117, 290);
             this.buttonG7.Name = "buttonG7";
             this.buttonG7.Size = new System.Drawing.Size(70, 65);
@@ -377,7 +421,9 @@
             // buttonG6
             // 
             this.buttonG6.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG6.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG6.Location = new System.Drawing.Point(117, 219);
             this.buttonG6.Name = "buttonG6";
             this.buttonG6.Size = new System.Drawing.Size(70, 65);
@@ -388,7 +434,9 @@
             // buttonG5
             // 
             this.buttonG5.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG5.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG5.Location = new System.Drawing.Point(117, 148);
             this.buttonG5.Name = "buttonG5";
             this.buttonG5.Size = new System.Drawing.Size(70, 65);
@@ -399,7 +447,9 @@
             // buttonG4
             // 
             this.buttonG4.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG4.Location = new System.Drawing.Point(38, 361);
             this.buttonG4.Name = "buttonG4";
             this.buttonG4.Size = new System.Drawing.Size(70, 65);
@@ -410,7 +460,9 @@
             // buttonG3
             // 
             this.buttonG3.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG3.Location = new System.Drawing.Point(38, 290);
             this.buttonG3.Name = "buttonG3";
             this.buttonG3.Size = new System.Drawing.Size(70, 65);
@@ -421,7 +473,9 @@
             // buttonG2
             // 
             this.buttonG2.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG2.Location = new System.Drawing.Point(38, 219);
             this.buttonG2.Name = "buttonG2";
             this.buttonG2.Size = new System.Drawing.Size(70, 65);
@@ -432,7 +486,9 @@
             // buttonG1
             // 
             this.buttonG1.BackColor = System.Drawing.Color.LawnGreen;
-            this.buttonG1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonG1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonG1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonG1.Location = new System.Drawing.Point(38, 148);
             this.buttonG1.Name = "buttonG1";
             this.buttonG1.Size = new System.Drawing.Size(70, 65);
@@ -444,15 +500,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 666);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(739, 614);
             this.Controls.Add(this.groupBoxParkingView);
-            this.Controls.Add(this.buttonMovements);
             this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.buttonReports);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.buttonExit);
             this.Name = "MenuForm";
+            this.Opacity = 0.95D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.MenuForm_Load);
             this.groupBoxParkingView.ResumeLayout(false);
@@ -468,7 +526,6 @@
         private System.Windows.Forms.Button buttonRegister;
         private System.Windows.Forms.Button buttonReports;
         private System.Windows.Forms.Button buttonModify;
-        private System.Windows.Forms.Button buttonMovements;
         private System.Windows.Forms.GroupBox groupBoxParkingView;
         private System.Windows.Forms.Button buttonG9;
         private System.Windows.Forms.Button buttonG15;

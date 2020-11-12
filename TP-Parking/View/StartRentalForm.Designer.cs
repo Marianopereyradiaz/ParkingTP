@@ -30,7 +30,6 @@
         {
             this.buttonExitRental = new System.Windows.Forms.Button();
             this.buttonConfirmRental = new System.Windows.Forms.Button();
-            this.textBoxDomain = new System.Windows.Forms.TextBox();
             this.labelRentalType = new System.Windows.Forms.Label();
             this.labelVehicleType = new System.Windows.Forms.Label();
             this.labelDomain = new System.Windows.Forms.Label();
@@ -48,12 +47,19 @@
             this.comboBoxMonths = new System.Windows.Forms.ComboBox();
             this.labelValue = new System.Windows.Forms.Label();
             this.labelValueShow = new System.Windows.Forms.Label();
+            this.labelDomainFormat = new System.Windows.Forms.Label();
+            this.comboBoxDomainFormat = new System.Windows.Forms.ComboBox();
+            this.maskedTextBoxOldDomain = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxNewDomain = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // buttonExitRental
             // 
-            this.buttonExitRental.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExitRental.Location = new System.Drawing.Point(97, 448);
+            this.buttonExitRental.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExitRental.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExitRental.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExitRental.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonExitRental.Location = new System.Drawing.Point(96, 495);
             this.buttonExitRental.Name = "buttonExitRental";
             this.buttonExitRental.Size = new System.Drawing.Size(121, 33);
             this.buttonExitRental.TabIndex = 9;
@@ -63,8 +69,11 @@
             // 
             // buttonConfirmRental
             // 
-            this.buttonConfirmRental.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirmRental.Location = new System.Drawing.Point(97, 395);
+            this.buttonConfirmRental.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonConfirmRental.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConfirmRental.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConfirmRental.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonConfirmRental.Location = new System.Drawing.Point(96, 442);
             this.buttonConfirmRental.Name = "buttonConfirmRental";
             this.buttonConfirmRental.Size = new System.Drawing.Size(121, 33);
             this.buttonConfirmRental.TabIndex = 8;
@@ -72,119 +81,131 @@
             this.buttonConfirmRental.UseVisualStyleBackColor = true;
             this.buttonConfirmRental.Click += new System.EventHandler(this.buttonConfirmRental_Click);
             // 
-            // textBoxDomain
-            // 
-            this.textBoxDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDomain.Location = new System.Drawing.Point(169, 173);
-            this.textBoxDomain.Name = "textBoxDomain";
-            this.textBoxDomain.Size = new System.Drawing.Size(74, 22);
-            this.textBoxDomain.TabIndex = 4;
-            // 
             // labelRentalType
             // 
             this.labelRentalType.AutoSize = true;
-            this.labelRentalType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRentalType.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRentalType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelRentalType.Location = new System.Drawing.Point(48, 45);
             this.labelRentalType.Name = "labelRentalType";
-            this.labelRentalType.Size = new System.Drawing.Size(106, 16);
+            this.labelRentalType.Size = new System.Drawing.Size(110, 18);
             this.labelRentalType.TabIndex = 5;
             this.labelRentalType.Text = "Tipo de Alquiler:";
             // 
             // labelVehicleType
             // 
             this.labelVehicleType.AutoSize = true;
-            this.labelVehicleType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVehicleType.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVehicleType.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelVehicleType.Location = new System.Drawing.Point(41, 91);
             this.labelVehicleType.Name = "labelVehicleType";
-            this.labelVehicleType.Size = new System.Drawing.Size(113, 16);
+            this.labelVehicleType.Size = new System.Drawing.Size(113, 18);
             this.labelVehicleType.TabIndex = 7;
             this.labelVehicleType.Text = "Tipo de Vehiculo:";
             // 
             // labelDomain
             // 
             this.labelDomain.AutoSize = true;
-            this.labelDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDomain.Location = new System.Drawing.Point(93, 173);
+            this.labelDomain.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDomain.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelDomain.Location = new System.Drawing.Point(93, 206);
             this.labelDomain.Name = "labelDomain";
-            this.labelDomain.Size = new System.Drawing.Size(57, 16);
+            this.labelDomain.Size = new System.Drawing.Size(57, 18);
             this.labelDomain.TabIndex = 8;
             this.labelDomain.Text = "Patente:";
             // 
             // labelGarage
             // 
             this.labelGarage.AutoSize = true;
-            this.labelGarage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGarage.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGarage.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.labelGarage.Location = new System.Drawing.Point(94, 129);
             this.labelGarage.Name = "labelGarage";
-            this.labelGarage.Size = new System.Drawing.Size(60, 16);
+            this.labelGarage.Size = new System.Drawing.Size(59, 18);
             this.labelGarage.TabIndex = 9;
             this.labelGarage.Text = "Garage: ";
             // 
             // textBoxBrand
             // 
-            this.textBoxBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBrand.Location = new System.Drawing.Point(169, 215);
+            this.textBoxBrand.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxBrand.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxBrand.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxBrand.Location = new System.Drawing.Point(169, 247);
             this.textBoxBrand.Name = "textBoxBrand";
-            this.textBoxBrand.Size = new System.Drawing.Size(73, 22);
+            this.textBoxBrand.Size = new System.Drawing.Size(73, 26);
             this.textBoxBrand.TabIndex = 5;
             // 
             // textBoxModel
             // 
-            this.textBoxModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxModel.Location = new System.Drawing.Point(170, 253);
+            this.textBoxModel.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxModel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxModel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxModel.Location = new System.Drawing.Point(170, 285);
             this.textBoxModel.Name = "textBoxModel";
-            this.textBoxModel.Size = new System.Drawing.Size(73, 22);
+            this.textBoxModel.Size = new System.Drawing.Size(73, 26);
             this.textBoxModel.TabIndex = 6;
             // 
             // labelBrand
             // 
             this.labelBrand.AutoSize = true;
-            this.labelBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBrand.Location = new System.Drawing.Point(101, 215);
+            this.labelBrand.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBrand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelBrand.Location = new System.Drawing.Point(101, 247);
             this.labelBrand.Name = "labelBrand";
-            this.labelBrand.Size = new System.Drawing.Size(49, 16);
+            this.labelBrand.Size = new System.Drawing.Size(50, 18);
             this.labelBrand.TabIndex = 12;
             this.labelBrand.Text = "Marca:";
             // 
             // labelModel
             // 
             this.labelModel.AutoSize = true;
-            this.labelModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelModel.Location = new System.Drawing.Point(94, 256);
+            this.labelModel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelModel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelModel.Location = new System.Drawing.Point(94, 288);
             this.labelModel.Name = "labelModel";
-            this.labelModel.Size = new System.Drawing.Size(57, 16);
+            this.labelModel.Size = new System.Drawing.Size(56, 18);
             this.labelModel.TabIndex = 13;
             this.labelModel.Text = "Modelo:";
             // 
             // textBoxGarage
             // 
+            this.textBoxGarage.BackColor = System.Drawing.Color.Gainsboro;
             this.textBoxGarage.Enabled = false;
-            this.textBoxGarage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxGarage.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxGarage.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.textBoxGarage.Location = new System.Drawing.Point(169, 129);
             this.textBoxGarage.Name = "textBoxGarage";
-            this.textBoxGarage.Size = new System.Drawing.Size(74, 22);
+            this.textBoxGarage.Size = new System.Drawing.Size(74, 26);
             this.textBoxGarage.TabIndex = 3;
             // 
             // labelOwner
             // 
             this.labelOwner.AutoSize = true;
-            this.labelOwner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOwner.Location = new System.Drawing.Point(100, 291);
+            this.labelOwner.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOwner.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelOwner.Location = new System.Drawing.Point(73, 323);
             this.labelOwner.Name = "labelOwner";
-            this.labelOwner.Size = new System.Drawing.Size(51, 16);
+            this.labelOwner.Size = new System.Drawing.Size(79, 18);
             this.labelOwner.TabIndex = 14;
-            this.labelOwner.Text = "Dueño:";
+            this.labelOwner.Text = "Propietario:";
             // 
             // textBoxOwner
             // 
-            this.textBoxOwner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOwner.Location = new System.Drawing.Point(170, 288);
+            this.textBoxOwner.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxOwner.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxOwner.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxOwner.Location = new System.Drawing.Point(170, 320);
             this.textBoxOwner.Name = "textBoxOwner";
-            this.textBoxOwner.Size = new System.Drawing.Size(73, 22);
+            this.textBoxOwner.Size = new System.Drawing.Size(73, 26);
             this.textBoxOwner.TabIndex = 7;
             // 
             // comboBoxVehicleSel
             // 
+            this.comboBoxVehicleSel.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxVehicleSel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVehicleSel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxVehicleSel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxVehicleSel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.comboBoxVehicleSel.FormattingEnabled = true;
             this.comboBoxVehicleSel.Items.AddRange(new object[] {
             "Camioneta",
@@ -192,33 +213,44 @@
             "Moto"});
             this.comboBoxVehicleSel.Location = new System.Drawing.Point(169, 91);
             this.comboBoxVehicleSel.Name = "comboBoxVehicleSel";
-            this.comboBoxVehicleSel.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxVehicleSel.Size = new System.Drawing.Size(75, 26);
             this.comboBoxVehicleSel.TabIndex = 16;
             // 
             // comboBoxRentalType
             // 
+            this.comboBoxRentalType.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxRentalType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRentalType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxRentalType.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxRentalType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.comboBoxRentalType.FormattingEnabled = true;
             this.comboBoxRentalType.Items.AddRange(new object[] {
             "Hora",
             "Mes"});
             this.comboBoxRentalType.Location = new System.Drawing.Point(169, 44);
             this.comboBoxRentalType.Name = "comboBoxRentalType";
-            this.comboBoxRentalType.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxRentalType.Size = new System.Drawing.Size(75, 26);
             this.comboBoxRentalType.TabIndex = 17;
             this.comboBoxRentalType.SelectedIndexChanged += new System.EventHandler(this.comboBoxRentalType_SelectedIndexChanged_1);
             // 
             // labelMonths
             // 
             this.labelMonths.AutoSize = true;
-            this.labelMonths.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMonths.Location = new System.Drawing.Point(22, 326);
+            this.labelMonths.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMonths.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelMonths.Location = new System.Drawing.Point(22, 358);
             this.labelMonths.Name = "labelMonths";
-            this.labelMonths.Size = new System.Drawing.Size(128, 16);
+            this.labelMonths.Size = new System.Drawing.Size(126, 18);
             this.labelMonths.TabIndex = 19;
             this.labelMonths.Text = "Cantidad de Meses:";
             // 
             // comboBoxMonths
             // 
+            this.comboBoxMonths.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMonths.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxMonths.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxMonths.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.comboBoxMonths.FormattingEnabled = true;
             this.comboBoxMonths.Items.AddRange(new object[] {
             "1",
@@ -233,36 +265,101 @@
             "10",
             "11",
             "12"});
-            this.comboBoxMonths.Location = new System.Drawing.Point(169, 326);
+            this.comboBoxMonths.Location = new System.Drawing.Point(169, 358);
             this.comboBoxMonths.Name = "comboBoxMonths";
-            this.comboBoxMonths.Size = new System.Drawing.Size(73, 21);
+            this.comboBoxMonths.Size = new System.Drawing.Size(73, 26);
             this.comboBoxMonths.TabIndex = 20;
             this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // labelValue
             // 
             this.labelValue.AutoSize = true;
-            this.labelValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValue.Location = new System.Drawing.Point(107, 361);
+            this.labelValue.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValue.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelValue.Location = new System.Drawing.Point(107, 393);
             this.labelValue.Name = "labelValue";
-            this.labelValue.Size = new System.Drawing.Size(43, 16);
+            this.labelValue.Size = new System.Drawing.Size(44, 18);
             this.labelValue.TabIndex = 21;
             this.labelValue.Text = "Valor:";
             // 
             // labelValueShow
             // 
             this.labelValueShow.AutoSize = true;
-            this.labelValueShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValueShow.Location = new System.Drawing.Point(167, 361);
+            this.labelValueShow.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValueShow.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelValueShow.Location = new System.Drawing.Point(167, 393);
             this.labelValueShow.Name = "labelValueShow";
-            this.labelValueShow.Size = new System.Drawing.Size(0, 16);
+            this.labelValueShow.Size = new System.Drawing.Size(0, 18);
             this.labelValueShow.TabIndex = 22;
+            // 
+            // labelDomainFormat
+            // 
+            this.labelDomainFormat.AutoSize = true;
+            this.labelDomainFormat.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDomainFormat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelDomainFormat.Location = new System.Drawing.Point(38, 171);
+            this.labelDomainFormat.Name = "labelDomainFormat";
+            this.labelDomainFormat.Size = new System.Drawing.Size(110, 18);
+            this.labelDomainFormat.TabIndex = 24;
+            this.labelDomainFormat.Text = "Formato Patente:";
+            // 
+            // comboBoxDomainFormat
+            // 
+            this.comboBoxDomainFormat.BackColor = System.Drawing.Color.Gainsboro;
+            this.comboBoxDomainFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDomainFormat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxDomainFormat.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxDomainFormat.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.comboBoxDomainFormat.FormattingEnabled = true;
+            this.comboBoxDomainFormat.Items.AddRange(new object[] {
+            "AAA111",
+            "11AAA11"});
+            this.comboBoxDomainFormat.Location = new System.Drawing.Point(170, 168);
+            this.comboBoxDomainFormat.Name = "comboBoxDomainFormat";
+            this.comboBoxDomainFormat.Size = new System.Drawing.Size(75, 26);
+            this.comboBoxDomainFormat.TabIndex = 25;
+            this.comboBoxDomainFormat.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // maskedTextBoxOldDomain
+            // 
+            this.maskedTextBoxOldDomain.BackColor = System.Drawing.Color.Gainsboro;
+            this.maskedTextBoxOldDomain.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.maskedTextBoxOldDomain.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBoxOldDomain.HidePromptOnLeave = true;
+            this.maskedTextBoxOldDomain.HideSelection = false;
+            this.maskedTextBoxOldDomain.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.maskedTextBoxOldDomain.Location = new System.Drawing.Point(169, 206);
+            this.maskedTextBoxOldDomain.Mask = "LLL000";
+            this.maskedTextBoxOldDomain.Name = "maskedTextBoxOldDomain";
+            this.maskedTextBoxOldDomain.Size = new System.Drawing.Size(73, 26);
+            this.maskedTextBoxOldDomain.TabIndex = 26;
+            this.maskedTextBoxOldDomain.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // maskedTextBoxNewDomain
+            // 
+            this.maskedTextBoxNewDomain.BackColor = System.Drawing.Color.Gainsboro;
+            this.maskedTextBoxNewDomain.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.maskedTextBoxNewDomain.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBoxNewDomain.HidePromptOnLeave = true;
+            this.maskedTextBoxNewDomain.HideSelection = false;
+            this.maskedTextBoxNewDomain.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.maskedTextBoxNewDomain.Location = new System.Drawing.Point(169, 206);
+            this.maskedTextBoxNewDomain.Mask = "00LLL00";
+            this.maskedTextBoxNewDomain.Name = "maskedTextBoxNewDomain";
+            this.maskedTextBoxNewDomain.Size = new System.Drawing.Size(72, 26);
+            this.maskedTextBoxNewDomain.TabIndex = 27;
+            this.maskedTextBoxNewDomain.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // StartRentalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 514);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(330, 550);
+            this.Controls.Add(this.maskedTextBoxNewDomain);
+            this.Controls.Add(this.maskedTextBoxOldDomain);
+            this.Controls.Add(this.comboBoxDomainFormat);
+            this.Controls.Add(this.labelDomainFormat);
             this.Controls.Add(this.labelValueShow);
             this.Controls.Add(this.labelValue);
             this.Controls.Add(this.comboBoxMonths);
@@ -280,10 +377,10 @@
             this.Controls.Add(this.labelDomain);
             this.Controls.Add(this.labelVehicleType);
             this.Controls.Add(this.labelRentalType);
-            this.Controls.Add(this.textBoxDomain);
             this.Controls.Add(this.buttonConfirmRental);
             this.Controls.Add(this.buttonExitRental);
             this.Name = "StartRentalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empezar Alquiler";
             this.Load += new System.EventHandler(this.StartRentalForm_Load);
             this.ResumeLayout(false);
@@ -295,7 +392,6 @@
 
         private System.Windows.Forms.Button buttonExitRental;
         private System.Windows.Forms.Button buttonConfirmRental;
-        private System.Windows.Forms.TextBox textBoxDomain;
         private System.Windows.Forms.Label labelRentalType;
         private System.Windows.Forms.Label labelVehicleType;
         private System.Windows.Forms.Label labelDomain;
@@ -314,5 +410,9 @@
         private System.Windows.Forms.ComboBox comboBoxMonths;
         private System.Windows.Forms.Label labelValue;
         private System.Windows.Forms.Label labelValueShow;
+        private System.Windows.Forms.Label labelDomainFormat;
+        private System.Windows.Forms.ComboBox comboBoxDomainFormat;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxOldDomain;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNewDomain;
     }
 }

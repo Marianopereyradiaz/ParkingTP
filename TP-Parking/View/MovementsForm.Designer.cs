@@ -35,51 +35,60 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(46, 93);
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(53, 107);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 16);
+            this.label1.Size = new System.Drawing.Size(67, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concepto:";
             // 
             // textBoxConcept
             // 
-            this.textBoxConcept.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxConcept.Location = new System.Drawing.Point(123, 93);
+            this.textBoxConcept.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxConcept.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxConcept.Location = new System.Drawing.Point(144, 107);
+            this.textBoxConcept.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxConcept.Name = "textBoxConcept";
-            this.textBoxConcept.Size = new System.Drawing.Size(113, 22);
+            this.textBoxConcept.Size = new System.Drawing.Size(131, 26);
             this.textBoxConcept.TabIndex = 1;
             // 
             // labelAmount
             // 
             this.labelAmount.AutoSize = true;
-            this.labelAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAmount.Location = new System.Drawing.Point(50, 137);
+            this.labelAmount.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAmount.Location = new System.Drawing.Point(59, 158);
+            this.labelAmount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAmount.Name = "labelAmount";
-            this.labelAmount.Size = new System.Drawing.Size(56, 16);
+            this.labelAmount.Size = new System.Drawing.Size(61, 18);
             this.labelAmount.TabIndex = 2;
             this.labelAmount.Text = "Valor:  $";
             // 
             // textBoxAmount
             // 
-            this.textBoxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAmount.Location = new System.Drawing.Point(123, 134);
+            this.textBoxAmount.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxAmount.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAmount.Location = new System.Drawing.Point(144, 155);
+            this.textBoxAmount.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(113, 22);
+            this.textBoxAmount.Size = new System.Drawing.Size(131, 26);
             this.textBoxAmount.TabIndex = 3;
+            this.textBoxAmount.TextChanged += new System.EventHandler(this.textBoxAmount_TextChanged);
             // 
             // buttonSave
             // 
-            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.Location = new System.Drawing.Point(20, 185);
+            this.buttonSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSave.Location = new System.Drawing.Point(24, 213);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(105, 30);
+            this.buttonSave.Size = new System.Drawing.Size(122, 35);
             this.buttonSave.TabIndex = 4;
             this.buttonSave.Text = "Guardar";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -87,10 +96,13 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(148, 185);
+            this.buttonCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCancel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Location = new System.Drawing.Point(172, 213);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(103, 29);
+            this.buttonCancel.Size = new System.Drawing.Size(120, 33);
             this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -99,32 +111,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 53);
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(103, 47);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 16);
+            this.label2.Size = new System.Drawing.Size(136, 27);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Tipo:";
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.CausesValidation = false;
-            this.comboBoxType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Items.AddRange(new object[] {
-            "Ingreso",
-            "Egreso"});
-            this.comboBoxType.Location = new System.Drawing.Point(123, 53);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(113, 24);
-            this.comboBoxType.TabIndex = 7;
+            this.label2.Text = "Nuevo Egreso";
             // 
             // MovementsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 230);
-            this.Controls.Add(this.comboBoxType);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(343, 265);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
@@ -132,7 +132,11 @@
             this.Controls.Add(this.labelAmount);
             this.Controls.Add(this.textBoxConcept);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MovementsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimientos";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -148,6 +152,5 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label2;
-        internal System.Windows.Forms.ComboBox comboBoxType;
     }
 }

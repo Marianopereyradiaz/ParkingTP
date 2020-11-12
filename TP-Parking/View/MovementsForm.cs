@@ -13,14 +13,12 @@ namespace TP_Parking
             InitializeComponent();
             this.user = user;
             this.movements = movements;
-            comboBoxType.SelectedIndex = 0;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             bool added = false;
@@ -34,27 +32,16 @@ namespace TP_Parking
                 newMovement.User.Password = user.Password;
                 newMovement.Date = DateTime.Now;
                 newMovement.Closing = null;
-                if (comboBoxType.SelectedIndex == 0)
-                {
-                    {
-                        newMovement.IsEntry = true;
-                    }
-                    if (comboBoxType.SelectedIndex == 1)
-                    {
-                        newMovement.IsEntry = false;
-                    }
-                }
-                try
-                {
-                    newMovement.Amount = Convert.ToDouble(textBoxAmount.Text);
-                    movements.Add(newMovement);
-                    added = true;
-                }
-                catch (FormatException ex)
-                {
-                    exceptionController.ShowMessage(ex, "Debe Ingresar un Valor Númerico");
-                }
+                newMovement.IsEntry = false;
+                newMovement.Amount = Convert.ToDouble(textBoxAmount.Text);
+                movements.Add(newMovement);
+                added = true;
             }
+            catch (FormatException ex)
+            {
+                exceptionController.ShowMessage(ex, "Debe Ingresar un Valor Númerico");
+            }
+
             catch (NullReferenceException ex)
             {
                 exceptionController.ShowMessage(ex, "Debe completar el formulario");
@@ -67,6 +54,20 @@ namespace TP_Parking
             }
 
         }
-
+        private void textBoxAmount_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double value = Convert.ToDouble(textBoxAmount.Text);
+                if (value <= 0)
+                {
+                    MessageBox.Show("Debe Ingresar un valor no negativo");
+                }
+            }
+            catch (Exception ex)
+            {
+                exceptionController.ShowMessage("Debe Ingresar un número");
+            }
+        }
     }
 }

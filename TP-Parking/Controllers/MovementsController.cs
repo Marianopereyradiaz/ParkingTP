@@ -5,11 +5,10 @@ namespace TP_Parking.Controllers
 {
     public class MovementsController : IController
     {
-        private Movement movement;
+
         private Movements movements = new Movements();
         private XMLMovements movementsManager = new XMLMovements();
-        private UserController userController = new UserController();
-        private ClosingsController closingsController = new ClosingsController();
+        private UserController userController = new UserController();       
         public MovementsController() { }
         public void LoadPrevious()
         {
@@ -21,7 +20,17 @@ namespace TP_Parking.Controllers
         }
         public void Save(Movements movements)
         {
-            movementsManager.GenerateXML(movements.ReturnAll());
+            if (!ValidateClosing())
+            {
+                Closing closing = new Closing(DateTime.Now, userController.GetUser());
+                Movement movement = new Movement("Cierre",0,DateTime.Now,false,userController.GetUser(),closing);
+                movements.Add(movement);
+                movementsManager.GenerateXML(movements.ReturnAll());
+            }
+            else
+            {
+                movementsManager.GenerateXML(movements.ReturnAll());
+            }
         }
 
         public bool ValidateClosing()
@@ -41,6 +50,19 @@ namespace TP_Parking.Controllers
             else
             {
                 return true;
+            }
+        }
+
+        public void verifyMovementClosing(Closings closings)
+        {
+            foreach (Movement movement in movements.ReturnAll())
+            {
+                if (movement.Closing == null)
+                {
+                    Closing newClosing = new Closing(DateTime.MinValue, userController.GetUser());
+                    movement.Closing = newClosing;
+                    closings.Add(newClosing);
+                }
             }
         }
     }

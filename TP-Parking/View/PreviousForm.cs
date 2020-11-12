@@ -21,7 +21,10 @@ namespace TP_Parking.View
         {
             foreach (Closing closing in closings.ReturnAll())
             {
-                dataGridViewPreviousClosing.Rows.Add(closing.Date, closing.User.UserName);
+                if (closing.Date != DateTime.MinValue)
+                {
+                    dataGridViewPreviousClosing.Rows.Add(closing.Date, closing.User.UserName);
+                }
             }
         }
         private void dataGridViewPreviousClosing_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -38,10 +41,14 @@ namespace TP_Parking.View
                     {
                         if (movement.IsEntry == false)
                         {
-                            movement.Amount = -movement.Amount;
+                            dataGridViewMovements.Rows.Add(movement.Concept, "", movement.Amount, movement.Date, movement.User.UserName);
+                            totalValue -= movement.Amount;
                         }
-                        totalValue += movement.Amount;
-                        dataGridViewMovements.Rows.Add(movement.Concept, movement.Amount, movement.Date, movement.User.UserName);
+                        else
+                        {
+                            totalValue += movement.Amount;
+                            dataGridViewMovements.Rows.Add(movement.Concept, movement.Amount, "", movement.Date, movement.User.UserName);
+                        }                      
                     }
                 }
                 labelTotalFromClosing.Text = ($"Total Cierre: ${totalValue}");

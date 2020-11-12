@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TP_Parking.Controllers;
 
 namespace TP_Parking
 {
@@ -8,16 +9,17 @@ namespace TP_Parking
         private HourRentals hourRentals;
         private MonthRentals monthRentals;
         private Movements movements;
-        private Parking parking;
         private User user;
         private MonthRental monthRental;
         private ExceptionController exceptionController = new ExceptionController();
+        private ParkingController parkingController;
+
         public StartRentalForm()
         {
             InitializeComponent();
         }
 
-        public StartRentalForm(Garage garage, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, Parking parking, User user)
+        public StartRentalForm(Garage garage, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, User user, ParkingController parkingController)
         {
             InitializeComponent();
             textBoxGarage.Text = Convert.ToString(garage.Number);
@@ -25,12 +27,12 @@ namespace TP_Parking
             this.monthRentals = monthRentals;
             this.monthRental = null;
             this.movements = movements;
-            this.parking = parking;
             this.user = user;
+            this.parkingController = parkingController;
             comboBoxVehicleSel.Hide();
             textBoxGarage.Hide();
             textBoxBrand.Hide();
-            textBoxDomain.Hide();
+            maskedTextBoxOldDomain.Hide();
             textBoxModel.Hide();
             textBoxOwner.Hide();
             labelOwner.Hide();
@@ -42,9 +44,12 @@ namespace TP_Parking
             labelValue.Hide();
             comboBoxMonths.Hide();
             labelMonths.Hide();
+            comboBoxDomainFormat.Hide();
+            labelDomainFormat.Hide();
+            maskedTextBoxNewDomain.Hide();
         }
 
-        public StartRentalForm(Garage garage, MonthRentals monthRentals, Movements movements, Parking parking, User user, MonthRental monthRental)
+        public StartRentalForm(Garage garage, MonthRentals monthRentals, Movements movements, ParkingController parkingController, User user, MonthRental monthRental)
         {
             InitializeComponent();
             var i = monthRental.Garage.Number;
@@ -52,10 +57,10 @@ namespace TP_Parking
             textBoxGarage.Text = Convert.ToString(garage.Number);
             this.monthRentals = monthRentals;
             this.movements = movements;
-            this.parking = parking;
+            this.parkingController = parkingController;
             this.user = user;
             textBoxBrand.Text = monthRental.Garage.Vehicle.Brand;
-            textBoxDomain.Text = monthRental.Garage.Vehicle.Domain;
+            maskedTextBoxOldDomain.Text = monthRental.Garage.Vehicle.Domain;
             textBoxModel.Text = monthRental.Garage.Vehicle.Model;
             comboBoxRentalType.SelectedItem = comboBoxRentalType.Items[1];
             comboBoxVehicleSel.SelectedItem = monthRental.Garage.Vehicle.VehicleType.Description;
@@ -66,7 +71,6 @@ namespace TP_Parking
             comboBoxRentalType.Enabled = false;
             textBoxGarage.Show();
             textBoxBrand.Show();
-            textBoxDomain.Show();
             textBoxModel.Show();
             labelBrand.Show();
             labelDomain.Show();
@@ -77,8 +81,24 @@ namespace TP_Parking
             textBoxOwner.Show();
             textBoxGarage.Enabled = false;
             textBoxModel.Enabled = false;
-            textBoxDomain.Enabled = false;
+            maskedTextBoxOldDomain.Enabled = false;
             textBoxOwner.Enabled = false;
+            if (monthRental.Garage.Vehicle.Domain.Length == 6)
+            {
+                comboBoxDomainFormat.SelectedIndex = 0;
+                comboBoxDomainFormat.Enabled = false;
+                maskedTextBoxOldDomain.Text = monthRental.Garage.Vehicle.Domain;
+                maskedTextBoxOldDomain.Enabled = false;
+                maskedTextBoxNewDomain.Hide();
+            }
+            if (monthRental.Garage.Vehicle.Domain.Length == 7)
+            {
+                comboBoxDomainFormat.SelectedIndex = 1;
+                comboBoxDomainFormat.Enabled = false;
+                maskedTextBoxNewDomain.Text = monthRental.Garage.Vehicle.Domain;
+                maskedTextBoxNewDomain.Enabled = false;
+                maskedTextBoxOldDomain.Hide();
+            }
             int months = comboBoxMonths.SelectedIndex + 1;
         }
 
@@ -99,6 +119,7 @@ namespace TP_Parking
 
         private void StartRental(Movements movements)
         {
+            bool loadSuccess = false;
             var newVehicle = new Vehicle();
             var newVehicleType = new VehicleType();
             int months = comboBoxMonths.SelectedIndex + 1;
@@ -106,21 +127,31 @@ namespace TP_Parking
             var i = Convert.ToInt32(textBoxGarage.Text) - 1;
             string owner = textBoxOwner.Text;
 
+
             if (comboBoxVehicleSel.SelectedItem != null)
             {
+
                 switch (comboBoxRentalType.SelectedIndex)
                 {
                     case 0:
                         {
                             SetVehicleType(newVehicleType);
-                            FillNewVehicle(newVehicle, newVehicleType, now, parking);
-                            StartHourRental(now, i, hourRentals, parking);
-                            this.Close();
-                            break;
+                            loadSuccess = FillNewVehicle(newVehicle, newVehicleType, now, parkingController.GetParking());
+                            if (loadSuccess)
+                            {
+                                StartHourRental(now, i, hourRentals, parkingController.GetParking());
+                                this.Close();
+                            }
+                            else
+                            {
+                                this.Close();
+                            }
+                                break;
                         }
 
                     case 1:
                         {
+
                             try
                             {
                                 SetVehicleType(newVehicleType);
@@ -132,21 +163,33 @@ namespace TP_Parking
 
                             try
                             {
-                                FillNewVehicle(newVehicle, newVehicleType, now, parking);
+                                loadSuccess = FillNewVehicle(newVehicle, newVehicleType, now, parkingController.GetParking());
                             }
                             catch (Exception ex)
                             {
                                 exceptionController.ShowMessage(ex, "Must Input a Domain");
                             }
+
                             try
                             {
-                                StartMonthRental(now, i, owner, monthRentals, this.movements, parking, user, months);
+                                if (loadSuccess)
+                                {
+                                    StartMonthRental(now, i, owner, monthRentals, this.movements, parkingController.GetParking(), user, months);
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    this.Close();
+                                }
                             }
+
                             catch (Exception ex)
                             {
                                 exceptionController.ShowMessage(ex, "Must Input a vehicle");
                             }
-                            this.Close();
+                           
+
+
                             break;
                         }
                     default:
@@ -231,22 +274,88 @@ namespace TP_Parking
             hourRentals.Add(hourrental);
         }
 
-        private void FillNewVehicle(Vehicle newvehicle, VehicleType newvehicletype, DateTime now, Parking parking)
+        private bool FillNewVehicle(Vehicle newvehicle, VehicleType newvehicletype, DateTime now, Parking parking)
         {
-            if (textBoxDomain.Text != "")
+            bool load = false;
+
+            if (comboBoxDomainFormat.SelectedIndex == 0)
             {
-                newvehicle.Domain = textBoxDomain.Text;
+                maskedTextBoxOldDomain.Text.ToUpper();
+                if (maskedTextBoxOldDomain.Text.Length < 6)
+                {
+                    MessageBox.Show("La patente es inválida");
+                    maskedTextBoxOldDomain.Focus();
+                    return false;
+
+                }
+                else
+                {
+                    foreach (Garage garage in parking.garages)
+                    {
+                        maskedTextBoxNewDomain.Text.ToUpper();
+                        if (garage.Vehicle != null && garage.Vehicle.Domain == maskedTextBoxOldDomain.Text.ToUpper() && garage.State == true)
+                        {
+                            MessageBox.Show("El vehiculo ya se encuentra ingresado");
+                            maskedTextBoxOldDomain.Focus();
+                            maskedTextBoxOldDomain.ResetText();
+                            return false;
+                        }
+                        else
+                        {
+                            newvehicle.Domain = maskedTextBoxOldDomain.Text.ToUpper();
+                            load = true;
+                        }
+                    }
+                }
             }
             else
             {
-                throw new Exception();
+                if (comboBoxDomainFormat.SelectedIndex == 1)
+                {
+                    if (maskedTextBoxNewDomain.Text.Length < 7)
+                    {
+                        MessageBox.Show("La patente es inválida");
+                        maskedTextBoxNewDomain.Focus();
+                        maskedTextBoxNewDomain.ResetText();
+                        return false;
+                    }
+                    else
+                    {
+                        foreach (Garage garage in parking.garages)
+                        {
+                            if (garage.Vehicle != null && garage.Vehicle.Domain == maskedTextBoxNewDomain.Text.ToUpper() && garage.State == true)
+                            {
+                                MessageBox.Show("El vehiculo ya se encuentra ingresado");
+                                maskedTextBoxNewDomain.Focus();
+                                maskedTextBoxNewDomain.ResetText();
+                                return false;
+                            }
+                            else
+                            {
+                                newvehicle.Domain = maskedTextBoxNewDomain.Text.ToUpper();
+                                maskedTextBoxNewDomain.Focus();
+                                load = true;
+                            }
+                        }
+                    }
+                }
+
+                else
+                {
+                    throw new Exception();
+                }
             }
+
+
+
             newvehicle.Brand = textBoxBrand.Text;
             newvehicle.Model = textBoxModel.Text;
             newvehicle.VehicleType = newvehicletype;
             var i = Convert.ToInt32(textBoxGarage.Text) - 1;
             parking.garages[i].State = true;
             parking.garages[i].Vehicle = newvehicle;
+            return load;
+
         }
         private void buttonExitRental_Click(object sender, EventArgs e)
         {
@@ -261,13 +370,14 @@ namespace TP_Parking
             comboBoxVehicleSel.Show();
             textBoxGarage.Show();
             textBoxBrand.Show();
-            textBoxDomain.Show();
             textBoxModel.Show();
             labelBrand.Show();
             labelDomain.Show();
             labelGarage.Show();
             labelModel.Show();
             labelVehicleType.Show();
+            comboBoxDomainFormat.Show();
+            labelDomainFormat.Show();
             if (comboBoxRentalType.SelectedIndex == 1)
             {
                 comboBoxMonths.Show();
@@ -291,6 +401,20 @@ namespace TP_Parking
             labelValueShow.Text = "";
             int monthTime = Convert.ToInt32(comboBoxMonths.SelectedItem);
             labelValueShow.Text = ($"${MonthRental.MonthValue * monthTime}");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxDomainFormat.SelectedIndex == 0)
+            {
+                maskedTextBoxNewDomain.Hide();
+                maskedTextBoxOldDomain.Show();
+            }
+            if (comboBoxDomainFormat.SelectedIndex == 1)
+            {
+                maskedTextBoxOldDomain.Hide();
+                maskedTextBoxNewDomain.Show();
+            }
         }
     }
 }

@@ -15,19 +15,20 @@ namespace TP_Parking
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (!userController.ValidateLogin(textBoxUser.Text, maskedTextBoxPassword.Text)) //validacion de login 
+            if (userController.ValidateLogin(textBoxUser.Text, maskedTextBoxPassword.Text)) //validacion de login 
             {
+                MenuForm menu = new MenuForm(userController);
+                this.Hide();
+                menu.ShowDialog(this);
+                this.Close();
+            }
+            else
+            {
+                
                 MessageBox.Show("Usuario o Contraseña Incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBoxUser.Text = "";
                 maskedTextBoxPassword.Text = "";
                 textBoxUser.Select();
-            }
-            else
-            {
-                MenuForm menu = new MenuForm(userController);
-                this.Hide();
-                menu.ShowDialog(this);               
-                this.Close();
             }
         }
         private void buttonExit_Click(object sender, EventArgs e)
@@ -39,6 +40,21 @@ namespace TP_Parking
             closingsController.LoadPrevious();//Cargo cierres anteriores
             userController.LoadUser(closingsController.Get()); //Cargo Usuario
             labelLastLogin.Text = ("Último Ingreso: " + userController.GetUser().LastAdmission);
+        }
+
+        private void labelUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

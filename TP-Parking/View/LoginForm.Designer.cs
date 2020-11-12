@@ -41,83 +41,105 @@
             // labelLogin
             // 
             this.labelLogin.AutoSize = true;
-            this.labelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLogin.Location = new System.Drawing.Point(128, 20);
+            this.labelLogin.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.labelLogin.Location = new System.Drawing.Point(118, 21);
             this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(119, 33);
+            this.labelLogin.Size = new System.Drawing.Size(122, 40);
             this.labelLogin.TabIndex = 0;
             this.labelLogin.Text = "Ingreso";
+            this.labelLogin.Click += new System.EventHandler(this.labelLogin_Click);
             // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUser.Location = new System.Drawing.Point(81, 80);
+            this.labelUser.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUser.Location = new System.Drawing.Point(49, 81);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(58, 16);
+            this.labelUser.Size = new System.Drawing.Size(59, 18);
             this.labelUser.TabIndex = 1;
             this.labelUser.Text = "Usuario:";
+            this.labelUser.Click += new System.EventHandler(this.labelUser_Click);
             // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.Location = new System.Drawing.Point(63, 125);
+            this.labelPassword.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.Location = new System.Drawing.Point(31, 126);
             this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(77, 16);
+            this.labelPassword.Size = new System.Drawing.Size(75, 18);
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Contraseña";
+            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
             // 
             // textBoxUser
             // 
-            this.textBoxUser.Location = new System.Drawing.Point(145, 79);
+            this.textBoxUser.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxUser.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUser.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxUser.Location = new System.Drawing.Point(113, 80);
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.Size = new System.Drawing.Size(133, 20);
+            this.textBoxUser.Size = new System.Drawing.Size(170, 26);
             this.textBoxUser.TabIndex = 3;
             // 
             // maskedTextBoxPassword
             // 
-            this.maskedTextBoxPassword.Location = new System.Drawing.Point(146, 121);
+            this.maskedTextBoxPassword.BackColor = System.Drawing.Color.Gainsboro;
+            this.maskedTextBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maskedTextBoxPassword.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBoxPassword.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.maskedTextBoxPassword.Location = new System.Drawing.Point(114, 122);
             this.maskedTextBoxPassword.Name = "maskedTextBoxPassword";
             this.maskedTextBoxPassword.PasswordChar = '*';
-            this.maskedTextBoxPassword.Size = new System.Drawing.Size(133, 20);
+            this.maskedTextBoxPassword.Size = new System.Drawing.Size(169, 26);
             this.maskedTextBoxPassword.TabIndex = 4;
             // 
             // buttonOk
             // 
-            this.buttonOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOk.Location = new System.Drawing.Point(114, 159);
+            this.buttonOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonOk.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOk.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOk.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonOk.Location = new System.Drawing.Point(124, 158);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(102, 30);
             this.buttonOk.TabIndex = 5;
             this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.UseVisualStyleBackColor = false;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // labelLastLogin
             // 
             this.labelLastLogin.AutoSize = true;
-            this.labelLastLogin.Location = new System.Drawing.Point(49, 241);
+            this.labelLastLogin.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastLogin.Location = new System.Drawing.Point(81, 228);
             this.labelLastLogin.Name = "labelLastLogin";
-            this.labelLastLogin.Size = new System.Drawing.Size(0, 13);
+            this.labelLastLogin.Size = new System.Drawing.Size(0, 15);
             this.labelLastLogin.TabIndex = 6;
             // 
             // buttonExit
             // 
-            this.buttonExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExit.Location = new System.Drawing.Point(114, 195);
+            this.buttonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.buttonExit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExit.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonExit.Location = new System.Drawing.Point(124, 194);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(102, 30);
             this.buttonExit.TabIndex = 7;
             this.buttonExit.Text = "Salir";
-            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.UseVisualStyleBackColor = false;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(347, 255);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.labelLastLogin);
@@ -127,7 +149,11 @@
             this.Controls.Add(this.labelPassword);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.labelLogin);
+            this.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "LoginForm";
+            this.Opacity = 0.95D;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);

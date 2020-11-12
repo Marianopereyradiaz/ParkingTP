@@ -13,6 +13,7 @@ namespace TP_Parking
         public RegisterForm(Movements movements, Closings closings, User user)
         {
             InitializeComponent();
+            this.Refresh();
             this.movements = movements;
             this.closings = closings;
             this.user = user;
@@ -20,26 +21,34 @@ namespace TP_Parking
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            double total = 0;
-            foreach (Movement m in movements.ReturnAll())
+            LoadRegisterForm();
+        }
+
+        private void LoadRegisterForm()
+        {
+            dataGridViewMovements.Rows.Clear();
+            double income = 0;
+            double outcome = 0;
+            foreach (Movement movement in movements.ReturnAll())
             {
-                if (m.Closing == null)
+                if (movement.Closing == null || movement.Closing.Date == DateTime.MinValue)
                 {
-                    double realamount;
-                    if (m.IsEntry)
+                    if (movement.IsEntry)
                     {
-                        realamount = m.Amount;
+                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, user.UserName, "$" + movement.Amount, " ");
+                        income += movement.Amount;
                     }
                     else
                     {
-                        realamount = -m.Amount;
+                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, user.UserName, " ", "$" + movement.Amount);
+                        outcome += movement.Amount;
                     }
-                    total = total + realamount;
-                    this.dataGridViewMovements.Rows.Add(m.Concept, m.Date, user.UserName, "$" + realamount);
                 }
             }
             labelDay.Text = DateTime.Now.ToLongDateString();
-            labelTotal.Text = "$" + Convert.ToString(total);
+            label1.Text = ($"Total Ingresos: ${income}");
+            label2.Text = ($"Total Egresos: ${outcome}");
+            labelTotal.Text = ($"Total: ${ Convert.ToString(income - outcome)}");
         }
 
         private void buttonClosing_Click(object sender, EventArgs e)
@@ -51,7 +60,7 @@ namespace TP_Parking
                     Closing newClose = new Closing();
                     foreach (Movement movement in movements.ReturnAll())
                     {
-                        if (movement.Closing == null)
+                        if (movement.Closing == null || movement.Closing.Date == DateTime.MinValue)
                         {
                             newClose.User = movement.User;
                             newClose.User.UserName = movement.User.UserName;
@@ -81,6 +90,13 @@ namespace TP_Parking
         private void buttonExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonMovements_Click(object sender, EventArgs e)
+        {
+            MovementsForm movementsForm = new MovementsForm(movements, user);
+            movementsForm.ShowDialog();
+            LoadRegisterForm();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using TP_Parking.Controllers;
 
@@ -25,9 +26,19 @@ namespace TP_Parking
         }
         private void buttonExit_Click(object sender, EventArgs e)//Cierra y guarda colecciones
         {
-            if (!movementsController.ValidateClosing())
+            int c = movementsController.Get().ReturnAll().Count();
+            if (movementsController.Get().ReturnAll()[c - 1].Closing == null)
             {
-                exceptionController.ShowMessage("Debe realizar el cierre de caja");
+                monthRentalsController.Save(monthRentalsController.Get());
+                hourRentalsController.Save(hourRentalsController.Get());
+                movementsController.verifyMovementClosing(closingsController.Get());
+                movementsController.Save(movementsController.Get());
+                closingsController.Save(closingsController.Get());
+                parkingController.GetBusyParking().ClearGarages();
+                parkingController.SaveBusyGarages();
+                parkingController.SaveGarages(parkingController.GetBusyParking());
+                exceptionController.ShowMessage("Se guardaron movimientos");
+                this.Close();
             }
             else
             {
@@ -48,6 +59,7 @@ namespace TP_Parking
                     exceptionController.ShowMessage(ex.Message);
                 }
             }
+            
         }
         private static void ChangeGarageState(Button button, int i, ParkingController parkingController, HourRentalsController hourRentalsController, MonthRentalsController monthRentalsController)
         {
@@ -96,11 +108,6 @@ namespace TP_Parking
             var register = new RegisterForm(movementsController.Get(), closingsController.Get(), userController.GetUser());
             register.ShowDialog();
         }//abre menu de caja
-        private void buttonMovements_Click(object sender, EventArgs e)
-        {
-            MovementsForm movementsForm = new MovementsForm(movementsController.Get(), userController.GetUser());
-            movementsForm.ShowDialog();
-        }//abre menu de movimientos
         private void buttonReports_Click(object sender, EventArgs e)
         {
             ReportsForm reportsForm = new ReportsForm(monthRentalsController, hourRentalsController, closingsController.Get(), movementsController.Get());
@@ -139,7 +146,7 @@ namespace TP_Parking
             int i = (Convert.ToInt32(button.Text.Substring(0, spaceIndex)) - 1);
             if (button.BackColor == Color.LawnGreen)
             {
-                StartRentalForm startRental = new StartRentalForm(parkingController.GetParking().garages[i], hourRentalsController.Get(), monthRentalsController.Get(), movementsController.Get(), parkingController.GetParking(), userController.GetUser());
+                StartRentalForm startRental = new StartRentalForm(parkingController.GetParking().garages[i], hourRentalsController.Get(), monthRentalsController.Get(), movementsController.Get(), userController.GetUser(), parkingController);
                 startRental.ShowDialog();
             }
             else
@@ -148,13 +155,13 @@ namespace TP_Parking
                 {
                     if (monthRentalsController.MonthRentalExist(i) == true)
                     {
-                        finishForm = new FinishRentalForm(i, monthRentalsController.StopMonthRental(i,monthRentalsController.Get(),parkingController.GetParking()), movementsController.Get(), userController.GetUser(), parkingController.GetParking(), monthRentalsController.Get());
+                        finishForm = new FinishRentalForm(i, monthRentalsController.StopMonthRental(i,monthRentalsController.Get(),parkingController.GetParking()), movementsController.Get(), userController.GetUser(), parkingController, monthRentalsController.Get());
                     }
 
                     if (hourRentalsController.HourRentalExist(i))
                     {
 
-                        finishForm = new FinishRentalForm(i, hourRentalsController.StopHourRental(i,hourRentalsController.Get(),parkingController.GetParking()), movementsController.Get(), userController.GetUser(), parkingController.GetParking());
+                        finishForm = new FinishRentalForm(i, hourRentalsController.StopHourRental(i,hourRentalsController.Get(),parkingController.GetParking()), movementsController.Get(), userController.GetUser(), parkingController);
                     }
                 }
                 finishForm.ShowDialog();

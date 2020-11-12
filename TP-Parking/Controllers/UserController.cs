@@ -26,7 +26,7 @@ namespace TP_Parking.Controllers
         }
         public bool ValidateLogin(string userNameLogin, string passwordLogin) //validacion del login, toma parametros del form Login
         {
-            if (userNameLogin == user.UserName || passwordLogin == user.Password)
+            if (userNameLogin == user.UserName && passwordLogin == user.Password)
             {
                 user.LastAdmission = DateTime.Now; // si es true, establece nuevo último ingreso
                 return true;

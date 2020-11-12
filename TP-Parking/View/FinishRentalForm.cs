@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using TP_Parking.Controllers;
 
 namespace TP_Parking
 {
@@ -12,24 +13,25 @@ namespace TP_Parking
         private HourRental hourRental = null;
         private Parking parking;
         private MonthRentals monthRentals;
-        public FinishRentalForm(int garageIndex, MonthRental rental, Movements movements, User user, Parking parking, MonthRentals monthRentals)
+        private ParkingController parkingController;
+        public FinishRentalForm(int garageIndex, MonthRental rental, Movements movements, User user, ParkingController parkingController, MonthRentals monthRentals)
         {
             this.user = user;
             this.garageIndex = garageIndex;
             this.monthRental = rental;
             this.movements = movements;
-            this.parking = parking;
+            this.parkingController = parkingController;
             this.monthRentals = monthRentals;
             InitializeComponent();
         }
 
-        public FinishRentalForm(int garageIndex, HourRental rental, Movements movements, User user, Parking parking)
+        public FinishRentalForm(int garageIndex, HourRental rental, Movements movements, User user, ParkingController parkingController)
         {
             this.user = user;
             this.garageIndex = garageIndex;
             this.hourRental = rental;
             this.movements = movements;
-            this.parking = parking;
+            this.parkingController = parkingController;
             InitializeComponent();
         }
 
@@ -169,7 +171,7 @@ namespace TP_Parking
 
         private void buttonRenovation_Click(object sender, EventArgs e)
         {
-            StartRentalForm renovationForm = new StartRentalForm(monthRental.Garage, monthRentals, movements, parking, user, monthRental);
+            StartRentalForm renovationForm = new StartRentalForm(monthRental.Garage, monthRentals, movements, parkingController, user, monthRental);
             renovationForm.ShowDialog();
             this.Close();
         }

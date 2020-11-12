@@ -29,7 +29,7 @@ namespace TP_Parking
             HourRental.CarValue = Convert.ToDouble(textBoxNewCarValue.Text);
             HourRental.MotorcycleValue = Convert.ToDouble(textBoxNewMotorcycleValue.Text);
             MonthRental.MonthValue = Convert.ToDouble(textBoxNewMonthHour.Text);
-            MessageBox.Show("Values have been modified", "Atention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("Se modificaron valores", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             this.Close();
         }
     }

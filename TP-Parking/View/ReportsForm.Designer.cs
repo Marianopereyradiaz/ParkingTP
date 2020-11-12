@@ -35,10 +35,15 @@
             // 
             // buttonDailyRentals
             // 
-            this.buttonDailyRentals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDailyRentals.Location = new System.Drawing.Point(38, 12);
+            this.buttonDailyRentals.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonDailyRentals.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonDailyRentals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDailyRentals.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDailyRentals.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonDailyRentals.Location = new System.Drawing.Point(45, 14);
+            this.buttonDailyRentals.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonDailyRentals.Name = "buttonDailyRentals";
-            this.buttonDailyRentals.Size = new System.Drawing.Size(131, 41);
+            this.buttonDailyRentals.Size = new System.Drawing.Size(153, 47);
             this.buttonDailyRentals.TabIndex = 0;
             this.buttonDailyRentals.Text = "Historial de Alquileres";
             this.buttonDailyRentals.UseVisualStyleBackColor = true;
@@ -46,10 +51,15 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.Location = new System.Drawing.Point(38, 142);
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonClose.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonClose.Location = new System.Drawing.Point(45, 164);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(131, 41);
+            this.buttonClose.Size = new System.Drawing.Size(153, 47);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Cerrar";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -57,10 +67,15 @@
             // 
             // buttonPreviousClosings
             // 
-            this.buttonPreviousClosings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPreviousClosings.Location = new System.Drawing.Point(38, 59);
+            this.buttonPreviousClosings.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonPreviousClosings.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonPreviousClosings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPreviousClosings.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPreviousClosings.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.buttonPreviousClosings.Location = new System.Drawing.Point(45, 68);
+            this.buttonPreviousClosings.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.buttonPreviousClosings.Name = "buttonPreviousClosings";
-            this.buttonPreviousClosings.Size = new System.Drawing.Size(131, 41);
+            this.buttonPreviousClosings.Size = new System.Drawing.Size(153, 47);
             this.buttonPreviousClosings.TabIndex = 2;
             this.buttonPreviousClosings.Text = "Cierres Anteriores";
             this.buttonPreviousClosings.UseVisualStyleBackColor = true;
@@ -68,13 +83,17 @@
             // 
             // ReportsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(220, 195);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
+            this.ClientSize = new System.Drawing.Size(256, 225);
             this.Controls.Add(this.buttonPreviousClosings);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonDailyRentals);
+            this.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "ReportsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reportes";
             this.ResumeLayout(false);
 
