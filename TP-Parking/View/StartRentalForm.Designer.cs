@@ -62,7 +62,7 @@
             this.buttonExitRental.Location = new System.Drawing.Point(96, 495);
             this.buttonExitRental.Name = "buttonExitRental";
             this.buttonExitRental.Size = new System.Drawing.Size(121, 33);
-            this.buttonExitRental.TabIndex = 9;
+            this.buttonExitRental.TabIndex = 11;
             this.buttonExitRental.Text = "Cancelar";
             this.buttonExitRental.UseVisualStyleBackColor = true;
             this.buttonExitRental.Click += new System.EventHandler(this.buttonExitRental_Click);
@@ -76,7 +76,7 @@
             this.buttonConfirmRental.Location = new System.Drawing.Point(96, 442);
             this.buttonConfirmRental.Name = "buttonConfirmRental";
             this.buttonConfirmRental.Size = new System.Drawing.Size(121, 33);
-            this.buttonConfirmRental.TabIndex = 8;
+            this.buttonConfirmRental.TabIndex = 10;
             this.buttonConfirmRental.Text = "Confirmar";
             this.buttonConfirmRental.UseVisualStyleBackColor = true;
             this.buttonConfirmRental.Click += new System.EventHandler(this.buttonConfirmRental_Click);
@@ -133,7 +133,7 @@
             this.textBoxBrand.Location = new System.Drawing.Point(169, 247);
             this.textBoxBrand.Name = "textBoxBrand";
             this.textBoxBrand.Size = new System.Drawing.Size(73, 26);
-            this.textBoxBrand.TabIndex = 5;
+            this.textBoxBrand.TabIndex = 6;
             // 
             // textBoxModel
             // 
@@ -143,7 +143,7 @@
             this.textBoxModel.Location = new System.Drawing.Point(170, 285);
             this.textBoxModel.Name = "textBoxModel";
             this.textBoxModel.Size = new System.Drawing.Size(73, 26);
-            this.textBoxModel.TabIndex = 6;
+            this.textBoxModel.TabIndex = 7;
             // 
             // labelBrand
             // 
@@ -197,7 +197,7 @@
             this.textBoxOwner.Location = new System.Drawing.Point(170, 320);
             this.textBoxOwner.Name = "textBoxOwner";
             this.textBoxOwner.Size = new System.Drawing.Size(73, 26);
-            this.textBoxOwner.TabIndex = 7;
+            this.textBoxOwner.TabIndex = 8;
             // 
             // comboBoxVehicleSel
             // 
@@ -214,7 +214,7 @@
             this.comboBoxVehicleSel.Location = new System.Drawing.Point(169, 91);
             this.comboBoxVehicleSel.Name = "comboBoxVehicleSel";
             this.comboBoxVehicleSel.Size = new System.Drawing.Size(75, 26);
-            this.comboBoxVehicleSel.TabIndex = 16;
+            this.comboBoxVehicleSel.TabIndex = 2;
             // 
             // comboBoxRentalType
             // 
@@ -230,7 +230,7 @@
             this.comboBoxRentalType.Location = new System.Drawing.Point(169, 44);
             this.comboBoxRentalType.Name = "comboBoxRentalType";
             this.comboBoxRentalType.Size = new System.Drawing.Size(75, 26);
-            this.comboBoxRentalType.TabIndex = 17;
+            this.comboBoxRentalType.TabIndex = 1;
             this.comboBoxRentalType.SelectedIndexChanged += new System.EventHandler(this.comboBoxRentalType_SelectedIndexChanged_1);
             // 
             // labelMonths
@@ -268,7 +268,7 @@
             this.comboBoxMonths.Location = new System.Drawing.Point(169, 358);
             this.comboBoxMonths.Name = "comboBoxMonths";
             this.comboBoxMonths.Size = new System.Drawing.Size(73, 26);
-            this.comboBoxMonths.TabIndex = 20;
+            this.comboBoxMonths.TabIndex = 9;
             this.comboBoxMonths.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonths_SelectedIndexChanged);
             // 
             // labelValue
@@ -317,7 +317,7 @@
             this.comboBoxDomainFormat.Location = new System.Drawing.Point(170, 168);
             this.comboBoxDomainFormat.Name = "comboBoxDomainFormat";
             this.comboBoxDomainFormat.Size = new System.Drawing.Size(75, 26);
-            this.comboBoxDomainFormat.TabIndex = 25;
+            this.comboBoxDomainFormat.TabIndex = 4;
             this.comboBoxDomainFormat.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // maskedTextBoxOldDomain
@@ -347,7 +347,7 @@
             this.maskedTextBoxNewDomain.Mask = "00LLL00";
             this.maskedTextBoxNewDomain.Name = "maskedTextBoxNewDomain";
             this.maskedTextBoxNewDomain.Size = new System.Drawing.Size(72, 26);
-            this.maskedTextBoxNewDomain.TabIndex = 27;
+            this.maskedTextBoxNewDomain.TabIndex = 5;
             this.maskedTextBoxNewDomain.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // StartRentalForm
@@ -382,7 +382,6 @@
             this.Name = "StartRentalForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empezar Alquiler";
-            this.Load += new System.EventHandler(this.StartRentalForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,7 +402,6 @@
         private System.Windows.Forms.TextBox textBoxGarage;
         private System.Windows.Forms.Label labelOwner;
         private System.Windows.Forms.TextBox textBoxOwner;
-        private System.Windows.Forms.ComboBox comboBoxVehicleType;
         private System.Windows.Forms.ComboBox comboBoxVehicleSel;
         private System.Windows.Forms.ComboBox comboBoxRentalType;
         private System.Windows.Forms.Label labelMonths;

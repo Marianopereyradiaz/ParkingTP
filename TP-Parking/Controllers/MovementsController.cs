@@ -7,8 +7,9 @@ namespace TP_Parking.Controllers
     {
 
         private Movements movements = new Movements();
+        private Movement newMovement = new Movement();
         private XMLMovements movementsManager = new XMLMovements();
-        private UserController userController = new UserController();       
+        private UserController userController = new UserController();
         public MovementsController() { }
         public void LoadPrevious()
         {
@@ -23,7 +24,7 @@ namespace TP_Parking.Controllers
             if (!ValidateClosing())
             {
                 Closing closing = new Closing(DateTime.Now, userController.GetUser());
-                Movement movement = new Movement("Cierre",0,DateTime.Now,false,userController.GetUser(),closing);
+                Movement movement = new Movement("Cierre", 0, DateTime.Now, false, userController.GetUser(), closing);
                 movements.Add(movement);
                 movementsManager.GenerateXML(movements.ReturnAll());
             }
@@ -62,8 +63,37 @@ namespace TP_Parking.Controllers
                     Closing newClosing = new Closing(DateTime.MinValue, userController.GetUser());
                     movement.Closing = newClosing;
                     closings.Add(newClosing);
+
                 }
+
+            }
+            movementsManager.GenerateXML(movements.ReturnAll());
+        }
+
+        public bool NewMovement(UserController userController, string concept, string amount)
+        {
+            try
+            {
+                newMovement.Concept = concept;
+                newMovement.User = userController.GetUser();
+                newMovement.User.UserName = userController.GetUser().UserName;
+                newMovement.User.LastAdmission = userController.GetUser().LastAdmission;
+                newMovement.User.Password = userController.GetUser().Password;
+                newMovement.Date = DateTime.Now;
+                newMovement.Closing = null;
+                newMovement.IsEntry = false;
+                newMovement.Amount = Convert.ToDouble(amount);
+                return true;
+             }
+            catch
+            {
+                return false;
             }
         }
-    }
+
+        public void SaveNewMovement()
+        {
+            movements.Add(newMovement);
+        }
+     }
 }

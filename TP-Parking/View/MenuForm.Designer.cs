@@ -69,7 +69,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonExit.Location = new System.Drawing.Point(537, 543);
+            this.buttonExit.Location = new System.Drawing.Point(556, 627);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(122, 41);
             this.buttonExit.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.buttonRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRegister.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRegister.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonRegister.Location = new System.Drawing.Point(88, 543);
+            this.buttonRegister.Location = new System.Drawing.Point(107, 627);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(121, 41);
             this.buttonRegister.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.buttonReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReports.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReports.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonReports.Location = new System.Drawing.Point(234, 543);
+            this.buttonReports.Location = new System.Drawing.Point(253, 627);
             this.buttonReports.Name = "buttonReports";
             this.buttonReports.Size = new System.Drawing.Size(121, 41);
             this.buttonReports.TabIndex = 2;
@@ -124,7 +124,7 @@
             this.buttonModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModify.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonModify.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonModify.Location = new System.Drawing.Point(386, 543);
+            this.buttonModify.Location = new System.Drawing.Point(405, 627);
             this.buttonModify.Name = "buttonModify";
             this.buttonModify.Size = new System.Drawing.Size(121, 41);
             this.buttonModify.TabIndex = 3;
@@ -165,7 +165,7 @@
             this.groupBoxParkingView.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxParkingView.Location = new System.Drawing.Point(40, 71);
             this.groupBoxParkingView.Name = "groupBoxParkingView";
-            this.groupBoxParkingView.Size = new System.Drawing.Size(641, 466);
+            this.groupBoxParkingView.Size = new System.Drawing.Size(757, 550);
             this.groupBoxParkingView.TabIndex = 7;
             this.groupBoxParkingView.TabStop = false;
             this.groupBoxParkingView.Text = "Vista Estacionamiento";
@@ -173,325 +173,375 @@
             // 
             // buttonG9
             // 
+            this.buttonG9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG9.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG9.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG9.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG9.Location = new System.Drawing.Point(93, 19);
+            this.buttonG9.Location = new System.Drawing.Point(61, 19);
             this.buttonG9.Name = "buttonG9";
-            this.buttonG9.Size = new System.Drawing.Size(70, 65);
+            this.buttonG9.Size = new System.Drawing.Size(85, 80);
             this.buttonG9.TabIndex = 15;
             this.buttonG9.Text = "9 ";
             this.buttonG9.UseVisualStyleBackColor = false;
             // 
             // buttonG15
             // 
+            this.buttonG15.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG15.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG15.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG15.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG15.Location = new System.Drawing.Point(549, 19);
+            this.buttonG15.Location = new System.Drawing.Point(666, 19);
             this.buttonG15.Name = "buttonG15";
-            this.buttonG15.Size = new System.Drawing.Size(70, 65);
+            this.buttonG15.Size = new System.Drawing.Size(85, 80);
             this.buttonG15.TabIndex = 21;
             this.buttonG15.Text = "15 ";
             this.buttonG15.UseVisualStyleBackColor = false;
             // 
             // buttonG14
             // 
+            this.buttonG14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG14.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG14.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG14.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG14.Location = new System.Drawing.Point(473, 19);
+            this.buttonG14.Location = new System.Drawing.Point(566, 19);
             this.buttonG14.Name = "buttonG14";
-            this.buttonG14.Size = new System.Drawing.Size(70, 65);
+            this.buttonG14.Size = new System.Drawing.Size(85, 80);
             this.buttonG14.TabIndex = 20;
             this.buttonG14.Text = "14 ";
             this.buttonG14.UseVisualStyleBackColor = false;
             // 
             // buttonG13
             // 
+            this.buttonG13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG13.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG13.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG13.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG13.Location = new System.Drawing.Point(397, 19);
+            this.buttonG13.Location = new System.Drawing.Point(466, 19);
             this.buttonG13.Name = "buttonG13";
-            this.buttonG13.Size = new System.Drawing.Size(70, 65);
+            this.buttonG13.Size = new System.Drawing.Size(85, 80);
             this.buttonG13.TabIndex = 19;
             this.buttonG13.Text = "13 ";
             this.buttonG13.UseVisualStyleBackColor = false;
             // 
             // buttonG12
             // 
+            this.buttonG12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG12.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG12.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG12.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG12.Location = new System.Drawing.Point(321, 19);
+            this.buttonG12.Location = new System.Drawing.Point(365, 19);
             this.buttonG12.Name = "buttonG12";
-            this.buttonG12.Size = new System.Drawing.Size(70, 65);
+            this.buttonG12.Size = new System.Drawing.Size(85, 80);
             this.buttonG12.TabIndex = 18;
             this.buttonG12.Text = "12 ";
             this.buttonG12.UseVisualStyleBackColor = false;
             // 
             // buttonG11
             // 
+            this.buttonG11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG11.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG11.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG11.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG11.Location = new System.Drawing.Point(245, 19);
+            this.buttonG11.Location = new System.Drawing.Point(265, 19);
             this.buttonG11.Name = "buttonG11";
-            this.buttonG11.Size = new System.Drawing.Size(70, 65);
+            this.buttonG11.Size = new System.Drawing.Size(85, 80);
             this.buttonG11.TabIndex = 17;
             this.buttonG11.Text = "11 ";
             this.buttonG11.UseVisualStyleBackColor = false;
             // 
             // buttonG24
             // 
+            this.buttonG24.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG24.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG24.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG24.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG24.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG24.Location = new System.Drawing.Point(460, 361);
+            this.buttonG24.Location = new System.Drawing.Point(566, 448);
             this.buttonG24.Name = "buttonG24";
-            this.buttonG24.Size = new System.Drawing.Size(70, 65);
+            this.buttonG24.Size = new System.Drawing.Size(85, 80);
             this.buttonG24.TabIndex = 30;
             this.buttonG24.Text = "24 ";
             this.buttonG24.UseVisualStyleBackColor = false;
             // 
             // buttonG10
             // 
+            this.buttonG10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG10.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG10.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG10.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG10.Location = new System.Drawing.Point(169, 19);
+            this.buttonG10.Location = new System.Drawing.Point(161, 19);
             this.buttonG10.Name = "buttonG10";
-            this.buttonG10.Size = new System.Drawing.Size(70, 65);
+            this.buttonG10.Size = new System.Drawing.Size(85, 80);
             this.buttonG10.TabIndex = 16;
             this.buttonG10.Text = "10 ";
             this.buttonG10.UseVisualStyleBackColor = false;
             // 
             // buttonG25
             // 
+            this.buttonG25.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG25.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG25.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG25.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG25.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG25.Location = new System.Drawing.Point(549, 361);
+            this.buttonG25.Location = new System.Drawing.Point(666, 448);
             this.buttonG25.Name = "buttonG25";
-            this.buttonG25.Size = new System.Drawing.Size(70, 65);
+            this.buttonG25.Size = new System.Drawing.Size(85, 80);
             this.buttonG25.TabIndex = 31;
             this.buttonG25.Text = "25 ";
             this.buttonG25.UseVisualStyleBackColor = false;
             // 
             // buttonG8
             // 
+            this.buttonG8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG8.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG8.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG8.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG8.Location = new System.Drawing.Point(117, 361);
+            this.buttonG8.Location = new System.Drawing.Point(161, 448);
             this.buttonG8.Name = "buttonG8";
-            this.buttonG8.Size = new System.Drawing.Size(70, 65);
+            this.buttonG8.Size = new System.Drawing.Size(85, 80);
             this.buttonG8.TabIndex = 14;
             this.buttonG8.Text = "8 ";
             this.buttonG8.UseVisualStyleBackColor = false;
             // 
             // buttonG23
             // 
+            this.buttonG23.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG23.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG23.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG23.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG23.Location = new System.Drawing.Point(321, 361);
+            this.buttonG23.Location = new System.Drawing.Point(466, 448);
             this.buttonG23.Name = "buttonG23";
-            this.buttonG23.Size = new System.Drawing.Size(70, 65);
+            this.buttonG23.Size = new System.Drawing.Size(85, 80);
             this.buttonG23.TabIndex = 29;
             this.buttonG23.Text = "23 ";
             this.buttonG23.UseVisualStyleBackColor = false;
             // 
             // buttonG22
             // 
+            this.buttonG22.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG22.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG22.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG22.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG22.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG22.Location = new System.Drawing.Point(245, 361);
+            this.buttonG22.Location = new System.Drawing.Point(365, 448);
             this.buttonG22.Name = "buttonG22";
-            this.buttonG22.Size = new System.Drawing.Size(70, 65);
+            this.buttonG22.Size = new System.Drawing.Size(85, 80);
             this.buttonG22.TabIndex = 28;
             this.buttonG22.Text = "22 ";
             this.buttonG22.UseVisualStyleBackColor = false;
             // 
             // buttonG21
             // 
+            this.buttonG21.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG21.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG21.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG21.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG21.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG21.Location = new System.Drawing.Point(321, 290);
+            this.buttonG21.Location = new System.Drawing.Point(466, 362);
             this.buttonG21.Name = "buttonG21";
-            this.buttonG21.Size = new System.Drawing.Size(70, 65);
+            this.buttonG21.Size = new System.Drawing.Size(85, 80);
             this.buttonG21.TabIndex = 27;
             this.buttonG21.Text = "21 ";
             this.buttonG21.UseVisualStyleBackColor = false;
             // 
             // buttonG20
             // 
+            this.buttonG20.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG20.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG20.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG20.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG20.Location = new System.Drawing.Point(245, 290);
+            this.buttonG20.Location = new System.Drawing.Point(365, 362);
             this.buttonG20.Name = "buttonG20";
-            this.buttonG20.Size = new System.Drawing.Size(70, 65);
+            this.buttonG20.Size = new System.Drawing.Size(85, 80);
             this.buttonG20.TabIndex = 26;
             this.buttonG20.Text = "20 ";
             this.buttonG20.UseVisualStyleBackColor = false;
             // 
             // buttonG19
             // 
+            this.buttonG19.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG19.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG19.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG19.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG19.Location = new System.Drawing.Point(321, 219);
+            this.buttonG19.Location = new System.Drawing.Point(466, 276);
             this.buttonG19.Name = "buttonG19";
-            this.buttonG19.Size = new System.Drawing.Size(70, 65);
+            this.buttonG19.Size = new System.Drawing.Size(85, 80);
             this.buttonG19.TabIndex = 25;
             this.buttonG19.Text = "19 ";
             this.buttonG19.UseVisualStyleBackColor = false;
             // 
             // buttonG17
             // 
+            this.buttonG17.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG17.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG17.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG17.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG17.Location = new System.Drawing.Point(321, 148);
+            this.buttonG17.Location = new System.Drawing.Point(466, 190);
             this.buttonG17.Name = "buttonG17";
-            this.buttonG17.Size = new System.Drawing.Size(70, 65);
+            this.buttonG17.Size = new System.Drawing.Size(85, 80);
             this.buttonG17.TabIndex = 23;
             this.buttonG17.Text = "17 ";
             this.buttonG17.UseVisualStyleBackColor = false;
             // 
             // buttonG18
             // 
+            this.buttonG18.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG18.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG18.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG18.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG18.Location = new System.Drawing.Point(245, 219);
+            this.buttonG18.Location = new System.Drawing.Point(365, 276);
             this.buttonG18.Name = "buttonG18";
-            this.buttonG18.Size = new System.Drawing.Size(70, 65);
+            this.buttonG18.Size = new System.Drawing.Size(85, 80);
             this.buttonG18.TabIndex = 24;
             this.buttonG18.Text = "18 ";
             this.buttonG18.UseVisualStyleBackColor = false;
             // 
             // buttonG16
             // 
+            this.buttonG16.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG16.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG16.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG16.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG16.Location = new System.Drawing.Point(245, 148);
+            this.buttonG16.Location = new System.Drawing.Point(365, 190);
             this.buttonG16.Name = "buttonG16";
-            this.buttonG16.Size = new System.Drawing.Size(70, 65);
+            this.buttonG16.Size = new System.Drawing.Size(85, 80);
             this.buttonG16.TabIndex = 22;
             this.buttonG16.Text = "16 ";
             this.buttonG16.UseVisualStyleBackColor = false;
             // 
             // buttonG7
             // 
+            this.buttonG7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG7.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG7.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG7.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG7.Location = new System.Drawing.Point(117, 290);
+            this.buttonG7.Location = new System.Drawing.Point(161, 362);
             this.buttonG7.Name = "buttonG7";
-            this.buttonG7.Size = new System.Drawing.Size(70, 65);
+            this.buttonG7.Size = new System.Drawing.Size(85, 80);
             this.buttonG7.TabIndex = 13;
             this.buttonG7.Text = "7 ";
             this.buttonG7.UseVisualStyleBackColor = false;
             // 
             // buttonG6
             // 
+            this.buttonG6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG6.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG6.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG6.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG6.Location = new System.Drawing.Point(117, 219);
+            this.buttonG6.Location = new System.Drawing.Point(161, 276);
             this.buttonG6.Name = "buttonG6";
-            this.buttonG6.Size = new System.Drawing.Size(70, 65);
+            this.buttonG6.Size = new System.Drawing.Size(85, 80);
             this.buttonG6.TabIndex = 12;
             this.buttonG6.Text = "6 ";
             this.buttonG6.UseVisualStyleBackColor = false;
             // 
             // buttonG5
             // 
+            this.buttonG5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG5.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG5.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG5.Location = new System.Drawing.Point(117, 148);
+            this.buttonG5.Location = new System.Drawing.Point(161, 190);
             this.buttonG5.Name = "buttonG5";
-            this.buttonG5.Size = new System.Drawing.Size(70, 65);
+            this.buttonG5.Size = new System.Drawing.Size(85, 80);
             this.buttonG5.TabIndex = 11;
             this.buttonG5.Text = "5 ";
             this.buttonG5.UseVisualStyleBackColor = false;
             // 
             // buttonG4
             // 
+            this.buttonG4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG4.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG4.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG4.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG4.Location = new System.Drawing.Point(38, 361);
+            this.buttonG4.Location = new System.Drawing.Point(61, 448);
             this.buttonG4.Name = "buttonG4";
-            this.buttonG4.Size = new System.Drawing.Size(70, 65);
+            this.buttonG4.Size = new System.Drawing.Size(85, 80);
             this.buttonG4.TabIndex = 10;
             this.buttonG4.Text = "4 ";
             this.buttonG4.UseVisualStyleBackColor = false;
             // 
             // buttonG3
             // 
+            this.buttonG3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG3.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG3.Location = new System.Drawing.Point(38, 290);
+            this.buttonG3.Location = new System.Drawing.Point(61, 362);
             this.buttonG3.Name = "buttonG3";
-            this.buttonG3.Size = new System.Drawing.Size(70, 65);
+            this.buttonG3.Size = new System.Drawing.Size(85, 80);
             this.buttonG3.TabIndex = 9;
             this.buttonG3.Text = "3 ";
             this.buttonG3.UseVisualStyleBackColor = false;
             // 
             // buttonG2
             // 
+            this.buttonG2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG2.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG2.Location = new System.Drawing.Point(38, 219);
+            this.buttonG2.Location = new System.Drawing.Point(61, 276);
             this.buttonG2.Name = "buttonG2";
-            this.buttonG2.Size = new System.Drawing.Size(70, 65);
+            this.buttonG2.Size = new System.Drawing.Size(85, 80);
             this.buttonG2.TabIndex = 8;
             this.buttonG2.Text = "2 ";
             this.buttonG2.UseVisualStyleBackColor = false;
             // 
             // buttonG1
             // 
+            this.buttonG1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonG1.BackColor = System.Drawing.Color.LawnGreen;
             this.buttonG1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonG1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonG1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonG1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonG1.Location = new System.Drawing.Point(38, 148);
+            this.buttonG1.Location = new System.Drawing.Point(61, 190);
             this.buttonG1.Name = "buttonG1";
-            this.buttonG1.Size = new System.Drawing.Size(70, 65);
+            this.buttonG1.Size = new System.Drawing.Size(85, 80);
             this.buttonG1.TabIndex = 7;
             this.buttonG1.Text = "1 ";
             this.buttonG1.UseVisualStyleBackColor = false;
@@ -501,7 +551,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(739, 614);
+            this.ClientSize = new System.Drawing.Size(809, 680);
             this.Controls.Add(this.groupBoxParkingView);
             this.Controls.Add(this.buttonModify);
             this.Controls.Add(this.buttonReports);

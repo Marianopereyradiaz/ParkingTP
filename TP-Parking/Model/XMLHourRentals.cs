@@ -103,9 +103,6 @@ namespace TP_Parking.Model
 
 
                 HourRental hourRental = null;
-                Garage garage = null;
-                Vehicle vehicle = null;
-                VehicleType vehicleType = null;
 
                 while (reader.Read())
                 {

@@ -34,7 +34,7 @@ namespace TP_Parking
                     {
                         finish = "-";
                     }
-                    this.dataGridViewDaily.Rows.Add(hourRental.Garage.Number, rentalType, hourRental.Garage.Vehicle.VehicleType.Description, hourRental.Garage.Vehicle.Domain, hourRental.Date, finish, "$" + value, "");
+                    this.dataGridViewDaily.Rows.Add(hourRental.Garage.Number, rentalType, hourRental.Garage.Vehicle.VehicleType.Description, hourRental.Garage.Vehicle.Domain, hourRental.Date, finish, "$" + value, "-");
                 }
             }
             foreach (MonthRental monthRental in monthRentalsController.Get().ReturnAll())

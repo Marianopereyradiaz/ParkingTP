@@ -116,9 +116,10 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(61, 79);
+            this.labelTotal.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Location = new System.Drawing.Point(54, 89);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(40, 18);
+            this.labelTotal.Size = new System.Drawing.Size(49, 23);
             this.labelTotal.TabIndex = 2;
             this.labelTotal.Text = "Total";
             // 
@@ -128,7 +129,7 @@
             this.buttonClosing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClosing.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClosing.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonClosing.Location = new System.Drawing.Point(395, 304);
+            this.buttonClosing.Location = new System.Drawing.Point(397, 321);
             this.buttonClosing.Name = "buttonClosing";
             this.buttonClosing.Size = new System.Drawing.Size(141, 51);
             this.buttonClosing.TabIndex = 3;
@@ -147,7 +148,7 @@
             this.groupBoxTotalDay.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBoxTotalDay.Location = new System.Drawing.Point(12, 280);
             this.groupBoxTotalDay.Name = "groupBoxTotalDay";
-            this.groupBoxTotalDay.Size = new System.Drawing.Size(208, 109);
+            this.groupBoxTotalDay.Size = new System.Drawing.Size(208, 131);
             this.groupBoxTotalDay.TabIndex = 4;
             this.groupBoxTotalDay.TabStop = false;
             this.groupBoxTotalDay.Text = "Total ";
@@ -164,11 +165,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 50);
+            this.label1.Location = new System.Drawing.Point(4, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 18);
+            this.label1.Size = new System.Drawing.Size(99, 18);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Total Egresos";
+            this.label1.Text = "  Total Egresos";
             // 
             // labelDay
             // 
@@ -187,7 +188,7 @@
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonExit.Location = new System.Drawing.Point(563, 304);
+            this.buttonExit.Location = new System.Drawing.Point(563, 321);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(108, 51);
             this.buttonExit.TabIndex = 5;
@@ -201,7 +202,7 @@
             this.buttonMovements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMovements.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMovements.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonMovements.Location = new System.Drawing.Point(226, 304);
+            this.buttonMovements.Location = new System.Drawing.Point(236, 321);
             this.buttonMovements.Name = "buttonMovements";
             this.buttonMovements.Size = new System.Drawing.Size(141, 51);
             this.buttonMovements.TabIndex = 6;
@@ -214,7 +215,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.ClientSize = new System.Drawing.Size(683, 401);
+            this.ClientSize = new System.Drawing.Size(683, 423);
             this.Controls.Add(this.buttonMovements);
             this.Controls.Add(this.labelDay);
             this.Controls.Add(this.buttonExit);

@@ -73,11 +73,13 @@
     <Compile Include="Controllers\ExceptionController.cs" />
     <Compile Include="Model\HourRentals.cs" />
     <Compile Include="Model\IController.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="Model\XMLClosings.cs" />
     <Compile Include="Model\XMLGarages.cs" />
     <Compile Include="Model\XMLHourRentals.cs" />
     <Compile Include="Model\XMLMovements.cs" />
     <Compile Include="Model\XMLMonthRentals.cs" />
+    <Compile Include="Model\XMLUser.cs" />
     <Compile Include="View\DailyRentalsForm.cs">
       <SubType>Form</SubType>
     </Compile>

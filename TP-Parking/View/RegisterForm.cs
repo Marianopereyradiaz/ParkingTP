@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Windows.Forms;
+using TP_Parking.Controllers;
 
 namespace TP_Parking
 {
     public partial class RegisterForm : Form
     {
-        private Movements movements;
-        private User user;
-        private Closings closings;
+        private MovementsController movementsController;
+        private UserController userController;
+        private ClosingsController closingsController;
         private ExceptionController exceptionController = new ExceptionController();
 
-        public RegisterForm(Movements movements, Closings closings, User user)
+        public RegisterForm(MovementsController movementsController, ClosingsController closingsController, UserController userController)
         {
             InitializeComponent();
             this.Refresh();
-            this.movements = movements;
-            this.closings = closings;
-            this.user = user;
+            this.movementsController = movementsController;
+            this.closingsController = closingsController;
+            this.userController = userController;
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
@@ -29,36 +30,36 @@ namespace TP_Parking
             dataGridViewMovements.Rows.Clear();
             double income = 0;
             double outcome = 0;
-            foreach (Movement movement in movements.ReturnAll())
+            foreach (Movement movement in movementsController.Get().ReturnAll())
             {
                 if (movement.Closing == null || movement.Closing.Date == DateTime.MinValue)
                 {
                     if (movement.IsEntry)
                     {
-                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, user.UserName, "$" + movement.Amount, " ");
+                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, userController.GetUser().UserName, "$" + movement.Amount, " ");
                         income += movement.Amount;
                     }
                     else
                     {
-                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, user.UserName, " ", "$" + movement.Amount);
+                        this.dataGridViewMovements.Rows.Add(movement.Concept, movement.Date, userController.GetUser().UserName, " ", "$" + movement.Amount);
                         outcome += movement.Amount;
                     }
                 }
             }
             labelDay.Text = DateTime.Now.ToLongDateString();
-            label1.Text = ($"Total Ingresos: ${income}");
-            label2.Text = ($"Total Egresos: ${outcome}");
+            label1.Text = ($" Total Egresos: ${income}");
+            label2.Text = ($"Total Ingresos: ${outcome}");
             labelTotal.Text = ($"Total: ${ Convert.ToString(income - outcome)}");
         }
 
         private void buttonClosing_Click(object sender, EventArgs e)
         {
-            if (movements.ReturnAll().Count != 0)
+            if (movementsController.Get().ReturnAll().Count != 0)
             {
                 try
                 {
                     Closing newClose = new Closing();
-                    foreach (Movement movement in movements.ReturnAll())
+                    foreach (Movement movement in movementsController.Get().ReturnAll())
                     {
                         if (movement.Closing == null || movement.Closing.Date == DateTime.MinValue)
                         {
@@ -70,7 +71,7 @@ namespace TP_Parking
                             movement.Closing = newClose;
                         }
                     }
-                    closings.Add(newClose);
+                    closingsController.Get().Add(newClose);
                     dataGridViewMovements.Rows.Clear();
                     MessageBox.Show("Caja cerrada - Valores en cero", "alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -94,9 +95,11 @@ namespace TP_Parking
 
         private void buttonMovements_Click(object sender, EventArgs e)
         {
-            MovementsForm movementsForm = new MovementsForm(movements, user);
+            MovementsForm movementsForm = new MovementsForm(movementsController, userController);
             movementsForm.ShowDialog();
             LoadRegisterForm();
         }
+
+
     }
 }

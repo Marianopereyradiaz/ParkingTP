@@ -9,15 +9,15 @@ namespace TP_Parking
     {
         private MonthRentalsController monthRentalsController;
         private HourRentalsController hourRentalsController;
-        private Closings closings = new Closings();
-        private Movements movements = new Movements();
-        public ReportsForm(MonthRentalsController monthRentalsController, HourRentalsController hourRentalsController, Closings closings, Movements movements)
+        private ClosingsController closingsController = new ClosingsController();
+        private MovementsController movementsController = new MovementsController();
+        public ReportsForm(MonthRentalsController monthRentalsController, HourRentalsController hourRentalsController, ClosingsController closingsController, MovementsController movementsController)
         {
             InitializeComponent();
             this.hourRentalsController = hourRentalsController;
             this.monthRentalsController = monthRentalsController;
-            this.movements = movements;
-            this.closings = closings;
+            this.movementsController = movementsController;
+            this.closingsController = closingsController;
         }
 
         private void buttonDailyRental_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace TP_Parking
 
         private void buttonPreviousClosings_Click(object sender, EventArgs e)
         {
-            PreviousForm previousForm = new PreviousForm(closings, movements);
+            PreviousForm previousForm = new PreviousForm(closingsController, movementsController);
             previousForm.ShowDialog();
         }
     }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TP_Parking.Model;
 
 namespace TP_Parking.Controllers
@@ -10,6 +6,7 @@ namespace TP_Parking.Controllers
     public class MonthRentalsController : IController
     {
         private MonthRentals monthRentals = new MonthRentals();
+        private MonthRental activeMonthRental;
         private XMLMonthRentals monthRentalsManager = new XMLMonthRentals();
         ExceptionController exceptionController = new ExceptionController();
         public MonthRentalsController() { }
@@ -25,7 +22,6 @@ namespace TP_Parking.Controllers
         {
             monthRentalsManager.GenerateXML(monthRentals.ReturnAll());
         }
-
         public bool MonthRentalExist(int i)
         {
             foreach (MonthRental monthRental in monthRentals.ReturnAll())
@@ -37,7 +33,6 @@ namespace TP_Parking.Controllers
             }
             return false;
         }
-
         public MonthRental StopMonthRental(int i, MonthRentals monthRentals, Parking parking)
         {
             MonthRental rental = null;
@@ -55,9 +50,14 @@ namespace TP_Parking.Controllers
             {
                 exceptionController.ShowMessage(ex.Message);
             }
+            activeMonthRental = rental;
             return rental;
         }
 
+        public MonthRental GetActiveMonthRental()
+        {
+            return activeMonthRental;
+        }
         public int MonthRentalDaysLeft(MonthRental monthRental)
         {
             TimeSpan DaysWarning = (monthRental.ExpirationDate - DateTime.Now);
@@ -65,6 +65,24 @@ namespace TP_Parking.Controllers
             return days;
         }
 
-       
+        public Vehicle GetActiveVehicle(MonthRental monthRental)
+        {
+            Vehicle activeVehicle = new Vehicle();
+            if (monthRental != null)
+            {
+                activeVehicle = monthRental.Garage.Vehicle;
+                return activeVehicle;
+            }
+            return null;
+        }
+
+        public bool CheckMonthRental(MonthRental monthRental)
+        {
+            if (monthRental != null && monthRental.Garage.State == true)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

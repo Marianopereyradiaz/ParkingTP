@@ -6,7 +6,6 @@ namespace TP_Parking
 {
     public partial class LoginForm : Form
     {
-        private ClosingsController closingsController = new ClosingsController();
         private UserController userController = new UserController();
         public LoginForm()
         {
@@ -17,6 +16,7 @@ namespace TP_Parking
         {
             if (userController.ValidateLogin(textBoxUser.Text, maskedTextBoxPassword.Text)) //validacion de login 
             {
+                userController.saveUser(userController.ReturnUsers());
                 MenuForm menu = new MenuForm(userController);
                 this.Hide();
                 menu.ShowDialog(this);
@@ -37,24 +37,8 @@ namespace TP_Parking
         }
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            closingsController.LoadPrevious();//Cargo cierres anteriores
-            userController.LoadUser(closingsController.Get()); //Cargo Usuario
-            labelLastLogin.Text = ("Último Ingreso: " + userController.GetUser().LastAdmission);
-        }
-
-        private void labelUser_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPassword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelLogin_Click(object sender, EventArgs e)
-        {
-
+            userController.LoadUser(); //Cargo Usuario
+            labelLastLogin.Text = ("Último Ingreso: " + userController.GetUser().LastAdmission); //cargo ultimo ingreso de usuario
         }
     }
 }

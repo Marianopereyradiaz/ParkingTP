@@ -6,28 +6,26 @@ namespace TP_Parking
 {
     public partial class StartRentalForm : Form
     {
-        private HourRentals hourRentals;
-        private MonthRentals monthRentals;
-        private Movements movements;
-        private User user;
-        private MonthRental monthRental;
+        private HourRentalsController hourRentalsController;
+        private MonthRentalsController monthRentalsController;
+        private MovementsController movementsController;
+        private UserController userController;
         private ExceptionController exceptionController = new ExceptionController();
         private ParkingController parkingController;
-
+        private int i;
         public StartRentalForm()
         {
             InitializeComponent();
         }
-
-        public StartRentalForm(Garage garage, HourRentals hourRentals, MonthRentals monthRentals, Movements movements, User user, ParkingController parkingController)
+        public StartRentalForm(int i, HourRentalsController hourRentalsController, MonthRentalsController monthRentalsController, MovementsController movementsController, UserController userController, ParkingController parkingController)
         {
+            this.i = i;
             InitializeComponent();
-            textBoxGarage.Text = Convert.ToString(garage.Number);
-            this.hourRentals = hourRentals;
-            this.monthRentals = monthRentals;
-            this.monthRental = null;
-            this.movements = movements;
-            this.user = user;
+            textBoxGarage.Text = Convert.ToString(parkingController.GetParking().garages[i].Number);
+            this.hourRentalsController = hourRentalsController;
+            this.monthRentalsController = monthRentalsController;
+            this.movementsController = movementsController;
+            this.userController = userController;
             this.parkingController = parkingController;
             comboBoxVehicleSel.Hide();
             textBoxGarage.Hide();
@@ -48,23 +46,20 @@ namespace TP_Parking
             labelDomainFormat.Hide();
             maskedTextBoxNewDomain.Hide();
         }
-
-        public StartRentalForm(Garage garage, MonthRentals monthRentals, Movements movements, ParkingController parkingController, User user, MonthRental monthRental)
+        public StartRentalForm(int i, MonthRentalsController monthRentalsController, MovementsController movementsController, ParkingController parkingController, UserController userController)
         {
             InitializeComponent();
-            var i = monthRental.Garage.Number;
-            this.monthRental = monthRental;
-            textBoxGarage.Text = Convert.ToString(garage.Number);
-            this.monthRentals = monthRentals;
-            this.movements = movements;
+            textBoxGarage.Text = Convert.ToString(monthRentalsController.Get().ReturnAll()[i].Garage.Number);
+            this.monthRentalsController = monthRentalsController;
+            this.movementsController = movementsController;
             this.parkingController = parkingController;
-            this.user = user;
-            textBoxBrand.Text = monthRental.Garage.Vehicle.Brand;
-            maskedTextBoxOldDomain.Text = monthRental.Garage.Vehicle.Domain;
-            textBoxModel.Text = monthRental.Garage.Vehicle.Model;
+            this.userController = userController;
+            textBoxBrand.Text = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Brand;
+            maskedTextBoxOldDomain.Text = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain;
+            textBoxModel.Text = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Model;
             comboBoxRentalType.SelectedItem = comboBoxRentalType.Items[1];
-            comboBoxVehicleSel.SelectedItem = monthRental.Garage.Vehicle.VehicleType.Description;
-            textBoxOwner.Text = monthRental.Owner;
+            comboBoxVehicleSel.SelectedItem = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.VehicleType.Description;
+            textBoxOwner.Text = monthRentalsController.Get().ReturnAll()[i].Owner;
             textBoxBrand.Enabled = false;
             comboBoxVehicleSel.Show();
             comboBoxVehicleSel.Enabled = false;
@@ -83,40 +78,37 @@ namespace TP_Parking
             textBoxModel.Enabled = false;
             maskedTextBoxOldDomain.Enabled = false;
             textBoxOwner.Enabled = false;
-            if (monthRental.Garage.Vehicle.Domain.Length == 6)
+            if (monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain.Length == 6)
             {
                 comboBoxDomainFormat.SelectedIndex = 0;
                 comboBoxDomainFormat.Enabled = false;
-                maskedTextBoxOldDomain.Text = monthRental.Garage.Vehicle.Domain;
+                maskedTextBoxOldDomain.Text = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain;
                 maskedTextBoxOldDomain.Enabled = false;
                 maskedTextBoxNewDomain.Hide();
             }
-            if (monthRental.Garage.Vehicle.Domain.Length == 7)
+            if (monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain.Length == 7)
             {
                 comboBoxDomainFormat.SelectedIndex = 1;
                 comboBoxDomainFormat.Enabled = false;
-                maskedTextBoxNewDomain.Text = monthRental.Garage.Vehicle.Domain;
+                maskedTextBoxNewDomain.Text = monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain;
                 maskedTextBoxNewDomain.Enabled = false;
                 maskedTextBoxOldDomain.Hide();
             }
             int months = comboBoxMonths.SelectedIndex + 1;
         }
-
-
-
         private void buttonConfirmRental_Click(object sender, EventArgs e)
         {
-            if (monthRental == null)
+            if (parkingController.GetParking().garages[i].State == false)
             {
-                StartRental(movements);
+                StartRental(movementsController.Get());
             }
             else
             {
-                StartRenovation(DateTime.Now, user, movements, monthRentals, monthRental, comboBoxMonths.SelectedIndex + 1);
-                this.Close();
-            }
-        }
+                StartRenovation(i, DateTime.Now, userController, movementsController, monthRentalsController, comboBoxMonths.SelectedIndex + 1);
 
+            }
+            this.Close();
+        }
         private void StartRental(Movements movements)
         {
             bool loadSuccess = false;
@@ -128,7 +120,7 @@ namespace TP_Parking
             string owner = textBoxOwner.Text;
 
 
-            if (comboBoxVehicleSel.SelectedItem != null)
+            if (comboBoxVehicleSel.SelectedItem != null && comboBoxMonths.SelectedItem != null)
             {
 
                 switch (comboBoxRentalType.SelectedIndex)
@@ -139,14 +131,14 @@ namespace TP_Parking
                             loadSuccess = FillNewVehicle(newVehicle, newVehicleType, now, parkingController.GetParking());
                             if (loadSuccess)
                             {
-                                StartHourRental(now, i, hourRentals, parkingController.GetParking());
+                                StartHourRental(now, i, hourRentalsController.Get(), parkingController.GetParking());
                                 this.Close();
                             }
                             else
                             {
                                 this.Close();
                             }
-                                break;
+                            break;
                         }
 
                     case 1:
@@ -158,7 +150,7 @@ namespace TP_Parking
                             }
                             catch (Exception ex)
                             {
-                                exceptionController.ShowMessage(ex, "Must Select a Vehicle Type");
+                                exceptionController.ShowMessage(ex, "Debe Elegir un tipo de Vehiculo");
                             }
 
                             try
@@ -167,35 +159,31 @@ namespace TP_Parking
                             }
                             catch (Exception ex)
                             {
-                                exceptionController.ShowMessage(ex, "Must Input a Domain");
+                                exceptionController.ShowMessage(ex, "Debe ingresar patente");
                             }
 
                             try
                             {
                                 if (loadSuccess)
                                 {
-                                    StartMonthRental(now, i, owner, monthRentals, this.movements, parkingController.GetParking(), user, months);
-                                    this.Close();
+                                    StartMonthRental(now, i, owner, monthRentalsController.Get(), movementsController.Get(), parkingController.GetParking(), userController.GetUser(), months);
                                 }
                                 else
                                 {
                                     this.Close();
                                 }
                             }
-
                             catch (Exception ex)
                             {
-                                exceptionController.ShowMessage(ex, "Must Input a vehicle");
+                                exceptionController.ShowMessage(ex, "Debe ingresar vehiculo");
                             }
-                           
-
 
                             break;
                         }
                     default:
                         {
                             NullReferenceException ex = new NullReferenceException();
-                            exceptionController.ShowMessage(ex, "Must Select a Rental Type");
+                            exceptionController.ShowMessage(ex, "Debe seleccionar un tipo de alquiler");
                             break;
                         }
                 }
@@ -231,7 +219,6 @@ namespace TP_Parking
                 exceptionController.ShowMessage(ex, "Debe elegir un tipo de Vehiculo");
             }
         }
-
         private static void StartMonthRental(DateTime now, int i, string owner, MonthRentals monthRentals, Movements movements, Parking parking, User user, int months)
         {
             DateTime finishMonth = now.AddMonths(months);
@@ -249,31 +236,28 @@ namespace TP_Parking
             newMovement.Closing = null;
             movements.Add(newMovement);
         }
-
-        private static void StartRenovation(DateTime now, User user, Movements movements, MonthRentals monthRentals, MonthRental monthRental, int months)
+        private static void StartRenovation(int i, DateTime now, UserController userController, MovementsController movementsController, MonthRentalsController monthRentalsController, int months)
         {
-            monthRental.Date = monthRental.ExpirationDate;
-            monthRental.ExpirationDate = monthRental.ExpirationDate.AddMonths(months);
+            monthRentalsController.Get().ReturnAll()[i].Date = monthRentalsController.Get().ReturnAll()[i].ExpirationDate;
+            monthRentalsController.Get().ReturnAll()[i].ExpirationDate = monthRentalsController.Get().ReturnAll()[i].ExpirationDate.AddMonths(months);
             Movement newMovement = new Movement();
-            newMovement.Amount = monthRental.CalculateAmount(monthRental.Garage.Vehicle.VehicleType);
-            newMovement.Concept = "Alquiler por mes - Patente:" + monthRental.Garage.Vehicle.Domain + " - Dueño:" + monthRental.Owner;
-            newMovement.Date = monthRental.Date;
+            newMovement.Amount = monthRentalsController.Get().ReturnAll()[i].CalculateAmount(monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.VehicleType);
+            newMovement.Concept = "Alquiler por mes - Patente:" + monthRentalsController.Get().ReturnAll()[i].Garage.Vehicle.Domain + " - Dueño:" + monthRentalsController.Get().ReturnAll()[i].Owner;
+            newMovement.Date = monthRentalsController.Get().ReturnAll()[i].Date;
             newMovement.IsEntry = true;
-            newMovement.User = user;
-            newMovement.User.UserName = user.UserName;
-            newMovement.User.LastAdmission = user.LastAdmission;
-            newMovement.User.Password = user.Password;
+            newMovement.User = userController.GetUser();
+            newMovement.User.UserName = userController.GetUser().UserName;
+            newMovement.User.LastAdmission = userController.GetUser().LastAdmission;
+            newMovement.User.Password = userController.GetUser().Password;
             newMovement.Closing = null;
-            movements.Add(newMovement);
+            movementsController.Get().Add(newMovement);
             MessageBox.Show("Alquiler Renovado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private static void StartHourRental(DateTime now, int i, HourRentals hourRentals, Parking parking)
         {
             HourRental hourrental = new HourRental(now, parking.garages[i]);
             hourRentals.Add(hourrental);
         }
-
         private bool FillNewVehicle(Vehicle newvehicle, VehicleType newvehicletype, DateTime now, Parking parking)
         {
             bool load = false;
@@ -286,7 +270,6 @@ namespace TP_Parking
                     MessageBox.Show("La patente es inválida");
                     maskedTextBoxOldDomain.Focus();
                     return false;
-
                 }
                 else
                 {
@@ -339,15 +322,11 @@ namespace TP_Parking
                         }
                     }
                 }
-
                 else
                 {
                     throw new Exception();
                 }
             }
-
-
-
             newvehicle.Brand = textBoxBrand.Text;
             newvehicle.Model = textBoxModel.Text;
             newvehicle.VehicleType = newvehicletype;
@@ -355,15 +334,10 @@ namespace TP_Parking
             parking.garages[i].State = true;
             parking.garages[i].Vehicle = newvehicle;
             return load;
-
         }
         private void buttonExitRental_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-        private void StartRentalForm_Load(object sender, EventArgs e)
-        {
-
         }
         private void comboBoxRentalType_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -395,14 +369,12 @@ namespace TP_Parking
                 labelValue.Hide();
             }
         }
-
         private void comboBoxMonths_SelectedIndexChanged(object sender, EventArgs e)
         {
             labelValueShow.Text = "";
             int monthTime = Convert.ToInt32(comboBoxMonths.SelectedItem);
             labelValueShow.Text = ($"${MonthRental.MonthValue * monthTime}");
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBoxDomainFormat.SelectedIndex == 0)

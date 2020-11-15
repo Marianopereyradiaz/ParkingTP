@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
+using TP_Parking.Controllers;
 
 namespace TP_Parking
 {
     public partial class MovementsForm : Form
     {
-        private User user;
-        private Movements movements;
+        private UserController userController;
+        private MovementsController movementsController;
         private ExceptionController exceptionController = new ExceptionController();
-        public MovementsForm(Movements movements, User user)
+        public MovementsForm(MovementsController movementsController, UserController userController)
         {
             InitializeComponent();
-            this.user = user;
-            this.movements = movements;
+            this.userController = userController;
+            this.movementsController = movementsController;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -21,21 +22,9 @@ namespace TP_Parking
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            bool added = false;
             try
             {
-                Movement newMovement = new Movement();
-                newMovement.Concept = textBoxConcept.Text;
-                newMovement.User = user;
-                newMovement.User.UserName = user.UserName;
-                newMovement.User.LastAdmission = user.LastAdmission;
-                newMovement.User.Password = user.Password;
-                newMovement.Date = DateTime.Now;
-                newMovement.Closing = null;
-                newMovement.IsEntry = false;
-                newMovement.Amount = Convert.ToDouble(textBoxAmount.Text);
-                movements.Add(newMovement);
-                added = true;
+               movementsController.NewMovement(userController, textBoxConcept.Text, textBoxAmount.Text);
             }
             catch (FormatException ex)
             {
@@ -47,8 +36,9 @@ namespace TP_Parking
                 exceptionController.ShowMessage(ex, "Debe completar el formulario");
             }
 
-            if (added == true)
+            if (movementsController.NewMovement(userController, textBoxConcept.Text, textBoxAmount.Text) == true)
             {
+                movementsController.SaveNewMovement();
                 exceptionController.ShowMessage("Agregado al registro diario");
                 this.Close();
             }
@@ -62,11 +52,14 @@ namespace TP_Parking
                 if (value <= 0)
                 {
                     MessageBox.Show("Debe Ingresar un valor no negativo");
+                    textBoxAmount.Text = null;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 exceptionController.ShowMessage("Debe Ingresar un número");
+                textBoxAmount.Text = null;
+                textBoxAmount.Focus();
             }
         }
     }

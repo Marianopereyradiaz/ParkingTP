@@ -48,8 +48,7 @@
             this.labelLogin.Size = new System.Drawing.Size(122, 40);
             this.labelLogin.TabIndex = 0;
             this.labelLogin.Text = "Ingreso";
-            this.labelLogin.Click += new System.EventHandler(this.labelLogin_Click);
-            // 
+         // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
@@ -59,7 +58,7 @@
             this.labelUser.Size = new System.Drawing.Size(59, 18);
             this.labelUser.TabIndex = 1;
             this.labelUser.Text = "Usuario:";
-            this.labelUser.Click += new System.EventHandler(this.labelUser_Click);
+
             // 
             // labelPassword
             // 
@@ -70,7 +69,7 @@
             this.labelPassword.Size = new System.Drawing.Size(75, 18);
             this.labelPassword.TabIndex = 2;
             this.labelPassword.Text = "Contraseña";
-            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
+
             // 
             // textBoxUser
             // 

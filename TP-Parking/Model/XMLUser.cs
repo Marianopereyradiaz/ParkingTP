@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
+using System.IO;
 
-namespace TP_Parking
+namespace TP_Parking.Model
 {
-    public class XMLClosings
+    class XMLUser
     {
+    
         private string RouteFile = @"C:\ParkingFiles\";
-        private string fileRoute = @"C:\ParkingFiles\closings.xml";
+        private string fileRoute = @"C:\ParkingFiles\users.xml";
 
-        public void GenerateXML(List<Closing> closings)
+        public void GenerateXML(List <User> users)
         {
             try
             {
@@ -34,22 +38,22 @@ namespace TP_Parking
                     writer.WriteStartDocument();
 
 
-                    writer.WriteStartElement("Closings");
+                    writer.WriteStartElement("Users");
 
 
-                    foreach (Closing closing in closings)
+                    foreach (User user in users)
                     {
-                        writer.WriteStartElement("Closing");
-                        writer.WriteElementString("Date", closing.Date.ToString());
 
                         writer.WriteStartElement("User");
-                        writer.WriteElementString("UserName", closing.User.UserName);
-                        writer.WriteElementString("Password", closing.User.Password);
-                        writer.WriteElementString("LastAdmission", closing.User.LastAdmission.ToString());
-                        writer.WriteEndElement();
 
+
+                        writer.WriteElementString("UserName", user.UserName);
+                        writer.WriteElementString("Password", user.Password);
+                        writer.WriteElementString("LastAdmission", user.LastAdmission.ToString());
+                      
                         writer.WriteEndElement();
                     }
+
                     writer.WriteEndElement();
                     writer.WriteEndDocument();
                     writer.Flush();
@@ -62,9 +66,9 @@ namespace TP_Parking
             }
         }
 
-        public List<Closing> Return()
+        public List<User> Return()
         {
-            List<Closing> closings = new List<Closing>();
+            List<User> users = new List<User>();
 
             try
             {
@@ -75,15 +79,13 @@ namespace TP_Parking
 
                 if (!File.Exists(fileRoute))
                 {
-                    GenerateXML(closings);
+                    GenerateXML(users);
                 }
                 FileStream archive = new FileStream(fileRoute, FileMode.Open, FileAccess.Read);
 
                 XmlTextReader reader = new XmlTextReader(archive);
 
-                Closing closing = null;
-
-
+                User user = null;
 
                 while (reader.Read())
                 {
@@ -92,45 +94,35 @@ namespace TP_Parking
                     {
                         switch (reader.Name)
                         {
-                            case "Closings":
-                                break;
-
-                            case "Closing":
-                                if (reader.Read())
-                                    closing = new Closing();
-                                break;
-
-                            case "Date":
-                                if (reader.Read())
-                                    closing.Date = Convert.ToDateTime(reader.Value);
+                            case "Users":
                                 break;
 
                             case "User":
-                                if (reader.Read())
-                                    closing.User = new User();
+
+                                user = new User();
                                 break;
 
                             case "UserName":
                                 if (reader.Read())
-                                    closing.User.UserName = reader.Value;
+                                    user.UserName = reader.Value;
                                 break;
 
                             case "Password":
                                 if (reader.Read())
-                                    closing.User.Password = reader.Value;
+                                    user.Password = reader.Value;
                                 break;
 
                             default:
                                 if (reader.Read())
-                                    closing.User.LastAdmission = Convert.ToDateTime(reader.Value);
+                                    user.LastAdmission = Convert.ToDateTime(reader.Value);
                                 break;
                         }
                     }
 
-                    else if (reader.Name == "Closing")
+                    else if (reader.Name == "User")
                     {
-                        closings.Add(closing);
-                        closing = null;
+                        users.Add(user);
+                        user = null;
                     }
                 }
 
@@ -142,7 +134,7 @@ namespace TP_Parking
                 throw ex;
             }
 
-            return closings;
+            return users;
         }
     }
 }

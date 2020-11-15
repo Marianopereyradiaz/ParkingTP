@@ -100,8 +100,6 @@ namespace TP_Parking
                 XmlTextReader reader = new XmlTextReader(archive);
 
                 Movement movement = null;
-                User user = null;
-                Closing closing = null;
 
                 while (reader.Read())
                 {
