@@ -20,8 +20,7 @@ namespace TP_Parking.Controllers
         public void Save(Closings closings)
         {
             closingsManager.GenerateXML(closings.ReturnAll());
-        }
-        
+        }      
         public Closing NewClosing (MovementsController movementsController)
         {           
             foreach (Movement movement in movementsController.Get().ReturnAll())

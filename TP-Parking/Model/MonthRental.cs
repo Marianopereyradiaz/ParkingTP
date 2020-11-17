@@ -22,7 +22,7 @@ namespace TP_Parking
         public override double CalculateAmount(VehicleType vehicle)
         {
             int monthTime = this.ExpirationDate.Month - this.Date.Month;
-            if (monthTime < 0)
+            if (monthTime <= 0)
             {
                 monthTime = monthTime + 12;
             }

@@ -22,7 +22,6 @@ namespace TP_Parking.Controllers
         {
             hourRentalsManager.GenerateXML(hourRentals.ReturnAll());
         }
-
         public bool HourRentalExist(int i)
         {
             foreach (HourRental hourRental in hourRentals.ReturnAll())
@@ -34,7 +33,6 @@ namespace TP_Parking.Controllers
             }
             return false;
         }
-
         public HourRental StopHourRental(int i, HourRentals hourRentals, Parking parking)
         {
             HourRental rental = null;
@@ -55,7 +53,6 @@ namespace TP_Parking.Controllers
             activeHourRental = rental;
             return rental;
         }
-
         public HourRental GetActiveHourRental()
         {
             return activeHourRental;
@@ -70,7 +67,6 @@ namespace TP_Parking.Controllers
             }
             return null;
         }
-
         public bool CheckHourRental(HourRental hourRental)
         {
             if (hourRental != null && hourRental.Garage.State == true)
@@ -79,7 +75,6 @@ namespace TP_Parking.Controllers
             }
             return false;
         }
-
         public void NewHourRental(HourRental hourRental, UserController userController, ParkingController parkingController, MovementsController movementsController)
         {
             Movement newMovement = new Movement();
@@ -105,13 +100,11 @@ namespace TP_Parking.Controllers
 
             }
         }
-
         public TimeSpan ReturnHours(HourRental hourRental)
         {
             TimeSpan time = DateTime.Now - hourRental.Date;
             return time;
         }
-
         public double ReturnAmount (HourRental hourRental, Vehicle activeVehicle)
         {
             double hs = ReturnHours(hourRental).Hours;
